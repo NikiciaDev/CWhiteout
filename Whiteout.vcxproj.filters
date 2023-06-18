@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="JSONUtil.cpp">
+      <Filter>source\util</Filter>
+    </ClCompile>
+    <ClCompile Include="JavaClass.cpp">
+      <Filter>source\classes</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="headers">
+      <UniqueIdentifier>{1562007f-6faa-4f90-b3e4-28f33dae8d05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source">
+      <UniqueIdentifier>{ef96992e-0b84-4729-bfc7-4bbb961e59c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\classes">
+      <UniqueIdentifier>{f76e7eca-d3fc-440e-9485-d1cddd52a597}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\classes">
+      <UniqueIdentifier>{38fd12ec-084a-4a4a-a7c6-a25f9ed2a309}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\util">
+      <UniqueIdentifier>{86daa2e2-93ee-4e2c-be07-87baab6be5f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\util">
+      <UniqueIdentifier>{7ab01e02-aae5-4223-9d8b-fe783ea1f33d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="JSONUtil.h">
+      <Filter>headers\util</Filter>
+    </ClInclude>
+    <ClInclude Include="JavaClass.h">
+      <Filter>headers\classes</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
