@@ -1,8 +1,8 @@
 #pragma once
 #include <map>
+#include "LdrfUtil.h"
 #include "JavaClass.h"
 
 namespace clr {
-	// Loads classes from JSON
-	void createClassesFromJSON(const char* path, std::map<const char*, JavaClass>);
+	void create_classes_from_ldrf(const char* path, std::map<const char*, JavaClass>& map);
 }

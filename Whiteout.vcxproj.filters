@@ -8,8 +8,11 @@
     <ClCompile Include="JavaClass.cpp">
       <Filter>source\classes</Filter>
     </ClCompile>
-    <ClCompile Include="JSONUtil.cpp">
+    <ClCompile Include="LdrfUtil.cpp">
       <Filter>source\util</Filter>
+    </ClCompile>
+    <ClCompile Include="Variables.cpp">
+      <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -39,8 +42,14 @@
     <ClInclude Include="JavaClass.h">
       <Filter>headers\classes</Filter>
     </ClInclude>
-    <ClInclude Include="JSONUtil.h">
+    <ClInclude Include="LdrfUtil.h">
       <Filter>headers\util</Filter>
     </ClInclude>
+    <ClInclude Include="Variables.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="JClasses.ldrf" />
   </ItemGroup>
 </Project>

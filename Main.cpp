@@ -1,10 +1,13 @@
 #include <thread>
 #include <cstdio>
-
 #include <Windows.h>
 #include <jni.h>
 
-void MainThread(HMODULE instance);
+extern JavaVM* jvm_ptr;
+extern JNIEnv* jenv_ptr;
+extern void init_variables();
+
+void main_thread_f(HMODULE instance);
 
 bool __stdcall DllMain(HINSTANCE instance, DWORD reason, LPVOID reserved) {
     static FILE* file_ptr{ nullptr };
@@ -14,7 +17,7 @@ bool __stdcall DllMain(HINSTANCE instance, DWORD reason, LPVOID reserved) {
         AllocConsole();
         freopen_s(&file_ptr, "CONOUT$", "w", stdout);
 
-        main_thread = std::thread([instance] { MainThread(instance); });
+        main_thread = std::thread([instance] { main_thread_f(instance); });
 
         if (main_thread.joinable()) main_thread.detach();
     } else if (reason == DLL_PROCESS_DETACH) {
@@ -25,12 +28,8 @@ bool __stdcall DllMain(HINSTANCE instance, DWORD reason, LPVOID reserved) {
     return true;
 }
 
-void MainThread(HMODULE instance) {
-    JavaVM* jvm_ptr{ nullptr };
-    jint result = JNI_GetCreatedJavaVMs(&jvm_ptr, 1, nullptr);
-
-    void* env_ptr{ nullptr };
-    jvm_ptr->AttachCurrentThread(&env_ptr, nullptr);
+void main_thread_f(HMODULE instance) {
+    init_variables();
 
     while (!GetAsyncKeyState(VK_DELETE)) {
 
