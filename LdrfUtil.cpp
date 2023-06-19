@@ -21,7 +21,7 @@ namespace lul {
 			}
 
 			if (line.find("fields:") != std::string::npos) {
-				extract_fields_from_class(line, map[current_class.c_str()]->jfields);
+				extract_fields_from_class(line, *map[current_class.c_str()], map[current_class.c_str()]->jfields);
 				continue;
 			}
 

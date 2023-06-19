@@ -11,6 +11,7 @@ public:
 	const char* name;
 	jclass jclass{ NULL };
 	jobject instance{ NULL };
+	jmethodID constructor_id{ NULL };
 	std::map<const char*, jmethodID*> jmethods;
 	std::map<const char*, jfieldID*> jfields;
 
@@ -19,4 +20,6 @@ public:
 	explicit JavaClass(const char* c_name, const char* name);
 
 	~JavaClass();
+
+	jobject new_instance();
 };
