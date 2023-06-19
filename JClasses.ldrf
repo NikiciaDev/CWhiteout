@@ -1,7 +1,7 @@
 {
 
   class: "ave" -> "Minecraft" <"S",Lave;,true> {
-    fields: [<true,"S","Minecraft", Lave;>]
+    fields: [<true,"S","Minecraft",Lave;>]
     methods: [<false,"aw","click_mouse",()V>]
   };
 
