@@ -21,60 +21,67 @@ namespace lul {
 			}
 
 			if (line.find("fields:") != std::string::npos) {
-				extract_fields_from_class(line, *map[current_class.c_str()], map[current_class.c_str()]->jfields);
+				extract_mof_from_class(line, *map[current_class.c_str()], map[current_class.c_str()]->jmethods, map[current_class.c_str()]->jfields, false);
 				continue;
 			}
 
 			if (line.find("methods:") != std::string::npos) {
-				extract_methods_from_class(line, *map[current_class.c_str()], map[current_class.c_str()]->jmethods);
+				extract_mof_from_class(line, *map[current_class.c_str()], map[current_class.c_str()]->jmethods, map[current_class.c_str()]->jfields, true);
 				continue;
 			}
 		}
 	}
 
-	void extract_methods_from_class(const std::string line, JavaClass& clazz, std::map<const char*, jmethodID*>& map) {
-		bool in_method{ false }, completed{ false };
+	void extract_mof_from_class(const std::string line, JavaClass& clazz, std::map<const char*, jmethodID*>& map, std::map<const char*, 
+		jfieldID*>& fmap, bool methods) {
+
+		bool in{ false }, completed{ false };
 		bool is_static{ false };
-		unsigned short method_begin{ 0 }, method_end{ 0 };
+		unsigned short begin{ 0 }, end{ 0 };
 		std::string name{ "" }, c_name{ "" }, field_descriptor{""};
 		for (unsigned short s = 0; s < line.size(); s++) {
 			const char c = line[s];
 			if (c == '<') {
-				in_method = true;
+				in = true;
 				completed = false;
-				method_begin = s;
+				begin = s;
 				continue;
 			}
-			if (c == '>') in_method = false;
+			if (c == '>') in = false;
 
-			if (in_method && !completed) {
-				bool is_static = line[method_begin + 1] == 't';
-				unsigned short first_comma = find_next_char(line, ',', method_begin);
+			if (in && !completed) {
+				bool is_static = line[begin + 1] == 't';
+				unsigned short first_comma = find_next_char(line, ',', begin);
 				unsigned short second_comma = find_next_char(line, ',', first_comma + 1);
 				unsigned short third_comma = find_next_char(line, ',', second_comma + 1);
-				method_end = find_next_char(line, '>', third_comma + 1);
+				end = find_next_char(line, '>', third_comma + 1);
 
 				c_name = line.substr(first_comma + 2, second_comma - first_comma - 3);
 				name = line.substr(second_comma + 2, third_comma - second_comma - 3);
-				field_descriptor = line.substr(third_comma + 1, method_end - third_comma - 1);
+				field_descriptor = line.substr(third_comma + 1, end - third_comma - 1);
 				
-				jmethodID* method;
-				if (is_static) {
-					method = new jmethodID{ jenv_ptr->GetStaticMethodID(clazz.jclass, c_name.c_str(), field_descriptor.c_str()) };
+				if (methods) {
+					jmethodID* method;
+					if (is_static) {
+						method = new jmethodID{ jenv_ptr->GetStaticMethodID(clazz.jclass, c_name.c_str(), field_descriptor.c_str()) };
+					} else {
+						method = new jmethodID{ jenv_ptr->GetMethodID(clazz.jclass, c_name.c_str(), field_descriptor.c_str()) };
+					}
+					map.insert(std::make_pair(name.c_str(), method));
 				} else {
-					method = new jmethodID{ jenv_ptr->GetMethodID(clazz.jclass, c_name.c_str(), field_descriptor.c_str()) };
+					jfieldID* field;
+					if (is_static) {
+						field = new jfieldID{ jenv_ptr->GetStaticFieldID(clazz.jclass, c_name.c_str(), field_descriptor.c_str()) };
+					} else {
+						field = new jfieldID{ jenv_ptr->GetFieldID(clazz.jclass, c_name.c_str(), field_descriptor.c_str()) };
+					}
+					fmap.insert(std::make_pair(name.c_str(), field));
 				}
 
-				map.insert(std::make_pair(name.c_str(), method));
-
 				completed = true;
-				s = method_end;
+				s = end;
 			}
 		}
-	}
-
-	void extract_fields_from_class(const std::string line, JavaClass& clazz, std::map<const char*, jfieldID*>& map) {
-
 	}
 
 	void set_instance(const std::string line, JavaClass& java_class) {

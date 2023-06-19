@@ -10,9 +10,7 @@ extern JNIEnv* jenv_ptr;
 namespace lul {
 	void load_classes_from_ldrf(std::ifstream& file, std::map<const char*, JavaClass*>& map);
 
-	void extract_methods_from_class(const std::string line, JavaClass& clazz, std::map<const char*, jmethodID*>& map);
-
-	void extract_fields_from_class(const std::string line, JavaClass& clazz, std::map<const char*, jfieldID*>& map);
+	void extract_mof_from_class(const std::string line, JavaClass& clazz, std::map<const char*, jmethodID*>& map, std::map<const char*, jfieldID*>& fmap, bool methods);
 
 	void set_instance(const std::string line, JavaClass& java_class);
 
