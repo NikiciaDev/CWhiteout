@@ -1,7 +1,11 @@
 #include <thread>
 #include <cstdio>
 #include <Windows.h>
+#include <map>
 #include <jni.h>
+
+#include "ClassLoader.h"
+#include "JavaClass.h"
 
 extern JavaVM* jvm_ptr;
 extern JNIEnv* jenv_ptr;
@@ -29,7 +33,9 @@ bool __stdcall DllMain(HINSTANCE instance, DWORD reason, LPVOID reserved) {
 }
 
 void main_thread_f(HMODULE instance) {
+    std::map<const char*, JavaClass> classes;
     init_variables();
+    clr::create_classes_from_ldrf("C:/Users/LRieh/source/repos/Whiteout/JClasses.ldrf", classes);
 
     while (!GetAsyncKeyState(VK_DELETE)) {
 

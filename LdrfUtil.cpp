@@ -1,6 +1,6 @@
 #include "LdrfUtil.h"
 
-namespace lfe {
+namespace lul {
 	void load_classes_from_ldrf(const char* path, std::map<const char*, JavaClass>& map) {
 		std::ifstream file(path);
 		if (!file.is_open()) {
