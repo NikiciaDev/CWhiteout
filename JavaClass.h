@@ -1,13 +1,13 @@
 #pragma once
-#include <vector>
+#include <map>
 #include "jni.h"
 
 class JavaClass {
 public:
 	const char* name;
 	jclass jclass;
-	std::vector<jmethodID> jmethods;
-	std::vector<jfieldID> jfields;
+	std::map<const char*, jmethodID> jmethods;
+	std::map<const char*, jfieldID> jfields;
 
 	JavaClass(const char* name);
 
