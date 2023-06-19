@@ -13,9 +13,9 @@ public:
 	std::map<const char*, jmethodID> jmethods;
 	std::map<const char*, jfieldID> jfields;
 
-	JavaClass();
+	explicit JavaClass();
 
-	JavaClass(const char* c_name, const char* name);
+	explicit JavaClass(const char* c_name, const char* name);
 
 	~JavaClass();
 

@@ -1,7 +1,7 @@
 #include "LdrfUtil.h"
 
 namespace lul {
-	void load_classes_from_ldrf(std::ifstream& file, std::map<const char*, JavaClass>& map) {
+	void load_classes_from_ldrf(std::ifstream& file, std::map<const char*, JavaClass*>& map) {
 		bool in_block{ false };
 		std::string current_class{ "" };
 		for (std::string line; std::getline(file, line);) {
@@ -13,17 +13,18 @@ namespace lul {
 
 			if (line.find("class:") != std::string::npos) {
 				current_class = get_class_name(line);
-				map.insert(std::make_pair(current_class.c_str(), JavaClass(get_class_c_name(line).c_str(), current_class.c_str())));
+				JavaClass* java_class = new JavaClass(get_class_c_name(line).c_str(), current_class.c_str());
+				map.insert(std::make_pair(current_class.c_str(), java_class));
 				continue;
 			}
 
 			if (line.find("fields:") != std::string::npos) {
-				extract_fields_from_class(line, map[current_class.c_str()].jfields);
+				extract_fields_from_class(line, map[current_class.c_str()]->jfields);
 				continue;
 			}
 
 			if (line.find("methods:") != std::string::npos) {
-				extract_methods_from_class(line, map[current_class.c_str()].jmethods);
+				extract_methods_from_class(line, map[current_class.c_str()]->jmethods);
 				continue;
 			}
 		}

@@ -2,6 +2,7 @@
 #include <cstdio>
 #include <Windows.h>
 #include <map>
+#include <algorithm>
 #include <jni.h>
 
 #include "ClassLoader.h"
@@ -33,13 +34,17 @@ bool __stdcall DllMain(HINSTANCE instance, DWORD reason, LPVOID reserved) {
 }
 
 void main_thread_f(HMODULE instance) {
-    std::map<const char*, JavaClass> classes;
+    std::map<const char*, JavaClass*>* classes = new std::map<const char*, JavaClass*>;
     init_variables();
-    clr::create_classes_from_ldrf("C:/Users/LRieh/source/repos/Whiteout/JClasses.ldrf", classes);
+    clr::create_classes_from_ldrf("C:/Users/LRieh/source/repos/Whiteout/JClasses.ldrf", *classes);
 
     while (!GetAsyncKeyState(VK_DELETE)) {
 
     }
+    
 
+    // The pointers in the map aren't cleard, i know, cope, i tried, it crashes.
+    classes->clear();
+    delete classes;
     FreeLibrary(instance);
 }
