@@ -1,7 +1,7 @@
 {
 
-  class: "ave"->"Minecraft" {
-    fields: [static-ave-"S"->"Minecraft"]
+  class: "ave" -> "Minecraft" {
+    fields: [static-ave-"S" -> "Minecraft"]
     methods: []
   };
 

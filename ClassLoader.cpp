@@ -2,6 +2,10 @@
 
 namespace clr {
 	void create_classes_from_ldrf(const char* path, std::map<const char*, JavaClass>& map) {
-		lul::load_classes_from_ldrf(path, map);
+		std::ifstream file(path);
+		if (!file.is_open()) {
+			throw std::exception("Could not open ldrf file!");
+		}
+		lul::load_classes_from_ldrf(file, map);
 	}
 }

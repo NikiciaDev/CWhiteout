@@ -1,12 +1,7 @@
 #include "LdrfUtil.h"
 
 namespace lul {
-	void load_classes_from_ldrf(const char* path, std::map<const char*, JavaClass>& map) {
-		std::ifstream file(path);
-		if (!file.is_open()) {
-			throw std::exception("Could not open ldrf file!");
-		}
-
+	void load_classes_from_ldrf(std::ifstream& file, std::map<const char*, JavaClass>& map) {
 		bool in_block{ false };
 		std::string current_class{ "" };
 		for (std::string line; std::getline(file, line);) {
@@ -50,20 +45,20 @@ namespace lul {
 			}
 			if (start != -1 && end != -1) break;
 		}
-		return line.substr(start, end);
+		return line.substr(start + 1, end - start - 1);
 	}
 
 	std::string get_class_name(const std::string line) {
 		short start{ -1 }, end{ -1 }, count{ 0 };
 		for (unsigned short s = 0; s < line.size(); s++) {
 			if (line[s] == '"') {
-				if (count >= 1) {
+				if (count > 1) {
 					if (start == -1) start = s;
 					else if (end == -1) end = s;
 				}
 				count++;
 			}
 		}
-		return line.substr(start, end);
+		return line.substr(start + 1, end - start - 1);
 	}
 }
