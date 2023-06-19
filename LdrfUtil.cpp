@@ -1,5 +1,4 @@
 #include "LdrfUtil.h"
-#include <iostream>
 
 namespace lul {
 	void load_classes_from_ldrf(std::ifstream& file, std::map<const char*, JavaClass*>& map) {
