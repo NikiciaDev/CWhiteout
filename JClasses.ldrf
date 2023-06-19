@@ -1,8 +1,8 @@
 {
 
-  class: "ave" -> "Minecraft" <S,Lave;,true> {
-    fields: [static-ave-"S" -> "Minecraft"]
-    methods: []
+  class: "ave" -> "Minecraft" <"S",Lave;,true> {
+    fields: [<true,"S","Minecraft">]
+    methods: [<false,"aw","click_mouse",()V>]
   };
 
 };

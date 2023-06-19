@@ -1,5 +1,6 @@
 #pragma once
 #include <map>
+#include "ConsoleUtil.h"
 #include "LdrfUtil.h"
 #include "JavaClass.h"
 
