@@ -39,7 +39,7 @@ void main_thread_f(HMODULE instance) {
     clr::create_classes_from_ldrf("C:/Users/LRieh/source/repos/Whiteout/JClasses.ldrf", *classes);
 
     while (!GetAsyncKeyState(VK_DELETE)) {
-
+        //jenv_ptr->SetIntField(classes->at("minecraft")->instance, *classes->at("minecraft")->jfields["rightclick_delay_timer"], 0);
     }
     
     jvm_ptr->DetachCurrentThread();
