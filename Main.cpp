@@ -42,6 +42,7 @@ void main_thread_f(HMODULE instance) {
 
     }
     
+    jvm_ptr->DetachCurrentThread();
 
     // The pointers in the map aren't cleard, i know, cope, i tried, it crashes.
     classes->clear();

@@ -14,6 +14,9 @@
     <ClCompile Include="Variables.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="ConsoleUtil.cpp">
+      <Filter>source\util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
@@ -47,6 +50,9 @@
     </ClInclude>
     <ClInclude Include="Variables.h">
       <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleUtil.h">
+      <Filter>headers\util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

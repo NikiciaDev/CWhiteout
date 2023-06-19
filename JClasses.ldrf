@@ -1,6 +1,6 @@
 {
 
-  class: "ave" -> "Minecraft" {
+  class: "ave" -> "Minecraft" <S,Lave;,true> {
     fields: [static-ave-"S" -> "Minecraft"]
     methods: []
   };

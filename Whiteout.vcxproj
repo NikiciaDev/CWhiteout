@@ -132,6 +132,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ConsoleUtil.cpp" />
     <ClCompile Include="JavaClass.cpp" />
     <ClCompile Include="ClassLoader.cpp" />
     <ClCompile Include="LdrfUtil.cpp" />
@@ -139,6 +140,7 @@
     <ClCompile Include="Variables.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ConsoleUtil.h" />
     <ClInclude Include="JavaClass.h" />
     <ClInclude Include="ClassLoader.h" />
     <ClInclude Include="LdrfUtil.h" />
