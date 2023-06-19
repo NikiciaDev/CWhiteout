@@ -34,7 +34,7 @@ bool __stdcall DllMain(HINSTANCE instance, DWORD reason, LPVOID reserved) {
 }
 
 void main_thread_f(HMODULE instance) {
-    std::map<const char*, JavaClass*>* classes = new std::map<const char*, JavaClass*>;
+    std::map<const std::string, JavaClass*>* classes = new std::map<const std::string, JavaClass*>;
     init_variables();
     clr::create_classes_from_ldrf("C:/Users/LRieh/source/repos/Whiteout/JClasses.ldrf", *classes);
 

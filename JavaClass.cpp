@@ -5,16 +5,15 @@ JavaClass::JavaClass() {
 	this->name = "";
 }
 
-JavaClass::JavaClass(const char* c_name, const char* name) {
+JavaClass::JavaClass(const std::string c_name, const std::string name) {
 	this->c_name = c_name;
 	this->name = name;
-	this->jclass = jenv_ptr->FindClass(c_name);
+	this->jclass = jenv_ptr->FindClass(c_name.c_str());
 	this->constructor_id = jenv_ptr->GetMethodID(jclass, "<init>", "()V");
 }
 
 JavaClass::~JavaClass() {
-	free((char*) this->c_name);
-	free((char*) this->name);
+	
 }
 
 jobject JavaClass::new_instance() {

@@ -1,7 +1,7 @@
 #include "LdrfUtil.h"
 
 namespace lul {
-	void load_classes_from_ldrf(std::ifstream& file, std::map<const char*, JavaClass*>& map) {
+	void load_classes_from_ldrf(std::ifstream& file, std::map<const std::string, JavaClass*>& map) {
 		bool in_block{ false };
 		std::string current_class{ "" };
 		for (std::string line; std::getline(file, line);) {
@@ -13,26 +13,26 @@ namespace lul {
 
 			if (line.find("class:") != std::string::npos) {
 				current_class = get_class_name(line);
-				JavaClass* java_class = new JavaClass(get_class_c_name(line).c_str(), current_class.c_str());
+				JavaClass* java_class = new JavaClass(get_class_c_name(line), current_class);
 				set_instance(line, *java_class);
-				map.insert(std::make_pair(current_class.c_str(), java_class));
+				map.insert(std::make_pair(current_class, java_class));
 				continue;
 			}
 
 			if (line.find("fields:") != std::string::npos) {
-				extract_mof_from_class(line, *map[current_class.c_str()], map[current_class.c_str()]->jmethods, map[current_class.c_str()]->jfields, false);
+				extract_mof_from_class(line, *map[current_class], map[current_class]->jmethods, map[current_class]->jfields, false);
 				continue;
 			}
 
 			if (line.find("methods:") != std::string::npos) {
-				extract_mof_from_class(line, *map[current_class.c_str()], map[current_class.c_str()]->jmethods, map[current_class.c_str()]->jfields, true);
+				extract_mof_from_class(line, *map[current_class], map[current_class]->jmethods, map[current_class]->jfields, true);
 				continue;
 			}
 		}
 	}
 
-	void extract_mof_from_class(const std::string line, JavaClass& clazz, std::map<const char*, jmethodID*>& map, std::map<const char*, 
-		jfieldID*>& fmap, bool methods) {
+	void extract_mof_from_class(const std::string line, JavaClass& clazz, std::map<const std::string, jmethodID*>& map,
+		std::map<const std::string, jfieldID*>& fmap, bool methods) {
 
 		bool in{ false }, completed{ false };
 		bool is_static{ false };
@@ -66,7 +66,7 @@ namespace lul {
 					} else {
 						method = new jmethodID{ jenv_ptr->GetMethodID(clazz.jclass, c_name.c_str(), field_descriptor.c_str()) };
 					}
-					map.insert(std::make_pair(name.c_str(), method));
+					map.insert(std::make_pair(name, method));
 				} else {
 					jfieldID* field;
 					if (is_static) {
@@ -74,7 +74,7 @@ namespace lul {
 					} else {
 						field = new jfieldID{ jenv_ptr->GetFieldID(clazz.jclass, c_name.c_str(), field_descriptor.c_str()) };
 					}
-					fmap.insert(std::make_pair(name.c_str(), field));
+					fmap.insert(std::make_pair(name, field));
 				}
 
 				completed = true;
