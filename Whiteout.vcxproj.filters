@@ -2,11 +2,14 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="JSONUtil.cpp">
+    <ClCompile Include="ClassLoader.cpp">
       <Filter>source\util</Filter>
     </ClCompile>
     <ClCompile Include="JavaClass.cpp">
       <Filter>source\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="JSONUtil.cpp">
+      <Filter>source\util</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -30,11 +33,14 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="JSONUtil.h">
+    <ClInclude Include="ClassLoader.h">
       <Filter>headers\util</Filter>
     </ClInclude>
     <ClInclude Include="JavaClass.h">
       <Filter>headers\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="JSONUtil.h">
+      <Filter>headers\util</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

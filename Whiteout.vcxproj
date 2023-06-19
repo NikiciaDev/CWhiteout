@@ -133,11 +133,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="JavaClass.cpp" />
+    <ClCompile Include="ClassLoader.cpp" />
     <ClCompile Include="JSONUtil.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="JavaClass.h" />
+    <ClInclude Include="ClassLoader.h" />
     <ClInclude Include="JSONUtil.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
