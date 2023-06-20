@@ -44,7 +44,9 @@ void main_thread_f(HMODULE instance) {
     
     jvm_ptr->DetachCurrentThread();
 
-    // The pointers in the map aren't cleard, i know, cope, i tried, it crashes.
+    std::for_each(classes->begin(), classes->end(), [](const std::pair<const std::string, JavaClass*>& pair) {
+        delete pair.second;
+    });
     classes->clear();
     delete classes;
     FreeLibrary(instance);
