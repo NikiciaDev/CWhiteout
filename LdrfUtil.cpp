@@ -37,7 +37,7 @@ namespace lul {
 		bool in{ false }, completed{ false };
 		bool is_static{ false };
 		unsigned short begin{ 0 }, end{ 0 };
-		std::string name{ "" }, c_name{ "" }, field_descriptor{""};
+		std::string name{ "" }, c_name{ "" }, signature{""};
 		for (unsigned short s = 0; s < line.size(); s++) {
 			const char c = line[s];
 			if (c == '<') {
@@ -57,22 +57,22 @@ namespace lul {
 
 				c_name = line.substr(first_comma + 2, second_comma - first_comma - 3);
 				name = line.substr(second_comma + 2, third_comma - second_comma - 3);
-				field_descriptor = line.substr(third_comma + 1, end - third_comma - 1);
+				signature = line.substr(third_comma + 1, end - third_comma - 1);
 				
 				if (methods) {
 					jmethodID* method;
 					if (is_static) {
-						method = new jmethodID{ jenv_ptr->GetStaticMethodID(clazz.jclass, c_name.c_str(), field_descriptor.c_str()) };
+						method = new jmethodID{ jenv_ptr->GetStaticMethodID(clazz.jclass, c_name.c_str(), signature.c_str()) };
 					} else {
-						method = new jmethodID{ jenv_ptr->GetMethodID(clazz.jclass, c_name.c_str(), field_descriptor.c_str()) };
+						method = new jmethodID{ jenv_ptr->GetMethodID(clazz.jclass, c_name.c_str(), signature.c_str()) };
 					}
 					map.insert(std::make_pair(name, method));
 				} else {
 					jfieldID* field;
 					if (is_static) {
-						field = new jfieldID{ jenv_ptr->GetStaticFieldID(clazz.jclass, c_name.c_str(), field_descriptor.c_str()) };
+						field = new jfieldID{ jenv_ptr->GetStaticFieldID(clazz.jclass, c_name.c_str(), signature.c_str()) };
 					} else {
-						field = new jfieldID{ jenv_ptr->GetFieldID(clazz.jclass, c_name.c_str(), field_descriptor.c_str()) };
+						field = new jfieldID{ jenv_ptr->GetFieldID(clazz.jclass, c_name.c_str(), signature.c_str()) };
 					}
 					fmap.insert(std::make_pair(name, field));
 				}
