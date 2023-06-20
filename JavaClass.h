@@ -1,6 +1,7 @@
 #pragma once
 #include <map>
 #include <string>
+#include <algorithm>
 #include <jni.h>
 
 extern JavaVM* jvm_ptr;

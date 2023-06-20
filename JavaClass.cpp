@@ -13,7 +13,14 @@ JavaClass::JavaClass(const std::string c_name, const std::string name) {
 }
 
 JavaClass::~JavaClass() {
-	
+	std::for_each(this->jfields.begin(), this->jfields.end(), [](const std::pair<const std::string, jfieldID*>& pair) {
+		delete pair.second;
+	});
+	std::for_each(this->jmethods.begin(), this->jmethods.end(), [](const std::pair<const std::string, jmethodID*>& pair) {
+		delete pair.second;
+	});
+	this->jfields.clear();
+	this->jmethods.clear();
 }
 
 jobject JavaClass::new_instance() {
