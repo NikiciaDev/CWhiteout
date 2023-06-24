@@ -17,7 +17,7 @@ std::wstring ful::create_ldrf_env() {
 		}
 	}
 
-	base_path += "\\JClasse.ldrf";
+	base_path += "\\JClasses.ldrf";
 	return std::wstring(base_path.begin(), base_path.end());
 }
 
