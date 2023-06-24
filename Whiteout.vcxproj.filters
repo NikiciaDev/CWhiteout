@@ -17,6 +17,12 @@
     <ClCompile Include="ConsoleUtil.cpp">
       <Filter>source\util</Filter>
     </ClCompile>
+    <ClCompile Include="DownloadUtil.cpp">
+      <Filter>source\util</Filter>
+    </ClCompile>
+    <ClCompile Include="FileUtil.cpp">
+      <Filter>source\util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
@@ -52,6 +58,12 @@
       <Filter>headers</Filter>
     </ClInclude>
     <ClInclude Include="ConsoleUtil.h">
+      <Filter>headers\util</Filter>
+    </ClInclude>
+    <ClInclude Include="DownloadUtil.h">
+      <Filter>headers\util</Filter>
+    </ClInclude>
+    <ClInclude Include="FileUtil.h">
       <Filter>headers\util</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,8 +1,0 @@
-{
-
-  class: "ave" -> "Minecraft" <"S",Lave;,true> {
-    fields: [<true,"S","instance",Lave;>, <false,"ap","right_click_delay_timer",I>]
-    methods: [<false,"aw","click_mouse",()V>, <false,"ax","right_click_mouse",()V>]
-  };
-
-};

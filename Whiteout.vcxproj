@@ -133,6 +133,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleUtil.cpp" />
+    <ClCompile Include="DownloadUtil.cpp" />
+    <ClCompile Include="FileUtil.cpp" />
     <ClCompile Include="JavaClass.cpp" />
     <ClCompile Include="ClassLoader.cpp" />
     <ClCompile Include="LdrfUtil.cpp" />
@@ -141,6 +143,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleUtil.h" />
+    <ClInclude Include="DownloadUtil.h" />
+    <ClInclude Include="FileUtil.h" />
     <ClInclude Include="JavaClass.h" />
     <ClInclude Include="ClassLoader.h" />
     <ClInclude Include="LdrfUtil.h" />
