@@ -1,16 +1,21 @@
+#define NOMINMAX
+
 #include <thread>
 #include <cstdio>
 #include <Windows.h>
 #include <map>
 #include <algorithm>
 #include <jni.h>
+#include <SFML/Graphics.hpp>
 
 #include "ClassLoader.h"
 #include "JavaClass.h"
 #include "FileUtil.h"
 #include "ConsoleUtil.h"
 #include "DownloadUtil.h"
-
+#include "WindowUtil.h"
+#include "Whiteout.h"
+#include "ScreenUtil.h"
 #include <iostream>
 
 extern JavaVM* jvm_ptr;
@@ -46,14 +51,27 @@ void main_thread_f(HMODULE instance) {
         print_err("Failed to download loader file!");
         throw std::exception("Failed to download loader file!");
     }
-
     clr::create_classes_from_ldrf(ldrf_path, *classes);
-    while (!GetAsyncKeyState(VK_DELETE)) {
-        //jenv_ptr->SetIntField(classes->find("Minecraft")->second->instance, *classes->find("Minecraft")->second->jfields.find("right_click_delay_timer")->second, 0);
-    }
-    
-    jvm_ptr->DetachCurrentThread();
 
+    Whiteout whiteout;
+    whiteout.assign_window(wul::create_window(whiteout.n_a_b, 2, 800, 450));
+    while (whiteout.window->isOpen()) {
+        sf::Event event;
+        while (whiteout.window->pollEvent(event)) {
+            if (event.type == sf::Event::Closed) whiteout.window->close();
+        }
+        
+        whiteout.window->clear(sf::Color::White);
+        sf::CircleShape s(200, 60);
+        s.setFillColor(sf::Color::Black);
+        whiteout.window->draw(s);
+
+        // Draw here.
+
+        whiteout.window->display();
+    }
+
+    jvm_ptr->DetachCurrentThread();
     std::for_each(classes->begin(), classes->end(), [](const std::pair<const std::string, JavaClass*>& pair) {
         delete pair.second;
     });
