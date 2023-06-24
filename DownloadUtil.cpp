@@ -1,5 +1,4 @@
 #include "DownloadUtil.h"
-#include <iostream>
 
 namespace dul {
 	bool download_file_from_url(LPCWSTR url, LPCWSTR location) {
