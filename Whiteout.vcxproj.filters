@@ -67,7 +67,4 @@
       <Filter>headers\util</Filter>
     </ClInclude>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="JClasses.ldrf" />
-  </ItemGroup>
 </Project>
