@@ -2,26 +2,35 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="ClassLoader.cpp">
-      <Filter>source\util</Filter>
-    </ClCompile>
-    <ClCompile Include="JavaClass.cpp">
-      <Filter>source\classes</Filter>
-    </ClCompile>
-    <ClCompile Include="LdrfUtil.cpp">
-      <Filter>source\util</Filter>
-    </ClCompile>
     <ClCompile Include="Variables.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="ConsoleUtil.cpp">
-      <Filter>source\util</Filter>
+    <ClCompile Include="JavaClass.cpp">
+      <Filter>source\classes\jvm</Filter>
     </ClCompile>
-    <ClCompile Include="DownloadUtil.cpp">
-      <Filter>source\util</Filter>
+    <ClCompile Include="ClassLoader.cpp">
+      <Filter>source\util\jvm</Filter>
+    </ClCompile>
+    <ClCompile Include="LdrfUtil.cpp">
+      <Filter>source\util\jvm</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsoleUtil.cpp">
+      <Filter>source\util\other</Filter>
     </ClCompile>
     <ClCompile Include="FileUtil.cpp">
-      <Filter>source\util</Filter>
+      <Filter>source\util\other</Filter>
+    </ClCompile>
+    <ClCompile Include="DownloadUtil.cpp">
+      <Filter>source\util\other</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenUtil.cpp">
+      <Filter>source\util\sfml</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowUtil.cpp">
+      <Filter>source\util\sfml</Filter>
+    </ClCompile>
+    <ClCompile Include="Whiteout.cpp">
+      <Filter>source\classes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -43,28 +52,61 @@
     <Filter Include="source\util">
       <UniqueIdentifier>{7ab01e02-aae5-4223-9d8b-fe783ea1f33d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="headers\classes\jvm">
+      <UniqueIdentifier>{66bdbcec-19ab-4fbe-9715-9b28675e34a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\classes\jvm">
+      <UniqueIdentifier>{1b9d2913-ea7d-4177-95c3-5d79cd7c424c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\util\jvm">
+      <UniqueIdentifier>{2b18072d-a2dc-4cb5-80a5-2e3213967afe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\util\jvm">
+      <UniqueIdentifier>{43c47182-1093-4443-8803-750bd00d62c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\util\other">
+      <UniqueIdentifier>{7697371c-b069-43a1-bdc0-11521dc9bccf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\util\other">
+      <UniqueIdentifier>{01069962-b207-41d0-9be0-aa20dae9893b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\util\sfml">
+      <UniqueIdentifier>{5c2d3cec-278f-4f46-8e95-76bbd837f1df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\util\sfml">
+      <UniqueIdentifier>{f242f2b6-936f-41da-9f85-c57b86ec6c04}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ClassLoader.h">
-      <Filter>headers\util</Filter>
-    </ClInclude>
-    <ClInclude Include="JavaClass.h">
-      <Filter>headers\classes</Filter>
-    </ClInclude>
-    <ClInclude Include="LdrfUtil.h">
-      <Filter>headers\util</Filter>
-    </ClInclude>
     <ClInclude Include="Variables.h">
       <Filter>headers</Filter>
     </ClInclude>
-    <ClInclude Include="ConsoleUtil.h">
-      <Filter>headers\util</Filter>
+    <ClInclude Include="JavaClass.h">
+      <Filter>headers\classes\jvm</Filter>
     </ClInclude>
-    <ClInclude Include="DownloadUtil.h">
-      <Filter>headers\util</Filter>
+    <ClInclude Include="ClassLoader.h">
+      <Filter>headers\util\jvm</Filter>
+    </ClInclude>
+    <ClInclude Include="LdrfUtil.h">
+      <Filter>headers\util\jvm</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleUtil.h">
+      <Filter>headers\util\other</Filter>
     </ClInclude>
     <ClInclude Include="FileUtil.h">
-      <Filter>headers\util</Filter>
+      <Filter>headers\util\other</Filter>
+    </ClInclude>
+    <ClInclude Include="DownloadUtil.h">
+      <Filter>headers\util\other</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenUtil.h">
+      <Filter>headers\util\sfml</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowUtil.h">
+      <Filter>headers\util\sfml</Filter>
+    </ClInclude>
+    <ClInclude Include="Whiteout.h">
+      <Filter>headers\classes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

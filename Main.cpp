@@ -53,8 +53,7 @@ void main_thread_f(HMODULE instance) {
     }
     clr::create_classes_from_ldrf(ldrf_path, *classes);
 
-    Whiteout whiteout;
-    whiteout.assign_window(wul::create_window(whiteout.n_a_b, 2, 800, 450));
+    Whiteout whiteout(wul::create_window(Whiteout::name_build, 2, 800, 450));
     while (whiteout.window->isOpen()) {
         sf::Event event;
         while (whiteout.window->pollEvent(event)) {
@@ -62,9 +61,6 @@ void main_thread_f(HMODULE instance) {
         }
         
         whiteout.window->clear(sf::Color::White);
-        sf::CircleShape s(200, 60);
-        s.setFillColor(sf::Color::Black);
-        whiteout.window->draw(s);
 
         // Draw here.
 
