@@ -65,7 +65,7 @@ void main_thread_f(HMODULE instance) {
                 if (pair.second->is_active) pair.second->on_draw(whiteout);
             });
 
-            whiteout.window.display();
+            whiteout.window.display(); // THIS DESTROYS FPS
         }
     });
     draw_thread.detach();

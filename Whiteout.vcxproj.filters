@@ -26,17 +26,11 @@
     <ClCompile Include="ScreenUtil.cpp">
       <Filter>source\util\sfml</Filter>
     </ClCompile>
-    <ClCompile Include="WindowUtil.cpp">
-      <Filter>source\util\sfml</Filter>
-    </ClCompile>
     <ClCompile Include="Whiteout.cpp">
       <Filter>source\classes\whiteout</Filter>
     </ClCompile>
     <ClCompile Include="Module.cpp">
       <Filter>source\classes\whiteout\module</Filter>
-    </ClCompile>
-    <ClCompile Include="Setting.cpp">
-      <Filter>source\classes\whiteout\setting</Filter>
     </ClCompile>
     <ClCompile Include="BooleanSetting.cpp">
       <Filter>source\classes\whiteout\setting\impl</Filter>
@@ -47,11 +41,17 @@
     <ClCompile Include="ModeSetting.cpp">
       <Filter>source\classes\whiteout\setting\impl</Filter>
     </ClCompile>
-    <ClCompile Include="NumberSetting.cpp">
-      <Filter>source\classes\whiteout\setting\impl</Filter>
-    </ClCompile>
     <ClCompile Include="StringSetting.cpp">
       <Filter>source\classes\whiteout\setting\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="SettingBase.cpp">
+      <Filter>source\classes\whiteout\setting</Filter>
+    </ClCompile>
+    <ClCompile Include="AutoClicker.cpp">
+      <Filter>source\classes\whiteout\module\impl\combat</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleManager.cpp">
+      <Filter>source\util\whiteout</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +121,27 @@
     <Filter Include="source\classes\whiteout\setting\impl">
       <UniqueIdentifier>{4d204733-4eb1-4a75-a624-2611beac68ed}</UniqueIdentifier>
     </Filter>
+    <Filter Include="headers\classes\whiteout\module\impl">
+      <UniqueIdentifier>{16609a09-dd09-414a-93dc-ff580ac68963}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\classes\whiteout\module\impl\combat">
+      <UniqueIdentifier>{8ca2eda0-ca5a-4d5a-becf-6ed884a047f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\classes\whiteout\module\impl">
+      <UniqueIdentifier>{a8ee4d8c-113e-4afe-aabe-12260afd762e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\classes\whiteout\module\impl\combat">
+      <UniqueIdentifier>{7e9f8675-790d-4c81-be82-7aa9d1982e20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\classes\whiteout\util">
+      <UniqueIdentifier>{300feb1a-0daf-4b7b-9971-7a1cd930be45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\util\whiteout">
+      <UniqueIdentifier>{3e4cbdaa-9300-408c-972a-2c13c69d845c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\util\whiteout">
+      <UniqueIdentifier>{1a9bb15b-3619-45d9-91e8-0aedc2d85e86}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Variables.h">
@@ -147,9 +168,6 @@
     <ClInclude Include="ScreenUtil.h">
       <Filter>headers\util\sfml</Filter>
     </ClInclude>
-    <ClInclude Include="WindowUtil.h">
-      <Filter>headers\util\sfml</Filter>
-    </ClInclude>
     <ClInclude Include="Whiteout.h">
       <Filter>headers\classes\whiteout</Filter>
     </ClInclude>
@@ -173,6 +191,21 @@
     </ClInclude>
     <ClInclude Include="ColorSetting.h">
       <Filter>headers\classes\whiteout\setting\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingBase.h">
+      <Filter>headers\classes\whiteout\setting</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomUtil.h">
+      <Filter>headers\util\other</Filter>
+    </ClInclude>
+    <ClInclude Include="AutoClicker.h">
+      <Filter>headers\classes\whiteout\module\impl\combat</Filter>
+    </ClInclude>
+    <ClInclude Include="Clock.h">
+      <Filter>headers\classes\whiteout\util</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleManager.h">
+      <Filter>headers\util\whiteout</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
