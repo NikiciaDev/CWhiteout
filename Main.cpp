@@ -53,14 +53,14 @@ void main_thread_f(HMODULE instance) {
     }
     clr::create_classes_from_ldrf(ldrf_path, *classes);
 
-    Whiteout whiteout(wul::create_window(Whiteout::name_build, 2, 800, 450));
+    Whiteout whiteout(wul::create_window(Whiteout::name_build, 2, 1000, 600));
     while (whiteout.window->isOpen()) {
         sf::Event event;
         while (whiteout.window->pollEvent(event)) {
             if (event.type == sf::Event::Closed) whiteout.window->close();
         }
         
-        whiteout.window->clear(sf::Color::White);
+        whiteout.window->clear(whiteout.bg_color);
 
         // Draw here.
 
