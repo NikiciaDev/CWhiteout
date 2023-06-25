@@ -3,15 +3,17 @@
 #include <memory>
 #include "Module.h"
 
-enum SETTING_TYPE;
+namespace stg {
+	enum SETTING_TYPE;
+}
 
 class Setting {
 public:
 	const std::string name;
-	const SETTING_TYPE type;
+	const stg::SETTING_TYPE type;
 	const std::shared_ptr<Module> parent;
 
-	Setting(const std::string name, const std::shared_ptr<Module> parent, const SETTING_TYPE type);
+	Setting(const std::string name, const std::shared_ptr<Module> parent, const stg::SETTING_TYPE type);
 };
 
 namespace stg {
