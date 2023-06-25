@@ -1,28 +1,15 @@
 #pragma once
-#include <string>
-#include <memory>
-#include "Module.h"
+#include "SettingBase.h"
 
-namespace stg {
-	enum SETTING_TYPE;
-}
-
-class Setting {
+template<class T>
+class Setting : public SettingBase {
 public:
-	const std::string name;
-	const stg::SETTING_TYPE type;
-	const std::shared_ptr<Module> parent;
+	T value;
 
-	Setting(const std::string name, const std::shared_ptr<Module> parent, const stg::SETTING_TYPE type);
+	/*****************************************************IMPLEMENTATION*****************************************************/
+	// This has to be done this way because of the way C++ handels template classes.
+
+	inline Setting(const std::string name, const Module* parent, const stg::SETTING_TYPE type, T default_value, const std::function<bool(void)> dependency) :
+		SettingBase(name, parent, type, dependency), value(default_value) {
+	}
 };
-
-namespace stg {
-	enum SETTING_TYPE {
-		UNDECLARED,
-		NUMBER,
-		MODE,
-		BOOLEAN,
-		STRING,
-		COLOR
-	};
-}

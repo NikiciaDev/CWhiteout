@@ -5,14 +5,14 @@
 #include <memory>
 #include "ConsoleUtil.h"
 
-class Setting; // Avoid circular dependency.
+class SettingBase; // Avoid circular dependency.
 enum MODULE_CATEGORY;
 
 class Module {
 public:
 	const std::string name;
 	const MODULE_CATEGORY category;
-	std::vector<Setting*> settings;
+	std::vector<SettingBase*> settings;
 
 	Module(const std::string name, const MODULE_CATEGORY category);
 

@@ -1,4 +1,5 @@
 #include "Module.h"
+#include "NumberSetting.h"
 
 Module::Module(const std::string name, const MODULE_CATEGORY category) : name(name), category(category) { }
 
