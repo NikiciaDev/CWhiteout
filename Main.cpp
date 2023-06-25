@@ -54,17 +54,27 @@ void main_thread_f(HMODULE instance) {
     clr::create_classes_from_ldrf(ldrf_path, *classes);
 
     Whiteout whiteout(wul::create_window(Whiteout::name_build, 2, 1000, 600));
+    whiteout.window->setActive(false); // This disables drawing in this thread!
+
+    std::thread draw_thread([&whiteout]() {
+        whiteout.window->setActive();
+        while (whiteout.window->isOpen()) {
+            whiteout.window->clear(whiteout.bg_color);
+
+            // Draw here.
+
+            whiteout.window->display();
+        }
+    });
+    draw_thread.detach();
+
     while (whiteout.window->isOpen()) {
         sf::Event event;
         while (whiteout.window->pollEvent(event)) {
             if (event.type == sf::Event::Closed) whiteout.window->close();
         }
         
-        whiteout.window->clear(whiteout.bg_color);
-
-        // Draw here.
-
-        whiteout.window->display();
+        // Call modules here.
     }
 
     jvm_ptr->DetachCurrentThread();
