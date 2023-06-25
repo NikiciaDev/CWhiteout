@@ -7,6 +7,10 @@ void Module::on_call() {
 	print_wrn("Base module on_call called. This should not happen!");
 }
 
+void Module::on_draw(const Whiteout& whiteout) {
+	print_wrn("Base module on_draw called. This should not happen!");
+}
+
 sf::Color Module::get_module_color(const Module& module) {
 	switch (module.category) {
 	default:

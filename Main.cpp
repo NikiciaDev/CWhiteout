@@ -16,6 +16,7 @@
 #include "WindowUtil.h"
 #include "Whiteout.h"
 #include "ScreenUtil.h"
+#include "ModuleManager.h"
 
 extern JavaVM* jvm_ptr;
 extern JNIEnv* jenv_ptr;
@@ -54,13 +55,16 @@ void main_thread_f(HMODULE instance) {
 
     Whiteout whiteout(wul::create_window(Whiteout::name_build, 2, 1000, 600));
     whiteout.window->setActive(false); // This disables drawing in the current thread!
+    ModuleManager::init_modules();
 
     std::thread draw_thread([&whiteout]() {
         whiteout.window->setActive();
         while (whiteout.window->isOpen()) {
             whiteout.window->clear(whiteout.bg_color);
 
-            // Draw here.
+            std::for_each(ModuleManager::modules.begin(), ModuleManager::modules.end(), [&whiteout](const std::pair<const std::string, const std::unique_ptr<Module>>& pair) {
+                pair.second->on_draw(whiteout);
+            });
 
             whiteout.window->display();
         }
@@ -73,9 +77,11 @@ void main_thread_f(HMODULE instance) {
             if (event.type == sf::Event::Closed) whiteout.window->close();
         }
         
-        // Call modules here.
+        std::for_each(ModuleManager::modules.begin(), ModuleManager::modules.end(), [](const std::pair<const std::string, const std::unique_ptr<Module>>& pair) {
+            pair.second->on_call();
+        });
     }
-
+    
     jvm_ptr->DetachCurrentThread();
     std::for_each(classes->begin(), classes->end(), [](const std::pair<const std::string, JavaClass*>& pair) {
         delete pair.second;
