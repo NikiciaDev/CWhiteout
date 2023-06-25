@@ -136,6 +136,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BooleanSetting.cpp" />
+    <ClCompile Include="ColorSetting.cpp" />
     <ClCompile Include="ConsoleUtil.cpp" />
     <ClCompile Include="DownloadUtil.cpp" />
     <ClCompile Include="FileUtil.cpp" />
@@ -143,23 +145,31 @@
     <ClCompile Include="ClassLoader.cpp" />
     <ClCompile Include="LdrfUtil.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="ModeSetting.cpp" />
     <ClCompile Include="Module.cpp" />
+    <ClCompile Include="NumberSetting.cpp" />
     <ClCompile Include="ScreenUtil.cpp" />
     <ClCompile Include="Setting.cpp" />
+    <ClCompile Include="StringSetting.cpp" />
     <ClCompile Include="Variables.cpp" />
     <ClCompile Include="Whiteout.cpp" />
     <ClCompile Include="WindowUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BooleanSetting.h" />
+    <ClInclude Include="ColorSetting.h" />
     <ClInclude Include="ConsoleUtil.h" />
     <ClInclude Include="DownloadUtil.h" />
     <ClInclude Include="FileUtil.h" />
     <ClInclude Include="JavaClass.h" />
     <ClInclude Include="ClassLoader.h" />
     <ClInclude Include="LdrfUtil.h" />
+    <ClInclude Include="ModeSetting.h" />
     <ClInclude Include="Module.h" />
+    <ClInclude Include="NumberSetting.h" />
     <ClInclude Include="ScreenUtil.h" />
     <ClInclude Include="Setting.h" />
+    <ClInclude Include="StringSetting.h" />
     <ClInclude Include="Variables.h" />
     <ClInclude Include="Whiteout.h" />
     <ClInclude Include="WindowUtil.h" />

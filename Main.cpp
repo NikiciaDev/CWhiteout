@@ -53,7 +53,7 @@ void main_thread_f(HMODULE instance) {
     clr::create_classes_from_ldrf(ldrf_path, *classes);
 
     Whiteout whiteout(wul::create_window(Whiteout::name_build, 2, 1000, 600));
-    whiteout.window->setActive(false); // This disables drawing in this thread!
+    whiteout.window->setActive(false); // This disables drawing in the current thread!
 
     std::thread draw_thread([&whiteout]() {
         whiteout.window->setActive();
