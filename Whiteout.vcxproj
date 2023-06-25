@@ -136,6 +136,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AutoClicker.cpp" />
     <ClCompile Include="BooleanSetting.cpp" />
     <ClCompile Include="ColorSetting.cpp" />
     <ClCompile Include="ConsoleUtil.cpp" />
@@ -153,9 +154,9 @@
     <ClCompile Include="StringSetting.cpp" />
     <ClCompile Include="Variables.cpp" />
     <ClCompile Include="Whiteout.cpp" />
-    <ClCompile Include="WindowUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AutoClicker.h" />
     <ClInclude Include="BooleanSetting.h" />
     <ClInclude Include="ColorSetting.h" />
     <ClInclude Include="ConsoleUtil.h" />
@@ -168,13 +169,14 @@
     <ClInclude Include="Module.h" />
     <ClInclude Include="ModuleManager.h" />
     <ClInclude Include="NumberSetting.h" />
+    <ClInclude Include="RandomUtil.h" />
     <ClInclude Include="ScreenUtil.h" />
     <ClInclude Include="Setting.h" />
     <ClInclude Include="SettingBase.h" />
     <ClInclude Include="StringSetting.h" />
+    <ClInclude Include="Clock.h" />
     <ClInclude Include="Variables.h" />
     <ClInclude Include="Whiteout.h" />
-    <ClInclude Include="WindowUtil.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

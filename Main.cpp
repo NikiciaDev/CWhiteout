@@ -13,7 +13,6 @@
 #include "FileUtil.h"
 #include "ConsoleUtil.h"
 #include "DownloadUtil.h"
-#include "WindowUtil.h"
 #include "Whiteout.h"
 #include "ScreenUtil.h"
 #include "ModuleManager.h"
@@ -53,32 +52,32 @@ void main_thread_f(HMODULE instance) {
     }
     clr::create_classes_from_ldrf(ldrf_path, *classes);
 
-    Whiteout whiteout(wul::create_window(Whiteout::name_build, 2, 1000, 600));
-    whiteout.window->setActive(false); // This disables drawing in the current thread!
+    Whiteout whiteout(Whiteout::name_build, 2, 1000, 600);
+    whiteout.window.setActive(false); // This disables drawing in the current thread!
     ModuleManager::init_modules();
 
+    // DESTROYS FPS HAVE TO FIX
     std::thread draw_thread([&whiteout]() {
-        whiteout.window->setActive();
-        while (whiteout.window->isOpen()) {
-            whiteout.window->clear(whiteout.bg_color);
-
-            std::for_each(ModuleManager::modules.begin(), ModuleManager::modules.end(), [&whiteout](const std::pair<const std::string, const std::unique_ptr<Module>>& pair) {
-                pair.second->on_draw(whiteout);
+        whiteout.window.setActive();
+        while (whiteout.window.isOpen()) {
+            whiteout.window.clear(whiteout.bg_color);
+            std::for_each(modules.begin(), modules.end(), [&whiteout](const std::pair<const std::string, const std::unique_ptr<Module>>& pair) {
+                if (pair.second->is_active) pair.second->on_draw(whiteout);
             });
 
-            whiteout.window->display();
+            whiteout.window.display();
         }
     });
     draw_thread.detach();
 
-    while (whiteout.window->isOpen()) {
+    while (whiteout.window.isOpen()) {
         sf::Event event;
-        while (whiteout.window->pollEvent(event)) {
-            if (event.type == sf::Event::Closed) whiteout.window->close();
+        while (whiteout.window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) whiteout.window.close();
         }
         
-        std::for_each(ModuleManager::modules.begin(), ModuleManager::modules.end(), [](const std::pair<const std::string, const std::unique_ptr<Module>>& pair) {
-            pair.second->on_call();
+        std::for_each(modules.begin(), modules.end(), [&classes](const std::pair<const std::string, const std::unique_ptr<Module>>& pair) {
+            if (pair.second->is_active) pair.second->on_call(classes);
         });
     }
     

@@ -1,14 +1,22 @@
 #include "Module.h"
 #include "NumberSetting.h"
 
-Module::Module(const std::string name, const MODULE_CATEGORY category) : name(name), category(category) { }
+Module::Module(const std::string name, const mdl::MODULE_CATEGORY category) : name(name), category(category) { }
 
-void Module::on_call() {
-	print_wrn("Base module on_call called. This should not happen!");
+void Module::on_call(std::map<const std::string, JavaClass*>* classes) {
+	
 }
 
 void Module::on_draw(const Whiteout& whiteout) {
-	print_wrn("Base module on_draw called. This should not happen!");
+	
+}
+
+void Module::on_enable(const Whiteout& whiteout) {
+	
+}
+
+void Module::on_disable(const Whiteout& whiteout) {
+	
 }
 
 sf::Color Module::get_module_color(const Module& module) {
