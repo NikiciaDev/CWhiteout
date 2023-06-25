@@ -32,6 +32,12 @@
     <ClCompile Include="Whiteout.cpp">
       <Filter>source\classes\whiteout</Filter>
     </ClCompile>
+    <ClCompile Include="Module.cpp">
+      <Filter>source\classes\whiteout\module</Filter>
+    </ClCompile>
+    <ClCompile Include="Setting.cpp">
+      <Filter>source\classes\whiteout\setting</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
@@ -82,6 +88,18 @@
     <Filter Include="source\classes\whiteout">
       <UniqueIdentifier>{448a6be0-bbb6-4b10-a180-dc0758bd078f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="source\classes\whiteout\module">
+      <UniqueIdentifier>{ecc1a873-4690-468a-ab68-549f12b73e22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\classes\whiteout\module">
+      <UniqueIdentifier>{327845f4-aaf7-4a75-ae12-235ab1127530}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\classes\whiteout\setting">
+      <UniqueIdentifier>{fd8ef54e-7eb1-4746-9310-894fa092dddf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\classes\whiteout\setting">
+      <UniqueIdentifier>{5e0ca3eb-eee5-42ee-a0b2-f7bf4a6c1336}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Variables.h">
@@ -113,6 +131,12 @@
     </ClInclude>
     <ClInclude Include="Whiteout.h">
       <Filter>headers\classes\whiteout</Filter>
+    </ClInclude>
+    <ClInclude Include="Module.h">
+      <Filter>headers\classes\whiteout\module</Filter>
+    </ClInclude>
+    <ClInclude Include="Setting.h">
+      <Filter>headers\classes\whiteout\setting</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
