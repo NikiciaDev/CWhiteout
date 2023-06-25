@@ -16,7 +16,6 @@
 #include "WindowUtil.h"
 #include "Whiteout.h"
 #include "ScreenUtil.h"
-#include <iostream>
 
 extern JavaVM* jvm_ptr;
 extern JNIEnv* jenv_ptr;

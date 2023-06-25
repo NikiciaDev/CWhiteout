@@ -30,7 +30,7 @@
       <Filter>source\util\sfml</Filter>
     </ClCompile>
     <ClCompile Include="Whiteout.cpp">
-      <Filter>source\classes</Filter>
+      <Filter>source\classes\whiteout</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +76,12 @@
     <Filter Include="headers\util\sfml">
       <UniqueIdentifier>{f242f2b6-936f-41da-9f85-c57b86ec6c04}</UniqueIdentifier>
     </Filter>
+    <Filter Include="headers\classes\whiteout">
+      <UniqueIdentifier>{95659f5b-e115-4fd1-8f23-6b869f0557fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\classes\whiteout">
+      <UniqueIdentifier>{448a6be0-bbb6-4b10-a180-dc0758bd078f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Variables.h">
@@ -106,7 +112,7 @@
       <Filter>headers\util\sfml</Filter>
     </ClInclude>
     <ClInclude Include="Whiteout.h">
-      <Filter>headers\classes</Filter>
+      <Filter>headers\classes\whiteout</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
