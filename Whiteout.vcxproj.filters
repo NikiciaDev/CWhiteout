@@ -59,6 +59,9 @@
     <ClCompile Include="LLInputUtil.cpp">
       <Filter>source\util\other</Filter>
     </ClCompile>
+    <ClCompile Include="WindowsUtil.cpp">
+      <Filter>source\util\other</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
@@ -223,6 +226,9 @@
       <Filter>headers\classes\whiteout\module\impl\other</Filter>
     </ClInclude>
     <ClInclude Include="LLInputUtil.h">
+      <Filter>headers\util\other</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowsUtil.h">
       <Filter>headers\util\other</Filter>
     </ClInclude>
   </ItemGroup>

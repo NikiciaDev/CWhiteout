@@ -163,6 +163,7 @@
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Variables.cpp" />
     <ClCompile Include="Whiteout.cpp" />
+    <ClCompile Include="WindowsUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AutoClicker.h" />
@@ -188,6 +189,7 @@
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Variables.h" />
     <ClInclude Include="Whiteout.h" />
+    <ClInclude Include="WindowsUtil.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

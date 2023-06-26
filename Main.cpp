@@ -81,7 +81,6 @@ void main_thread_f(HMODULE instance) {
                 break;
             }
         }
-
         std::for_each(ModuleManager::modules.begin(), ModuleManager::modules.end(), [](const std::pair<const std::string, Module*>& pair) {
             if (pair.second->is_active) pair.second->on_call(classes);
         });

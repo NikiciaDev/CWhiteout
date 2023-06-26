@@ -4,6 +4,7 @@
 #include <Windows.h>
 #include <algorithm>
 #include "ModuleManager.h"
+#include "WindowsUtil.h"
 
 extern std::map<const std::string, JavaClass*> classes;
 
