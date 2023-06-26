@@ -7,6 +7,7 @@
 #include "WindowsUtil.h"
 
 extern std::map<const std::string, JavaClass*> classes;
+extern Whiteout* whiteout;
 
 namespace liu {
     static std::vector<WPARAM> invalid_keys = {

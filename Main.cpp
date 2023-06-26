@@ -23,6 +23,7 @@ extern JNIEnv* jenv_ptr;
 extern void init_variables();
 
 void main_thread_f(HMODULE instance);
+Whiteout* whiteout;
 
 std::map<const std::string, JavaClass*> classes;
 
@@ -56,28 +57,28 @@ void main_thread_f(HMODULE instance) {
 
     HHOOK k_h_hook = SetWindowsHookEx(WH_KEYBOARD_LL, liu::keypress_handler, NULL, 0);
     HHOOK m_h_hook = SetWindowsHookEx(WH_MOUSE_LL, liu::mousepress_handler, NULL, 0);
-    Whiteout whiteout(Whiteout::name_build, 2, 1000, 600);
-    whiteout.window.setActive(false); // This disables drawing in the current thread!
+    whiteout = new Whiteout(Whiteout::name_build, 2, 1000, 600);
+    whiteout->window.setActive(false); // This disables drawing in the current thread!
     ModuleManager::init_modules();
 
-    std::thread draw_thread([&whiteout]() {
-        whiteout.window.setActive();
-        while (whiteout.window.isOpen()) {
-            whiteout.window.clear(whiteout.bg_color);
+    std::thread draw_thread([]() {
+        whiteout->window.setActive();
+        while (whiteout->window.isOpen()) {
+            whiteout->window.clear(whiteout->bg_color);
 
-            whiteout.window.display();
+            whiteout->window.display();
         }
     });
     draw_thread.detach();
 
-    while (whiteout.window.isOpen()) {
+    while (whiteout->window.isOpen()) {
         sf::Event event;
-        while (whiteout.window.pollEvent(event)) {
+        while (whiteout->window.pollEvent(event)) {
             switch (event.type) {
             default:
                 break;
             case sf::Event::Closed:
-                whiteout.window.close();
+                whiteout->window.close();
                 break;
             }
         }
