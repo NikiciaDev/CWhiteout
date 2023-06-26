@@ -8,6 +8,7 @@ namespace liu {
             unsigned long long c = MapVirtualKey(hs->vkCode, MAPVK_VK_TO_CHAR);
             if (c != 0) {
                 POINT p{ 0, 0 };
+                GetCursorPos(&p);
                 ScreenToClient(whiteout->window.getSystemHandle(), &p);
                 whiteout->dispatch_keypress(Key(c, p), !jenv_ptr->CallStaticBooleanMethod(classes.find("Display")->second->jclass, *classes.find("Display")->second->jmethods.find("is_active")->second));
             }
@@ -21,6 +22,7 @@ namespace liu {
             PMSLLHOOKSTRUCT hs = (PMSLLHOOKSTRUCT) lParam;
             if ((hs->mouseData == 65536 || hs->mouseData == 131072)) {
                 POINT p{ 0, 0 };
+                GetCursorPos(&p);
                 ScreenToClient(whiteout->window.getSystemHandle(), &p);
                 whiteout->dispatch_keypress(Key(hs->mouseData, p), !jenv_ptr->CallStaticBooleanMethod(classes.find("Display")->second->jclass, *classes.find("Display")->second->jmethods.find("is_active")->second));
             }
