@@ -27,12 +27,12 @@ void Whiteout::dispatch_keypress(const Key key, const bool ext) {
 bool Whiteout::poll_keypresses(Key& key, const bool ext) {
     if (!ext) {
         if (pressed_keys.size() <= 0) return false;
-        key = pressed_keys[(pressed_keys.size() - 1)];
+        key = pressed_keys[0];
         pressed_keys.erase(pressed_keys.begin());
     } else {
         if (pressed_keys_ext.size() <= 0) return false;
-        key = pressed_keys_ext[(pressed_keys_ext.size() - 1)];
-        pressed_keys_ext.pop_back();
+        key = pressed_keys_ext[0];
+        pressed_keys_ext.erase(pressed_keys_ext.begin());
     }
     return true;
 }
