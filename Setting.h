@@ -8,8 +8,9 @@ public:
 
 	/*****************************************************IMPLEMENTATION*****************************************************/
 	// This has to be done this way because of the way C++ handels template classes.
+	// Template class constructos should not be inlined.
 
-	inline Setting(const std::string name, const Module* parent, const stg::SETTING_TYPE type, T default_value, const std::function<bool(void)> dependency) :
+	Setting(const std::string name, const Module* parent, const stg::SETTING_TYPE type, T default_value, const std::function<bool(void)> dependency) :
 		SettingBase(name, parent, type, dependency), value(default_value) {
 	}
 };

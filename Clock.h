@@ -6,7 +6,7 @@ class Clock final {
 public:
 	T last;
 
-	inline Clock() {
+	Clock() {
 		last = get_current_time();
 	}
 
