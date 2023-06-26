@@ -1,6 +1,6 @@
 #include "AutoClicker.h"
 
-AutoClicker::AutoClicker(const std::string name, const mdl::MODULE_CATEGORY category) : Module(name, category) { }
+AutoClicker::AutoClicker(const std::string name, const mdl::MODULE_CATEGORY category) : Module(name, category, 'F') {}
 
 void AutoClicker::on_call(std::map<const std::string, JavaClass*>& classes) {
 	if (GetAsyncKeyState(VK_LBUTTON) < 0 && left_cps.value > 0) {

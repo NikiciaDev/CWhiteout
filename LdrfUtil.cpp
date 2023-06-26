@@ -94,7 +94,7 @@ namespace lul {
 			jfieldID id{ jenv_ptr->GetStaticFieldID(java_class.jclass, name.c_str(), signature.c_str()) };
 			java_class.instance = jenv_ptr->GetStaticObjectField(java_class.jclass, id);
 		} else {
-			print_wrn("Non static class instances can get freed and cause errors!");
+			print_wrn("Non static class instances can get freed and cause errors!\n");
 			jfieldID id{ jenv_ptr->GetFieldID(java_class.jclass, name.c_str(), signature.c_str()) };
 			java_class.instance = jenv_ptr->GetObjectField(java_class.jclass, id);
 		}

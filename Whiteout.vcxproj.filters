@@ -56,6 +56,9 @@
     <ClCompile Include="Timer.cpp">
       <Filter>source\classes\whiteout\module\impl\other</Filter>
     </ClCompile>
+    <ClCompile Include="KeyboardUtil.cpp">
+      <Filter>source\util\other</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
@@ -218,6 +221,9 @@
     </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>headers\classes\whiteout\module\impl\other</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyboardUtil.h">
+      <Filter>headers\util\other</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

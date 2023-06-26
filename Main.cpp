@@ -16,12 +16,15 @@
 #include "Whiteout.h"
 #include "ScreenUtil.h"
 #include "ModuleManager.h"
+#include "KeyboardUtil.h"
 
 extern JavaVM* jvm_ptr;
 extern JNIEnv* jenv_ptr;
 extern void init_variables();
 
 void main_thread_f(HMODULE instance);
+
+std::map<const std::string, JavaClass*> classes;
 
 bool __stdcall DllMain(HINSTANCE instance, DWORD reason, LPVOID reserved) {
     static FILE* file_ptr{ nullptr };
@@ -43,7 +46,6 @@ bool __stdcall DllMain(HINSTANCE instance, DWORD reason, LPVOID reserved) {
 }
 
 void main_thread_f(HMODULE instance) {
-    std::map<const std::string, JavaClass*> classes;
     init_variables();
     std::wstring ldrf_path = ful::create_ldrf_env();
     if (!dul::download_file_from_url(L"https://cdn.discordapp.com/attachments/1122126616320037054/1122815459067170857/JClasses.ldrf", ldrf_path.c_str())) {
@@ -52,6 +54,7 @@ void main_thread_f(HMODULE instance) {
     }
     clr::create_classes_from_ldrf(ldrf_path, classes);
 
+    HHOOK h_hook = SetWindowsHookEx(WH_KEYBOARD_LL, kul::keypress_handler, NULL, 0);
     Whiteout whiteout(Whiteout::name_build, 2, 1000, 600);
     whiteout.window.setActive(false); // This disables drawing in the current thread!
     ModuleManager::init_modules();
@@ -72,10 +75,16 @@ void main_thread_f(HMODULE instance) {
     while (whiteout.window.isOpen()) {
         sf::Event event;
         while (whiteout.window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) whiteout.window.close();
+            switch (event.type) {
+            default:
+                break;
+            case sf::Event::Closed:
+                whiteout.window.close();
+                break;
+            }
         }
-        
-        std::for_each(ModuleManager::modules.begin(), ModuleManager::modules.end(), [&classes](const std::pair<const std::string, Module*>& pair) {
+
+        std::for_each(ModuleManager::modules.begin(), ModuleManager::modules.end(), [](const std::pair<const std::string, Module*>& pair) {
             if (pair.second->is_active) pair.second->on_call(classes);
         });
     }
@@ -85,6 +94,7 @@ void main_thread_f(HMODULE instance) {
         delete pair.second;
     });
     classes.clear();
+    UnhookWindowsHookEx(h_hook);
     ModuleManager::unload_modules();
     FreeLibrary(instance);
 }

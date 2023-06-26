@@ -1,22 +1,23 @@
 #include "Module.h"
 #include "NumberSetting.h"
 
-Module::Module(const std::string name, const mdl::MODULE_CATEGORY category) : name(name), category(category) { }
+Module::Module(const std::string name, const mdl::MODULE_CATEGORY category, const char default_keybind) : name(name), category(category), keybind(default_keybind) { }
 
-void Module::on_call(std::map<const std::string, JavaClass*>& classes) {
-	
-}
+void Module::on_call(std::map<const std::string, JavaClass*>& classes) { }
 
-void Module::on_draw(const Whiteout& whiteout) {
-	
-}
+void Module::on_draw(const Whiteout& whiteout) { }
 
-void Module::on_enable(std::map<const std::string, JavaClass*>&) {
-	
-}
+void Module::on_enable(std::map<const std::string, JavaClass*>& classes) { }
 
-void Module::on_disable(std::map<const std::string, JavaClass*>&) {
-	
+void Module::on_disable(std::map<const std::string, JavaClass*>& classes) { }
+
+void Module::on_keypress(std::map<const std::string, JavaClass*>& classes) {
+	if (is_active) {
+		on_disable(classes);
+	} else {
+		on_enable(classes);
+	}
+	is_active = !is_active;
 }
 
 sf::Color Module::get_module_color(const Module& module) {

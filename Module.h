@@ -22,7 +22,7 @@ public:
 	char keybind{ NULL };
 	std::vector<SettingBase*> settings; // These pointers should be allocated on the stack to prevent memory leaks.
 
-	Module(const std::string name, const mdl::MODULE_CATEGORY category);
+	Module(const std::string name, const mdl::MODULE_CATEGORY category, const char default_keybind);
 
 	virtual void on_call(std::map<const std::string, JavaClass*>& classes);
 
@@ -31,6 +31,8 @@ public:
 	virtual void on_enable(std::map<const std::string, JavaClass*>& classes);
 
 	virtual void on_disable(std::map<const std::string, JavaClass*>& classes);
+
+	void on_keypress(std::map<const std::string, JavaClass*>& classes);
 
 	static sf::Color get_module_color(const Module& module);
 };
