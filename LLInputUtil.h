@@ -7,7 +7,7 @@
 
 extern std::map<const std::string, JavaClass*> classes;
 
-namespace llu {
+namespace liu {
     static std::vector<WPARAM> invalid_keys = {
         VK_ESCAPE, VK_TAB, VK_RETURN, VK_SPACE, VK_BACK,
         VK_UP, VK_DOWN, VK_LEFT, VK_RIGHT, VK_DELETE,
