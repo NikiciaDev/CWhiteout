@@ -4,21 +4,21 @@
 template<class T>
 class Clock final {
 public:
-	T last;
+	std::chrono::high_resolution_clock::time_point start;
 
 	Clock() {
-		last = get_current_time();
-	}
-
-	inline T get_current_time() {
-		return std::chrono::duration_cast<T>(std::chrono::system_clock::now().time_since_epoch());
+		reset();
 	}
 
 	inline void reset() {
-		last = get_current_time();
+		start = std::chrono::high_resolution_clock::now();
 	}
 
-	inline bool has_time_elapsed(T time) {
-		return (last + time) <= get_current_time();
+	inline bool has_time_elapsed(const T time) {
+		return std::chrono::duration_cast<T>(std::chrono::high_resolution_clock::now() - start) >= time;
+	}
+
+	inline long long start_count() {
+		return start.time_since_epoch().count();
 	}
 };
