@@ -28,9 +28,9 @@ public:
 
 	virtual void on_draw(const Whiteout& whiteout);
 
-	virtual void on_enable(const Whiteout& whiteout);
+	virtual void on_enable(std::map<const std::string, JavaClass*>& classes);
 
-	virtual void on_disable(const Whiteout& whiteout);
+	virtual void on_disable(std::map<const std::string, JavaClass*>& classes);
 
 	static sf::Color get_module_color(const Module& module);
 };

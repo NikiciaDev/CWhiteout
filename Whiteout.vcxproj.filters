@@ -53,6 +53,9 @@
     <ClCompile Include="ModuleManager.cpp">
       <Filter>source\util\whiteout</Filter>
     </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>source\classes\whiteout\module\impl\other</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
@@ -142,6 +145,12 @@
     <Filter Include="source\util\whiteout">
       <UniqueIdentifier>{1a9bb15b-3619-45d9-91e8-0aedc2d85e86}</UniqueIdentifier>
     </Filter>
+    <Filter Include="headers\classes\whiteout\module\impl\other">
+      <UniqueIdentifier>{fe065f75-5695-426d-8f7c-410e1bf664b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\classes\whiteout\module\impl\other">
+      <UniqueIdentifier>{c0f825c4-e631-4959-9104-c1f3e6d4fe71}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Variables.h">
@@ -206,6 +215,9 @@
     </ClInclude>
     <ClInclude Include="ModuleManager.h">
       <Filter>headers\util\whiteout</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>headers\classes\whiteout\module\impl\other</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

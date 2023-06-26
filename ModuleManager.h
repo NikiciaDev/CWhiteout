@@ -4,6 +4,7 @@
 #include <algorithm>
 #include "Module.h"
 #include "AutoClicker.h"
+#include "Timer.h"
 
 namespace ModuleManager {
 	extern std::map<const std::string, Module*> modules;

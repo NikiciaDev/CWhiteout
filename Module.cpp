@@ -11,11 +11,11 @@ void Module::on_draw(const Whiteout& whiteout) {
 	
 }
 
-void Module::on_enable(const Whiteout& whiteout) {
+void Module::on_enable(std::map<const std::string, JavaClass*>&) {
 	
 }
 
-void Module::on_disable(const Whiteout& whiteout) {
+void Module::on_disable(std::map<const std::string, JavaClass*>&) {
 	
 }
 

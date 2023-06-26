@@ -11,6 +11,8 @@ namespace ModuleManager {
 		/*PLAYER*/
 
 		/*EXPLOIT*/
+		Module* timer = new Timer("Timer", mdl::MODULE_CATEGORY::EXPLOIT);
+		modules.insert(std::make_pair("Timer", timer));
 
 		/*VIUSAL*/
 	}
