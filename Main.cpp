@@ -16,7 +16,7 @@
 #include "Whiteout.h"
 #include "ScreenUtil.h"
 #include "ModuleManager.h"
-#include "KeyboardUtil.h"
+#include "LLInputUtil.h"
 
 extern JavaVM* jvm_ptr;
 extern JNIEnv* jenv_ptr;
@@ -54,7 +54,7 @@ void main_thread_f(HMODULE instance) {
     //}
     clr::create_classes_from_ldrf(ldrf_path, classes);
 
-    HHOOK h_hook = SetWindowsHookEx(WH_KEYBOARD_LL, kul::keypress_handler, NULL, 0);
+    HHOOK h_hook = SetWindowsHookEx(WH_KEYBOARD_LL, liu::keypress_handler, NULL, 0);
     Whiteout whiteout(Whiteout::name_build, 2, 1000, 600);
     whiteout.window.setActive(false); // This disables drawing in the current thread!
     ModuleManager::init_modules();

@@ -1,7 +1,6 @@
-#include "KeyboardUtil.h"
-#include <iostream>
+#include "LLInputUtil.h"
 
-namespace kul {
+namespace liu {
     LRESULT CALLBACK keypress_handler(int nCode, WPARAM wParam, LPARAM lParam) {
         // Check if the event is a keypress event.
         if (nCode == HC_ACTION && wParam == WM_KEYDOWN) {
