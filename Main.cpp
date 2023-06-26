@@ -61,7 +61,7 @@ void main_thread_f(HMODULE instance) {
         whiteout.window.setActive();
         while (whiteout.window.isOpen()) {
             whiteout.window.clear(whiteout.bg_color);
-            std::for_each(modules.begin(), modules.end(), [&whiteout](const std::pair<const std::string, const std::unique_ptr<Module>>& pair) {
+            std::for_each(ModuleManager::modules.begin(), ModuleManager::modules.end(), [&whiteout](const std::pair<const std::string, const std::unique_ptr<Module>>& pair) {
                 if (pair.second->is_active) pair.second->on_draw(whiteout);
             });
 
@@ -76,7 +76,7 @@ void main_thread_f(HMODULE instance) {
             if (event.type == sf::Event::Closed) whiteout.window.close();
         }
         
-        std::for_each(modules.begin(), modules.end(), [&classes](const std::pair<const std::string, const std::unique_ptr<Module>>& pair) {
+        std::for_each(ModuleManager::modules.begin(), ModuleManager::modules.end(), [&classes](const std::pair<const std::string, const std::unique_ptr<Module>>& pair) {
             if (pair.second->is_active) pair.second->on_call(classes);
         });
     }
