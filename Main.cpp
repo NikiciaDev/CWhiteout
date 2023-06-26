@@ -46,7 +46,7 @@ void main_thread_f(HMODULE instance) {
     std::map<const std::string, JavaClass*> classes;
     init_variables();
     std::wstring ldrf_path = ful::create_ldrf_env();
-    if (!dul::download_file_from_url(L"https://cdn.discordapp.com/attachments/1122126616320037054/1122127082059743312/JClasses.ldrf", ldrf_path.c_str())) {
+    if (!dul::download_file_from_url(L"https://cdn.discordapp.com/attachments/1122126616320037054/1122815459067170857/JClasses.ldrf", ldrf_path.c_str())) {
         print_err("Failed to download loader file!");
         throw std::exception("Failed to download loader file!");
     }
