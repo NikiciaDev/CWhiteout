@@ -1,7 +1,7 @@
 #include "Module.h"
 #include "NumberSetting.h"
 
-Module::Module(const std::string name, const mdl::MODULE_CATEGORY category, const char default_keybind) : name(name), category(category), keybind(default_keybind) { }
+Module::Module(const std::string name, const mdl::MODULE_CATEGORY category, const unsigned long long default_keybind) : name(name), category(category), keybind(default_keybind) { }
 
 void Module::on_call(std::map<const std::string, JavaClass*>& classes) { }
 
