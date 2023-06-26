@@ -54,7 +54,8 @@ void main_thread_f(HMODULE instance) {
     //}
     clr::create_classes_from_ldrf(ldrf_path, classes);
 
-    HHOOK h_hook = SetWindowsHookEx(WH_KEYBOARD_LL, liu::keypress_handler, NULL, 0);
+    HHOOK k_h_hook = SetWindowsHookEx(WH_KEYBOARD_LL, liu::keypress_handler, NULL, 0);
+    HHOOK m_h_hook = SetWindowsHookEx(WH_MOUSE_LL, liu::mousepress_handler, NULL, 0);
     Whiteout whiteout(Whiteout::name_build, 2, 1000, 600);
     whiteout.window.setActive(false); // This disables drawing in the current thread!
     ModuleManager::init_modules();
@@ -91,7 +92,8 @@ void main_thread_f(HMODULE instance) {
         delete pair.second;
     });
     classes.clear();
-    UnhookWindowsHookEx(h_hook);
+    UnhookWindowsHookEx(k_h_hook);
+    UnhookWindowsHookEx(m_h_hook);
     ModuleManager::unload_modules();
     FreeLibrary(instance);
 }

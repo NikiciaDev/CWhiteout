@@ -151,7 +151,7 @@
     <ClCompile Include="FileUtil.cpp" />
     <ClCompile Include="JavaClass.cpp" />
     <ClCompile Include="ClassLoader.cpp" />
-    <ClCompile Include="KeyboardUtil.cpp" />
+    <ClCompile Include="LLInputUtil.cpp" />
     <ClCompile Include="LdrfUtil.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModeSetting.cpp" />
@@ -173,7 +173,7 @@
     <ClInclude Include="FileUtil.h" />
     <ClInclude Include="JavaClass.h" />
     <ClInclude Include="ClassLoader.h" />
-    <ClInclude Include="KeyboardUtil.h" />
+    <ClInclude Include="LLInputUtil.h" />
     <ClInclude Include="LdrfUtil.h" />
     <ClInclude Include="ModeSetting.h" />
     <ClInclude Include="Module.h" />

@@ -20,4 +20,6 @@ namespace liu {
     };
 
     LRESULT CALLBACK keypress_handler(int nCode, WPARAM wParam, LPARAM lParam);
+
+    LRESULT CALLBACK mousepress_handler(int nCode, WPARAM wParam, LPARAM lParam);
 }

@@ -14,4 +14,9 @@ namespace liu {
         }
         return 0;
     }
+    LRESULT mousepress_handler(int nCode, WPARAM wParam, LPARAM lParam) {
+
+
+        return 0;
+    }
 }
