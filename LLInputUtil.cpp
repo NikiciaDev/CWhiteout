@@ -1,5 +1,4 @@
 #include "LLInputUtil.h"
-#include <iostream>
 
 namespace liu {
     LRESULT CALLBACK keypress_handler(int nCode, WPARAM wParam, LPARAM lParam) {

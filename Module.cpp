@@ -1,7 +1,8 @@
 #include "Module.h"
-#include "NumberSetting.h"
 
-Module::Module(const std::string name, const mdl::MODULE_CATEGORY category, const unsigned long long default_keybind) : name(name), category(category), keybind(default_keybind) { }
+Module::Module(const std::string name, const mdl::MODULE_CATEGORY category, const unsigned long long default_keybind) : name(name), category(category), keybind(default_keybind) {
+	init_kb_string_represenation(default_keybind, keybind_s_rep);
+}
 
 void Module::on_call(std::map<const std::string, JavaClass*>& classes) { }
 
@@ -16,6 +17,18 @@ void Module::on_keypress(std::map<const std::string, JavaClass*>& classes) {
 		on_enable(classes);
 	}
 	is_active = !is_active;
+}
+
+void Module::init_kb_string_represenation(unsigned long long keycode, std::string& string) {
+	if (keycode == NULL) {
+		string = "NULL";
+	} else if (keycode == 65536) {
+		string = "MB1";
+	} else if (keycode == 131072) {
+		string = "MB2";
+	} else {
+		string = (char) keycode;
+	}
 }
 
 sf::Color Module::get_module_color(const Module& module) {

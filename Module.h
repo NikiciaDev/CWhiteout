@@ -34,6 +34,8 @@ public:
 	void on_keypress(std::map<const std::string, JavaClass*>& classes);
 
 	static sf::Color get_module_color(const Module& module);
+
+	static void init_kb_string_represenation(unsigned long long keycode, std::string& string);
 };
 
 namespace mdl {
