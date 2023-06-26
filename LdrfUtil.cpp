@@ -14,7 +14,7 @@ namespace lul {
 			if (line.find("class:") != std::string::npos) {
 				current_class = get_class_name(line);
 				JavaClass* java_class = new JavaClass(get_class_c_name(line), current_class);
-				set_instance(line, *java_class);
+				set_instance(line, *java_class, map);
 				map.insert(std::make_pair(current_class, java_class));
 				continue;
 			}
@@ -83,21 +83,29 @@ namespace lul {
 		}
 	}
 
-	void set_instance(const std::string line, JavaClass& java_class) {
-		unsigned short ff0 = line.find("<") + 1, ff1 = line.find_first_of(","), ff2 = line.find_last_of(",");
+	void set_instance(const std::string line, JavaClass& java_class, std::map<const std::string, JavaClass*>& map) {
+		unsigned short ff0 = line.find("<") + 1, ff1 = line.find_first_of(","), ff2 = find_next_char(line, ',', ff1 + 1), ff3 = line.find_last_of(",");
 		if (ff0 + 1 == ff1) return;
 
 		std::string name = line.substr(ff0 + 1, ff1 - ff0 - 1 - 1), signature = line.substr(ff1 + 1, ff2 - ff1 - 1);
-		bool is_static = (line[ff2 + 1] == 't');
+		std::string class_to_find_in = line.substr(ff2 + 1, ff3 - ff2 - 1);
+		bool is_static = (line[ff3 + 1] == 't');
 
+		jfieldID id;
+		jclass c = (signature == class_to_find_in) ? java_class.jclass : map.find(class_to_find_in)->second->jclass;
 		if (is_static) {
-			jfieldID id{ jenv_ptr->GetStaticFieldID(java_class.jclass, name.c_str(), signature.c_str()) };
-			java_class.instance = jenv_ptr->GetStaticObjectField(java_class.jclass, id);
+			id = jenv_ptr->GetStaticFieldID(c, name.c_str(), signature.c_str());
+			java_class.instance = jenv_ptr->GetStaticObjectField(c, id);
 		} else {
 			print_wrn("Non static class instances can get freed and cause errors!\n");
-			jfieldID id{ jenv_ptr->GetFieldID(java_class.jclass, name.c_str(), signature.c_str()) };
-			java_class.instance = jenv_ptr->GetObjectField(java_class.jclass, id);
+			id = jenv_ptr->GetFieldID(c, name.c_str(), signature.c_str());
+			java_class.instance = jenv_ptr->GetObjectField(map.find(class_to_find_in)->second->instance, id);
 		}
+		if (id == NULL) {
+			print_wrn("Could not find instance field for class.");
+			return;
+		}
+		
 	}
 
 	unsigned short find_next_char(const std::string& line, char char_to_find, unsigned short start) {

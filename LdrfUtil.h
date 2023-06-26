@@ -15,7 +15,7 @@ namespace lul {
 
 	void extract_mof_from_class(const std::string line, JavaClass& clazz, std::map<const std::string, jmethodID*>& map, std::map<const std::string, jfieldID*>& fmap, bool methods);
 
-	void set_instance(const std::string line, JavaClass& java_class);
+	void set_instance(const std::string line, JavaClass& java_class, std::map<const std::string, JavaClass*>& map);
 
 	unsigned short find_next_char(const std::string& line, char char_to_find, unsigned short start);
 

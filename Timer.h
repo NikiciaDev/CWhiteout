@@ -5,7 +5,7 @@
 
 class Timer final : public Module {
 public:
-	const NumberSetting<float> speed = NumberSetting<float>("Timer Speed", this, 0.1f, 10, 1, 0.025, [] { return true; });
+	const NumberSetting<float> speed = NumberSetting<float>("Timer Speed", this, 0.1f, 10, 2, 0.025, [] { return true; });
 	const BooleanSetting tick = BooleanSetting("Tick", this, false, [] { return true; });
 	const NumberSetting<short> tick_modulo = NumberSetting<short>("Tick Modulo", this, 2, 10, 2, 1, [&] { return tick.value; });
 

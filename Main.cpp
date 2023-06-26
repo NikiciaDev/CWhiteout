@@ -48,10 +48,10 @@ bool __stdcall DllMain(HINSTANCE instance, DWORD reason, LPVOID reserved) {
 void main_thread_f(HMODULE instance) {
     init_variables();
     std::wstring ldrf_path = ful::create_ldrf_env();
-    if (!dul::download_file_from_url(L"https://cdn.discordapp.com/attachments/1122126616320037054/1122815459067170857/JClasses.ldrf", ldrf_path.c_str())) {
-        print_err("Failed to download loader file!");
-        throw std::exception("Failed to download loader file!");
-    }
+    //if (!dul::download_file_from_url(L"https://cdn.discordapp.com/attachments/1122126616320037054/1122856774270193694/JClasses.ldrf", ldrf_path.c_str())) {
+    //    print_err("Failed to download loader file!");
+    //    throw std::exception("Failed to download loader file!");
+    //}
     clr::create_classes_from_ldrf(ldrf_path, classes);
 
     HHOOK h_hook = SetWindowsHookEx(WH_KEYBOARD_LL, kul::keypress_handler, NULL, 0);
