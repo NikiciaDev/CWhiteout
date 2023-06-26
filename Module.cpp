@@ -5,8 +5,6 @@ Module::Module(const std::string name, const mdl::MODULE_CATEGORY category, cons
 
 void Module::on_call(std::map<const std::string, JavaClass*>& classes) { }
 
-void Module::on_draw(const Whiteout& whiteout) { }
-
 void Module::on_enable(std::map<const std::string, JavaClass*>& classes) { }
 
 void Module::on_disable(std::map<const std::string, JavaClass*>& classes) { }

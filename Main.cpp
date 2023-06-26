@@ -63,9 +63,6 @@ void main_thread_f(HMODULE instance) {
         whiteout.window.setActive();
         while (whiteout.window.isOpen()) {
             whiteout.window.clear(whiteout.bg_color);
-            std::for_each(ModuleManager::modules.begin(), ModuleManager::modules.end(), [&whiteout](const std::pair<const std::string, Module*>& pair) {
-                if (pair.second->is_active) pair.second->on_draw(whiteout);
-            });
 
             whiteout.window.display();
         }

@@ -26,8 +26,6 @@ public:
 
 	virtual void on_call(std::map<const std::string, JavaClass*>& classes);
 
-	virtual void on_draw(const Whiteout& whiteout);
-
 	virtual void on_enable(std::map<const std::string, JavaClass*>& classes);
 
 	virtual void on_disable(std::map<const std::string, JavaClass*>& classes);
