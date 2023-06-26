@@ -5,6 +5,7 @@
 #include <algorithm>
 #include "ModuleManager.h"
 #include "WindowsUtil.h"
+#include "Key.h"
 
 extern std::map<const std::string, JavaClass*> classes;
 extern Whiteout* whiteout;

@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <SFML/Graphics.hpp>
+#include "Key.h"
 
 class Whiteout final {
 public:
@@ -11,13 +12,13 @@ public:
 	static sf::Color base_color;
 	static sf::Color sm_base_color;
 	sf::RenderWindow window;
-	std::vector<unsigned long long> pressed_keys, pressed_keys_ext;
+	std::vector<Key> pressed_keys, pressed_keys_ext;
 
 	Whiteout(const std::string title, const unsigned short antialiasing_level, const unsigned short width, const unsigned short height);
 
 	~Whiteout();
 
-	void dispatch_keypress(const unsigned long long keycode, const bool ext);
+	void dispatch_keypress(Key key, const bool ext);
 
-	bool poll_keypresses(unsigned long long& key, const bool ext);
+	bool poll_keypresses(Key& key, const bool ext);
 };

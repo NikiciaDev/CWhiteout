@@ -7,7 +7,9 @@ namespace liu {
             PKBDLLHOOKSTRUCT hs = (PKBDLLHOOKSTRUCT) lParam;
             unsigned long long c = MapVirtualKey(hs->vkCode, MAPVK_VK_TO_CHAR);
             if (c != 0) {
-                whiteout->dispatch_keypress(c, !jenv_ptr->CallStaticBooleanMethod(classes.find("Display")->second->jclass, *classes.find("Display")->second->jmethods.find("is_active")->second));
+                POINT p{ 0, 0 };
+                ScreenToClient(whiteout->window.getSystemHandle(), &p);
+                whiteout->dispatch_keypress(Key(c, p), !jenv_ptr->CallStaticBooleanMethod(classes.find("Display")->second->jclass, *classes.find("Display")->second->jmethods.find("is_active")->second));
             }
         }
         return 0;
@@ -18,7 +20,9 @@ namespace liu {
         if (nCode == HC_ACTION && wParam == WM_XBUTTONDOWN) {
             PMSLLHOOKSTRUCT hs = (PMSLLHOOKSTRUCT) lParam;
             if ((hs->mouseData == 65536 || hs->mouseData == 131072)) {
-                whiteout->dispatch_keypress(hs->mouseData, !jenv_ptr->CallStaticBooleanMethod(classes.find("Display")->second->jclass, *classes.find("Display")->second->jmethods.find("is_active")->second));
+                POINT p{ 0, 0 };
+                ScreenToClient(whiteout->window.getSystemHandle(), &p);
+                whiteout->dispatch_keypress(Key(hs->mouseData, p), !jenv_ptr->CallStaticBooleanMethod(classes.find("Display")->second->jclass, *classes.find("Display")->second->jmethods.find("is_active")->second));
             }
         }
         return 0;

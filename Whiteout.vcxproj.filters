@@ -62,6 +62,9 @@
     <ClCompile Include="WindowsUtil.cpp">
       <Filter>source\util\other</Filter>
     </ClCompile>
+    <ClCompile Include="Key.cpp">
+      <Filter>source\classes\other</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
@@ -157,6 +160,12 @@
     <Filter Include="source\classes\whiteout\module\impl\other">
       <UniqueIdentifier>{c0f825c4-e631-4959-9104-c1f3e6d4fe71}</UniqueIdentifier>
     </Filter>
+    <Filter Include="headers\classes\other">
+      <UniqueIdentifier>{7a6ae46d-acab-4d18-adc2-76f543cbd3b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\classes\other">
+      <UniqueIdentifier>{902ecb36-5a79-4ee0-b34b-25314846b295}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Variables.h">
@@ -230,6 +239,9 @@
     </ClInclude>
     <ClInclude Include="WindowsUtil.h">
       <Filter>headers\util\other</Filter>
+    </ClInclude>
+    <ClInclude Include="Key.h">
+      <Filter>headers\classes\other</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -82,10 +82,10 @@ void main_thread_f(HMODULE instance) {
             }
         }
 
-        unsigned long long key{ NULL };
+        Key key;
         while (whiteout->poll_keypresses(key, false)) {
             std::for_each(ModuleManager::modules.begin(), ModuleManager::modules.end(), [key](const std::pair<const std::string, Module*>& pair) {
-                if (pair.second->keybind == key) pair.second->on_keypress(classes);
+                if (pair.second->keybind == key.keycode) pair.second->on_keypress(classes);
             });
         }
 
