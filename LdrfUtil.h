@@ -7,6 +7,9 @@
 
 extern JNIEnv* jenv_ptr;
 
+// Arrays are fields so they would be represented like this for example: <false,"c_name","name",[B;>. The "[" signals that the field is an array.
+// How to use those: https://stackoverflow.com/questions/1086596/how-to-access-arrays-within-an-object-with-jni
+
 namespace lul {
 	void load_classes_from_ldrf(std::ifstream& file, std::map<const std::string, JavaClass*>& map);
 
