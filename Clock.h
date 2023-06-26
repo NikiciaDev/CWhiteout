@@ -11,9 +11,7 @@ public:
 	}
 
 	inline T get_current_time() {
-		auto now = std::chrono::system_clock::now();
-		T milliseconds = std::chrono::duration_cast<T>(now.time_since_epoch());
-		return milliseconds;
+		return std::chrono::duration_cast<T>(std::chrono::system_clock::now().time_since_epoch());
 	}
 
 	inline void reset() {
