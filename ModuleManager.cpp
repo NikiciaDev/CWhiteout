@@ -14,4 +14,11 @@ namespace ModuleManager {
 
 		/*VIUSAL*/
 	}
+
+	void unload_modules() {
+		std::for_each(modules.begin(), modules.end(), [](const std::pair<const std::string, Module*>& pair) {
+			delete pair.second;
+		});
+		modules.clear();
+	}
 }

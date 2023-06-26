@@ -4,7 +4,7 @@
 #include "Module.h"
 
 namespace ModuleManager {
-	std::map<const std::string, const std::unique_ptr<Module>> modules;
+	std::map<const std::string, Module*> modules;
 }
 
 JavaVM* jvm_ptr{ nullptr };

@@ -3,7 +3,7 @@
 
 Module::Module(const std::string name, const mdl::MODULE_CATEGORY category) : name(name), category(category) { }
 
-void Module::on_call(std::map<const std::string, JavaClass*>* classes) {
+void Module::on_call(std::map<const std::string, JavaClass*>& classes) {
 	
 }
 

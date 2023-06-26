@@ -20,11 +20,11 @@ public:
 	const std::string name;
 	const mdl::MODULE_CATEGORY category;
 	char keybind{ NULL };
-	std::vector<SettingBase*> settings; // These should be allocated on the stack to prevent memory leaks.
+	std::vector<SettingBase*> settings; // These pointers should be allocated on the stack to prevent memory leaks.
 
 	Module(const std::string name, const mdl::MODULE_CATEGORY category);
 
-	virtual void on_call(std::map<const std::string, JavaClass*>* classes);
+	virtual void on_call(std::map<const std::string, JavaClass*>& classes);
 
 	virtual void on_draw(const Whiteout& whiteout);
 

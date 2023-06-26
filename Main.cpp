@@ -43,14 +43,14 @@ bool __stdcall DllMain(HINSTANCE instance, DWORD reason, LPVOID reserved) {
 }
 
 void main_thread_f(HMODULE instance) {
-    std::map<const std::string, JavaClass*>* classes = new std::map<const std::string, JavaClass*>;
+    std::map<const std::string, JavaClass*> classes;
     init_variables();
     std::wstring ldrf_path = ful::create_ldrf_env();
     if (!dul::download_file_from_url(L"https://cdn.discordapp.com/attachments/1122126616320037054/1122127082059743312/JClasses.ldrf", ldrf_path.c_str())) {
         print_err("Failed to download loader file!");
         throw std::exception("Failed to download loader file!");
     }
-    clr::create_classes_from_ldrf(ldrf_path, *classes);
+    clr::create_classes_from_ldrf(ldrf_path, classes);
 
     Whiteout whiteout(Whiteout::name_build, 2, 1000, 600);
     whiteout.window.setActive(false); // This disables drawing in the current thread!
@@ -60,7 +60,7 @@ void main_thread_f(HMODULE instance) {
         whiteout.window.setActive();
         while (whiteout.window.isOpen()) {
             whiteout.window.clear(whiteout.bg_color);
-            std::for_each(ModuleManager::modules.begin(), ModuleManager::modules.end(), [&whiteout](const std::pair<const std::string, const std::unique_ptr<Module>>& pair) {
+            std::for_each(ModuleManager::modules.begin(), ModuleManager::modules.end(), [&whiteout](const std::pair<const std::string, Module*>& pair) {
                 if (pair.second->is_active) pair.second->on_draw(whiteout);
             });
 
@@ -75,16 +75,16 @@ void main_thread_f(HMODULE instance) {
             if (event.type == sf::Event::Closed) whiteout.window.close();
         }
         
-        std::for_each(ModuleManager::modules.begin(), ModuleManager::modules.end(), [&classes](const std::pair<const std::string, const std::unique_ptr<Module>>& pair) {
+        std::for_each(ModuleManager::modules.begin(), ModuleManager::modules.end(), [&classes](const std::pair<const std::string, Module*>& pair) {
             if (pair.second->is_active) pair.second->on_call(classes);
         });
     }
     
     jvm_ptr->DetachCurrentThread();
-    std::for_each(classes->begin(), classes->end(), [](const std::pair<const std::string, JavaClass*>& pair) {
+    std::for_each(classes.begin(), classes.end(), [](const std::pair<const std::string, JavaClass*>& pair) {
         delete pair.second;
     });
-    classes->clear();
-    delete classes;
+    classes.clear();
+    ModuleManager::unload_modules();
     FreeLibrary(instance);
 }
