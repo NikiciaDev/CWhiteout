@@ -18,12 +18,12 @@
 #include "ModuleManager.h"
 #include "LLInputUtil.h"
 
+extern Whiteout* whiteout;
 extern JavaVM* jvm_ptr;
 extern JNIEnv* jenv_ptr;
 extern void init_variables();
 
 void main_thread_f(HMODULE instance);
-Whiteout* whiteout;
 
 std::map<const std::string, JavaClass*> classes;
 
@@ -57,7 +57,6 @@ void main_thread_f(HMODULE instance) {
 
     HHOOK k_h_hook = SetWindowsHookEx(WH_KEYBOARD_LL, liu::keypress_handler, NULL, 0);
     HHOOK m_h_hook = SetWindowsHookEx(WH_MOUSE_LL, liu::mousepress_handler, NULL, 0);
-    whiteout = new Whiteout(Whiteout::name_build, 2, 1000, 600);
     whiteout->window.setActive(false); // This disables drawing in the current thread!
     ModuleManager::init_modules();
 
@@ -82,6 +81,14 @@ void main_thread_f(HMODULE instance) {
                 break;
             }
         }
+
+        unsigned long long key{ NULL };
+        while (whiteout->poll_keypresses(key, false)) {
+            std::for_each(ModuleManager::modules.begin(), ModuleManager::modules.end(), [key](const std::pair<const std::string, Module*>& pair) {
+                if (pair.second->keybind == key) pair.second->on_keypress(classes);
+            });
+        }
+
         std::for_each(ModuleManager::modules.begin(), ModuleManager::modules.end(), [](const std::pair<const std::string, Module*>& pair) {
             if (pair.second->is_active) pair.second->on_call(classes);
         });

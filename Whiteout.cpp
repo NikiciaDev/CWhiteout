@@ -15,3 +15,24 @@ Whiteout::Whiteout(const std::string title, const unsigned short antialiasing_le
 }
 
 Whiteout::~Whiteout() { }
+
+void Whiteout::dispatch_keypress(const unsigned long long keycode, const bool ext) {
+    if (ext) {
+        pressed_keys_ext.push_back(keycode);
+        return;
+    }
+    pressed_keys.push_back(keycode);
+}
+
+bool Whiteout::poll_keypresses(unsigned long long& key, const bool ext) {
+    if (!ext) {
+        if (pressed_keys.size() <= 0) return false;
+        key = *(pressed_keys.end() - 1);
+        pressed_keys.erase(pressed_keys.begin());
+    } else {
+        if (pressed_keys_ext.size() <= 0) return false;
+        key = *(pressed_keys_ext.end() - 1);
+        pressed_keys_ext.pop_back();
+    }
+    return true;
+}
