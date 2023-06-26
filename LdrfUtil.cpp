@@ -84,6 +84,11 @@ namespace lul {
 	}
 
 	void set_instance(const std::string line, JavaClass& java_class, std::map<const std::string, JavaClass*>& map) {
+		if (line.find("?") != std::string::npos) {
+			java_class.instance = NULL;
+			print_wrn("Loading class without instance. Non static methods can not be called without creating your own instance!\n");
+			return;
+		}
 		unsigned short ff0 = line.find("<") + 1, ff1 = line.find_first_of(","), ff2 = find_next_char(line, ',', ff1 + 1), ff3 = line.find_last_of(",");
 		if (ff0 + 1 == ff1) return;
 
@@ -102,7 +107,7 @@ namespace lul {
 			java_class.instance = jenv_ptr->GetObjectField(map.find(class_to_find_in)->second->instance, id);
 		}
 		if (id == NULL) {
-			print_wrn("Could not find instance field for class.");
+			print_wrn("Could not find instance field for class.\n");
 			return;
 		}
 		
