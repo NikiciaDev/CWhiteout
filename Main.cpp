@@ -56,7 +56,6 @@ void main_thread_f(HMODULE instance) {
     whiteout.window.setActive(false); // This disables drawing in the current thread!
     ModuleManager::init_modules();
 
-    // DESTROYS FPS HAVE TO FIX
     std::thread draw_thread([&whiteout]() {
         whiteout.window.setActive();
         while (whiteout.window.isOpen()) {
@@ -65,7 +64,7 @@ void main_thread_f(HMODULE instance) {
                 if (pair.second->is_active) pair.second->on_draw(whiteout);
             });
 
-            whiteout.window.display(); // THIS DESTROYS FPS
+            whiteout.window.display();
         }
     });
     draw_thread.detach();
