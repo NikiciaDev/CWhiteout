@@ -1,6 +1,6 @@
 #include "FileUtil.h"
 
-std::wstring ful::create_ldrf_env() {
+std::wstring ful::create_envs() {
 	DWORD size = UNLEN + 1;
 	TCHAR username[UNLEN + 1];
 	GetUserName((TCHAR*) username, &size);
@@ -16,8 +16,13 @@ std::wstring ful::create_ldrf_env() {
 			throw std::exception("Failed to create .whiteout directory!");
 		}
 	}
+	if (!std::filesystem::exists(base_path + "\\font")) {
+		if (!std::filesystem::create_directories(base_path + "\\font")) {
+			print_err("Failed to create font directory! Please create it manually inside your AppData\\Roaming\\.whiteout folder!");
+			throw std::exception("Failed to create font directory!");
+		}
+	}
 
-	base_path += "\\JClasses.ldrf";
 	return std::wstring(base_path.begin(), base_path.end());
 }
 

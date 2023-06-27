@@ -1,6 +1,7 @@
 #pragma once
 #include "ModuleManager.h"
 #include "Whiteout.h"
+#include "FontRenderer.h"
 
 class GUI final {
 private:

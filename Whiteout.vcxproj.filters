@@ -68,6 +68,9 @@
     <ClCompile Include="GUI.cpp">
       <Filter>source\classes\whiteout\gui</Filter>
     </ClCompile>
+    <ClCompile Include="FontRenderer.cpp">
+      <Filter>source\util\sfml</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
@@ -254,6 +257,9 @@
     </ClInclude>
     <ClInclude Include="GUI.h">
       <Filter>headers\classes\whiteout\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="FontRenderer.h">
+      <Filter>headers\util\sfml</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

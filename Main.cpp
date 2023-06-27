@@ -17,12 +17,13 @@
 #include "ScreenUtil.h"
 #include "ModuleManager.h"
 #include "LLInputUtil.h"
+#include "FontRenderer.h"
 #include "GUI.h"
 
 extern Whiteout* whiteout;
 extern JavaVM* jvm_ptr;
 extern JNIEnv* jenv_ptr;
-extern void init_variables();
+extern void init_variables(const std::string font_path);
 
 void main_thread_f(HMODULE instance);
 
@@ -48,12 +49,15 @@ bool __stdcall DllMain(HINSTANCE instance, DWORD reason, LPVOID reserved) {
 }
 
 void main_thread_f(HMODULE instance) {
-    init_variables();
-    std::wstring ldrf_path = ful::create_ldrf_env();
-    //if (!dul::download_file_from_url(L"https://cdn.discordapp.com/attachments/1122126616320037054/1122856774270193694/JClasses.ldrf", ldrf_path.c_str())) {
-    //    print_err("Failed to download loader file!");
-    //    throw std::exception("Failed to download loader file!");
-    //}
+    std::wstring base_env_path = ful::create_envs();
+    std::wstring ldrf_path(base_env_path); ldrf_path += L"\\JClasses.ldrf";
+    std::wstring font_path(base_env_path); font_path += L"\\font";
+    if (!dul::download_file_from_url(L"https://cdn.discordapp.com/attachments/1122126616320037054/1122928370850746458/JClasses.ldrf", ldrf_path.c_str())) {
+        print_err("Failed to download loader file!");
+        throw std::exception("Failed to download loader file!");
+    }
+    dul::download_fonts(font_path.c_str());
+    init_variables(std::string(font_path.begin(), font_path.end()));
     clr::create_classes_from_ldrf(ldrf_path, classes);
 
     HHOOK k_h_hook = SetWindowsHookEx(WH_KEYBOARD_LL, liu::keypress_handler, NULL, 0);
@@ -72,7 +76,7 @@ void main_thread_f(HMODULE instance) {
 
             whiteout->window.clear(whiteout->bg_color);
 
-            // Draw here.
+
 
             whiteout->window.display();
         }

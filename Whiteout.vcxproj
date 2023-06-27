@@ -149,6 +149,7 @@
     <ClCompile Include="ConsoleUtil.cpp" />
     <ClCompile Include="DownloadUtil.cpp" />
     <ClCompile Include="FileUtil.cpp" />
+    <ClCompile Include="FontRenderer.cpp" />
     <ClCompile Include="GUI.cpp" />
     <ClCompile Include="JavaClass.cpp" />
     <ClCompile Include="ClassLoader.cpp" />
@@ -174,6 +175,7 @@
     <ClInclude Include="ConsoleUtil.h" />
     <ClInclude Include="DownloadUtil.h" />
     <ClInclude Include="FileUtil.h" />
+    <ClInclude Include="FontRenderer.h" />
     <ClInclude Include="GUI.h" />
     <ClInclude Include="JavaClass.h" />
     <ClInclude Include="ClassLoader.h" />
