@@ -1,6 +1,5 @@
 #pragma once
 #include "SFML/Graphics.hpp"
-#include "Whiteout.h"
 
 namespace frr {
 	extern sf::Font rmb, rmm, rmr, rmt;
