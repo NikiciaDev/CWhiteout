@@ -24,7 +24,8 @@ namespace liu {
             const bool ext = !jenv_ptr->CallStaticBooleanMethod(classes.find("Display")->second->jclass, *classes.find("Display")->second->jmethods.find("is_active")->second);
             if (!ext || whiteout->window.hasFocus()) {
                 PMSLLHOOKSTRUCT hs = (PMSLLHOOKSTRUCT) lParam;
-                if (wParam == WM_RBUTTONDOWN) hs->mouseData = 1;
+                if (wParam == WM_LBUTTONDOWN) hs->mouseData = 1;
+                if (wParam == WM_RBUTTONDOWN) hs->mouseData = 2;
                 POINT p{ 0, 0 };
                 GetCursorPos(&p);
                 ScreenToClient(whiteout->window.getSystemHandle(), &p);
