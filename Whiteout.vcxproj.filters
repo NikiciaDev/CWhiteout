@@ -65,6 +65,9 @@
     <ClCompile Include="Key.cpp">
       <Filter>source\classes\other</Filter>
     </ClCompile>
+    <ClCompile Include="GUI.cpp">
+      <Filter>source\classes\whiteout\gui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
@@ -166,6 +169,12 @@
     <Filter Include="source\classes\other">
       <UniqueIdentifier>{902ecb36-5a79-4ee0-b34b-25314846b295}</UniqueIdentifier>
     </Filter>
+    <Filter Include="source\classes\whiteout\gui">
+      <UniqueIdentifier>{35be8b24-33fd-4de8-a12b-d6a863427559}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\classes\whiteout\gui">
+      <UniqueIdentifier>{830617ab-bca6-412f-bbf3-3057a2e38b55}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Variables.h">
@@ -242,6 +251,9 @@
     </ClInclude>
     <ClInclude Include="Key.h">
       <Filter>headers\classes\other</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI.h">
+      <Filter>headers\classes\whiteout\gui</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -23,4 +23,26 @@ namespace ModuleManager {
 		});
 		modules.clear();
 	}
+	std::string get_category_name_string(const mdl::MODULE_CATEGORY category) {
+		switch (category) {
+		default:
+			return std::string("UNDEFINED");
+			break;
+		case mdl::MODULE_CATEGORY::COMBAT:
+			return std::string("COMBAT");
+			break;
+		case mdl::MODULE_CATEGORY::MOVEMENT:
+			return std::string("MOVEMENT");
+			break;
+		case mdl::MODULE_CATEGORY::PLAYER:
+			return std::string("PLAYER");
+			break;
+		case mdl::MODULE_CATEGORY::VISUAL:
+			return std::string("VISUAL");
+			break;
+		case mdl::MODULE_CATEGORY::EXPLOIT:
+			return std::string("EXPLOIT");
+			break;
+		}
+	}
 }

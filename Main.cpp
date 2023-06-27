@@ -17,6 +17,7 @@
 #include "ScreenUtil.h"
 #include "ModuleManager.h"
 #include "LLInputUtil.h"
+#include "GUI.h"
 
 extern Whiteout* whiteout;
 extern JavaVM* jvm_ptr;
@@ -57,12 +58,18 @@ void main_thread_f(HMODULE instance) {
 
     HHOOK k_h_hook = SetWindowsHookEx(WH_KEYBOARD_LL, liu::keypress_handler, NULL, 0);
     HHOOK m_h_hook = SetWindowsHookEx(WH_MOUSE_LL, liu::mousepress_handler, NULL, 0);
-    whiteout->window.setActive(false); // This disables drawing in the current thread!
+    GUI gui(whiteout);
     ModuleManager::init_modules();
 
-    std::thread draw_thread([]() {
+    whiteout->window.setActive(false); // This disables drawing in the current thread!
+    std::thread draw_thread([&gui]() {
         whiteout->window.setActive();
         while (whiteout->window.isOpen()) {
+            Key key;
+            while (whiteout->poll_keypresses(key, true)) {
+                gui.on_mouse_event(key);
+            }
+
             whiteout->window.clear(whiteout->bg_color);
 
             // Draw here.
