@@ -10,7 +10,7 @@ sf::Color Whiteout::sm_base_color = sf::Color(255, 255, 255);
 Whiteout::Whiteout(const std::string title, const unsigned short antialiasing_level, const unsigned short width, const unsigned short height) {
     sf::ContextSettings settings;
     settings.antialiasingLevel = antialiasing_level;
-    this->window.create(sf::VideoMode(width, height), title, sf::Style::Titlebar | sf::Style::Close, settings);
+    this->window.create(sf::VideoMode(width, height), title, sf::Style::Default, settings);
     window.setFramerateLimit(60);
 }
 
