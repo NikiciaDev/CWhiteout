@@ -16,19 +16,19 @@ namespace frr {
 		window.draw(frr::text(string, font, position, size, style, color));
 	}
 
-	float width(sf::Text text) {
+	float width(sf::Text& text) {
 		return text.getLocalBounds().width;
 	}
 
-	float height(sf::Text text) {
+	float height(sf::Text& text) {
 		return text.getLocalBounds().height;
 	}
 
-	float width_g(sf::Text text) {
+	float width_g(sf::Text& text) {
 		return text.getGlobalBounds().width;
 	}
 
-	float height_g(sf::Text text) {
+	float height_g(sf::Text& text) {
 		return text.getGlobalBounds().height;
 	}
 }
