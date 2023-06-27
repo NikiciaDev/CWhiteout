@@ -8,8 +8,8 @@ namespace ModuleManager {
 	std::map<const std::string, Module*> modules;
 }
 
-namespace frr {
-	sf::Font rmb, rmm, rmr, rmt;
+namespace font {
+	sf::Font meb, mb, mm, mr;
 }
 
 Whiteout* whiteout;

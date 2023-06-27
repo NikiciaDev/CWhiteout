@@ -1,18 +1,27 @@
 #pragma once
 #include "SFML/Graphics.hpp"
+#include "Whiteout.h"
 
-namespace frr {
-	extern sf::Font rmb, rmm, rmr, rmt;
+namespace font {
+	extern sf::Font meb, mb, mm, mr;
 
-	sf::Text text(const std::string string, const sf::Font& font, const sf::Vector2f position, const unsigned short size = 14, const sf::Uint32 style = sf::Text::Regular, const sf::Color color = sf::Color::White);
+	sf::Text text(const std::string string, const sf::Vector2f position, const sf::Font& font = font::mm, const unsigned short size = 14, const sf::Uint32 style = sf::Text::Regular, const sf::Color color = Whiteout::text_color, const float letter_spacing = 1);
 
-	void render(sf::RenderWindow& window, const std::string string, const sf::Font& font, const sf::Vector2f position, const unsigned short size = 14, const sf::Uint32 style = sf::Text::Regular, const sf::Color color = sf::Color::White);
+	void render(sf::RenderWindow& window, const std::string string, const sf::Vector2f position, const sf::Font& font = font::mm, const unsigned short size = 14, const sf::Uint32 style = sf::Text::Regular, const sf::Color color = Whiteout::text_color);
 
-	float width(sf::Text& text);
+	void render(sf::RenderWindow& window, const sf::Text& text);
 
-	float height(sf::Text& text);
+	float height(const sf::Font& font = font::mm, const unsigned short font_size = 14, const bool smart = false, const std::string string = "Whiteout", const sf::Uint32 style = sf::Text::Regular);
 
-	float width_g(sf::Text& text);
+	float width(const sf::Font& font = font::mm, const unsigned short font_size = 14, const bool smart = false, const std::string string = "Whiteout", const sf::Uint32 style = sf::Text::Regular, const float char_spacing = 1);
 
-	float height_g(sf::Text& text);
+	void basic_text_attributes(sf::Text& text, const std::string string, const sf::Font& font, const unsigned short font_size, const sf::Uint32 style = sf::Text::Regular);
+
+	float width(const sf::Text& text, const bool smart = false);
+
+	float height(const sf::Text& text, const bool smart = false);
+
+	float width_c(const sf::Text text, const bool smart = false);
+
+	float height_c(const sf::Text text, const bool smart = false);
 }

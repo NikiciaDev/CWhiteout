@@ -2,13 +2,14 @@
 #include "ModuleManager.h"
 #include "Whiteout.h"
 #include "FontRenderer.h"
+#include "RenderUtil.h"
 
 class GUI final {
 private:
-	const Whiteout* whiteout;
+	Whiteout* whiteout;
 
 public:
-	GUI(const Whiteout* whiteout);
+	GUI(Whiteout* whiteout);
 
 	void draw_base();
 

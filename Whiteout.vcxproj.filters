@@ -71,6 +71,9 @@
     <ClCompile Include="FontRenderer.cpp">
       <Filter>source\util\sfml</Filter>
     </ClCompile>
+    <ClCompile Include="RenderUtil.cpp">
+      <Filter>source\util\sfml</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
@@ -259,6 +262,9 @@
       <Filter>headers\classes\whiteout\gui</Filter>
     </ClInclude>
     <ClInclude Include="FontRenderer.h">
+      <Filter>headers\util\sfml</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderUtil.h">
       <Filter>headers\util\sfml</Filter>
     </ClInclude>
   </ItemGroup>

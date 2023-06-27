@@ -76,7 +76,7 @@ void main_thread_f(HMODULE instance) {
 
             whiteout->window.clear(whiteout->bg_color);
 
-
+            gui.draw_base();
 
             whiteout->window.display();
         }

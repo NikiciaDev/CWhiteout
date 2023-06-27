@@ -1,34 +1,65 @@
 #include "FontRenderer.h"
 
-namespace frr {
-	sf::Text text(const std::string string, const sf::Font& font, const sf::Vector2f position, const unsigned short size, const sf::Uint32 style, const sf::Color color) {
+namespace font {
+	sf::Text text(const std::string string, const sf::Vector2f position, const sf::Font& font, const unsigned short size, const sf::Uint32 style, const sf::Color color, const float letter_spacing) {
 		sf::Text text;
 		text.setFont(font);
+		text.setPosition(position);
 		text.setString(string);
 		text.setCharacterSize(size);
 		text.setStyle(style);
 		text.setFillColor(color);
-		text.setPosition(position);
+		text.setLetterSpacing(letter_spacing);
 		return text;
 	}
 
-	void render(sf::RenderWindow& window, const std::string string, const sf::Font& font, const sf::Vector2f position, const unsigned short size, const sf::Uint32 style, const sf::Color color) {
-		window.draw(frr::text(string, font, position, size, style, color));
+	void render(sf::RenderWindow& window, const std::string string, const sf::Vector2f position, const sf::Font& font, const unsigned short size, const sf::Uint32 style, const sf::Color color) {
+		window.draw(font::text(string, position, font, size, style, color));
 	}
 
-	float width(sf::Text& text) {
-		return text.getLocalBounds().width;
+	void render(sf::RenderWindow& window, const sf::Text& text) {
+		window.draw(text);
 	}
 
-	float height(sf::Text& text) {
+	float height(const sf::Font& font, const unsigned short font_size, const bool smart, const std::string string, const sf::Uint32 style) {
+		sf::Text text;
+		basic_text_attributes(text, string, font, font_size);
+		if (smart) return text.getCharacterSize();
 		return text.getLocalBounds().height;
 	}
 
-	float width_g(sf::Text& text) {
-		return text.getGlobalBounds().width;
+	float width(const sf::Font& font, const unsigned short font_size, const bool smart, const std::string string, const sf::Uint32 style, const float char_spacing) {
+		sf::Text text;
+		basic_text_attributes(text, string, font, font_size);
+		text.setLetterSpacing(char_spacing);
+		if (smart) return text.findCharacterPos(text.getString().getSize()).x - text.findCharacterPos(0).x;
+		return text.getLocalBounds().width;
 	}
 
-	float height_g(sf::Text& text) {
-		return text.getGlobalBounds().height;
+	float width(const sf::Text& text, const bool smart) {
+		if (smart) return text.findCharacterPos(text.getString().getSize()).x - text.findCharacterPos(0).x;
+		return text.getLocalBounds().width;
+	}
+
+	float height(const sf::Text& text, const bool smart) {
+		if (smart) return text.getCharacterSize();
+		return text.getLocalBounds().height;
+	}
+
+	float width_c(const sf::Text text, const bool smart) {
+		if (smart) return text.findCharacterPos(text.getString().getSize()).x - text.findCharacterPos(0).x;
+		return text.getLocalBounds().width;
+	}
+
+	float height_c(const sf::Text text, const bool smart) {
+		if (smart) return text.getCharacterSize();
+		return text.getLocalBounds().height;
+	}
+
+	void basic_text_attributes(sf::Text& text, const std::string string, const sf::Font& font, const unsigned short font_size, const sf::Uint32 style) {
+		text.setString(string);
+		text.setFont(font);
+		text.setCharacterSize(font_size);
+		text.setStyle(style);
 	}
 }

@@ -160,6 +160,7 @@
     <ClCompile Include="ModeSetting.cpp" />
     <ClCompile Include="Module.cpp" />
     <ClCompile Include="ModuleManager.cpp" />
+    <ClCompile Include="RenderUtil.cpp" />
     <ClCompile Include="ScreenUtil.cpp" />
     <ClCompile Include="SettingBase.cpp" />
     <ClCompile Include="StringSetting.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="ModuleManager.h" />
     <ClInclude Include="NumberSetting.h" />
     <ClInclude Include="RandomUtil.h" />
+    <ClInclude Include="RenderUtil.h" />
     <ClInclude Include="ScreenUtil.h" />
     <ClInclude Include="Setting.h" />
     <ClInclude Include="SettingBase.h" />
