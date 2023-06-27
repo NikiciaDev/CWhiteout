@@ -10,7 +10,7 @@ public:
 	static std::string name_build;
 	static sf::Color bg_color;
 	static sf::Color base_color;
-	static sf::Color sm_base_color;
+	static sf::Color text_color;
 	sf::RenderWindow window;
 	std::vector<Key> pressed_keys, pressed_keys_ext;
 
