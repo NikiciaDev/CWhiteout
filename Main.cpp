@@ -65,6 +65,8 @@ void main_thread_f(HMODULE instance) {
         while (whiteout->window.isOpen()) {
             whiteout->window.clear(whiteout->bg_color);
 
+            // Draw here.
+
             whiteout->window.display();
         }
     });
@@ -79,6 +81,10 @@ void main_thread_f(HMODULE instance) {
             case sf::Event::Closed:
                 whiteout->window.close();
                 break;
+            case sf::Event::Resized: // This prevents sprites from scaling with the window.
+                    sf::FloatRect view(0, 0, event.size.width, event.size.height);
+                    whiteout->window.setView(sf::View(view));
+                    break;
             }
         }
 
