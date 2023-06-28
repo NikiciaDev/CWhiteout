@@ -86,6 +86,9 @@
     <ClCompile Include="Command.cpp">
       <Filter>source\classes\whiteout\gui\impl\terminal</Filter>
     </ClCompile>
+    <ClCompile Include="SentCommand.cpp">
+      <Filter>source\classes\whiteout\gui\impl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
@@ -307,6 +310,9 @@
       <Filter>headers\classes\whiteout\gui\impl\terminal</Filter>
     </ClInclude>
     <ClInclude Include="Command.h">
+      <Filter>headers\classes\whiteout\gui\impl\terminal</Filter>
+    </ClInclude>
+    <ClInclude Include="SentCommand.h">
       <Filter>headers\classes\whiteout\gui\impl\terminal</Filter>
     </ClInclude>
   </ItemGroup>

@@ -165,6 +165,7 @@
     <ClCompile Include="ModuleManager.cpp" />
     <ClCompile Include="RenderUtil.cpp" />
     <ClCompile Include="ScreenUtil.cpp" />
+    <ClCompile Include="SentCommand.cpp" />
     <ClCompile Include="SettingBase.cpp" />
     <ClCompile Include="StringSetting.cpp" />
     <ClCompile Include="Terminal.cpp" />
@@ -197,6 +198,7 @@
     <ClInclude Include="RandomUtil.h" />
     <ClInclude Include="RenderUtil.h" />
     <ClInclude Include="ScreenUtil.h" />
+    <ClInclude Include="SentCommand.h" />
     <ClInclude Include="Setting.h" />
     <ClInclude Include="SettingBase.h" />
     <ClInclude Include="StringSetting.h" />

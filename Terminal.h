@@ -4,6 +4,7 @@
 #include "Command.h"
 #include "FontRenderer.h"
 #include "Clock.h"
+#include "SentCommand.h"
 
 class Terminal final {
 private:
@@ -11,6 +12,7 @@ private:
 	std::string current_in{ "" };
 	Clock<std::chrono::milliseconds> clock;
 	bool display_a_c{ false };
+	std::vector<SentCommand> sent_commands;
 
 public:
 	Whiteout& whiteout;
