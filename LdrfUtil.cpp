@@ -50,15 +50,15 @@ namespace lul {
 
 			if (in && !completed) {
 				bool is_static = line[begin + 1] == 't';
-				unsigned short first_comma = find_next_char(line, ',', begin);
-				unsigned short second_comma = find_next_char(line, ',', first_comma + 1);
-				unsigned short third_comma = find_next_char(line, ',', second_comma + 1);
-				end = find_next_char(line, '>', third_comma + 1);
+				unsigned short first_comma = line.find_first_of(',', begin);
+				unsigned short second_comma = line.find_first_of(',', first_comma + 1);
+				unsigned short third_comma = line.find_first_of(',', second_comma + 1);
+				end = line.find_first_of('>', third_comma + 1);
 
 				c_name = line.substr(first_comma + 2, second_comma - first_comma - 3);
 				name = line.substr(second_comma + 2, third_comma - second_comma - 3);
 				signature = line.substr(third_comma + 1, end - third_comma - 1);
-				
+
 				if (methods) {
 					jmethodID* method;
 					if (is_static) {
@@ -89,7 +89,7 @@ namespace lul {
 			print_wrn("Loading class without instance. Non static methods can not be called without creating your own instance!\n");
 			return;
 		}
-		unsigned short ff0 = line.find("<") + 1, ff1 = line.find_first_of(","), ff2 = find_next_char(line, ',', ff1 + 1), ff3 = line.find_last_of(",");
+		unsigned short ff0 = line.find("<") + 1, ff1 = line.find_first_of(","), ff2 = line.find_first_of(',', ff1 + 1), ff3 = line.find_last_of(",");
 		if (ff0 + 1 == ff1) return;
 
 		std::string name = line.substr(ff0 + 1, ff1 - ff0 - 1 - 1), signature = line.substr(ff1 + 1, ff2 - ff1 - 1);
@@ -111,15 +111,6 @@ namespace lul {
 			return;
 		}
 		
-	}
-
-	unsigned short find_next_char(const std::string& line, const char char_to_find, const unsigned short start) {
-		for (unsigned short s = start; s < line.size(); s++) {
-			if (line[s] == char_to_find) {
-				return s;
-			}
-		}
-		return 0;
 	}
 
 	std::string get_class_c_name(const std::string line) {

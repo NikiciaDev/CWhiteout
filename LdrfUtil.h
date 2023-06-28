@@ -17,8 +17,6 @@ namespace lul {
 
 	void set_instance(const std::string line, JavaClass& java_class, std::map<const std::string, JavaClass*>& map);
 
-	unsigned short find_next_char(const std::string& line, const char char_to_find, const unsigned short start);
-
 	std::string get_class_c_name(const std::string line);
 
 	std::string get_class_name(const std::string line);
