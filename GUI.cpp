@@ -37,7 +37,13 @@ void GUI::on_key_event(const Key key) {
 		break;
 	case 1:
 	case 2:
-		if (csb.on_mouse(key)) break;
+		if (csb.on_mouse(key)) {
+			if (csb.current == mdl::MODULE_CATEGORY::TERMINAL) {
+				whiteout->view.move(0, terminal.input_pos.y - 30);
+			}
+			whiteout->window.setView(whiteout->view);
+			break;
+		}
 		break;
 	case 3:
 
