@@ -28,7 +28,7 @@ void GUI::on_mouse_event(const Key key) {
 		break;
 	case 1:
 	case 2:
-		if (!csb.on_mouse(key)) break;
+		if (csb.on_mouse(key)) break;
 		break;
 	case 4:
 		whiteout->view.move(0, 25);
