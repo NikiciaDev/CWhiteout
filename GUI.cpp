@@ -3,6 +3,7 @@
 GUI::GUI(Whiteout* whiteout) : whiteout(whiteout), terminal(*whiteout), selected_category(mdl::MODULE_CATEGORY::COMBAT), csb(*whiteout, sf::FloatRect(0, 0, 0, 0)) {}
 
 void GUI::draw_base() {
+	if (csb.current == mdl::MODULE_CATEGORY::UNDECLARED) return;
 	const sf::Vector2u window_size(whiteout->window.getSize());
 	const sf::View view(whiteout->view);
 	const sf::Text csb_text = csb.get_draw_text();
@@ -36,8 +37,10 @@ void GUI::on_key_event(const Key key) {
 		break;
 	case 1:
 	case 2:
-	case 3:
 		if (csb.on_mouse(key)) break;
+		break;
+		case 3:
+
 		break;
 	case 4:
 		whiteout->view.move(0, 25);

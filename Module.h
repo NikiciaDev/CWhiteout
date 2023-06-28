@@ -46,6 +46,7 @@ namespace mdl {
 		MOVEMENT,
 		PLAYER,
 		VISUAL,
-		EXPLOIT
+		EXPLOIT,
+		UNDECLARED
 	};
 }

@@ -92,7 +92,7 @@ void main_thread_f(HMODULE instance) {
             default:
                 break;
             case sf::Event::Closed:
-                gui.csb.current = mdl::MODULE_CATEGORY::COMBAT;
+                gui.csb.current = mdl::MODULE_CATEGORY::UNDECLARED;
                 whiteout->window.close();
                 break;
             case sf::Event::Resized: // This prevents sprites from scaling with the window.
