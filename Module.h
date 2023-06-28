@@ -40,7 +40,7 @@ public:
 
 namespace mdl {
 	enum MODULE_CATEGORY {
-		UNDECLARED,
+		TERMINAL,
 		COMBAT,
 		MOVEMENT,
 		PLAYER,

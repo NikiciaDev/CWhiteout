@@ -1,6 +1,6 @@
 #include "GUI.h"
 
-GUI::GUI(Whiteout* whiteout) : whiteout(whiteout) { }
+GUI::GUI(Whiteout* whiteout) : whiteout(whiteout), selected_category(mdl::MODULE_CATEGORY::COMBAT) { }
 
 void GUI::draw_base() {
 	const sf::Vector2u window_size(whiteout->window.getSize());

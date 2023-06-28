@@ -62,4 +62,31 @@ namespace render {
 		lines[1] = sf::Vertex({ position.x + size.x, position.y + size.y }, color);
 		window.draw(lines);
 	}
+
+	void rect_outline_dcutout(sf::RenderWindow& window, const sf::Vector2f position, const sf::Vector2f size, const sf::Color color, const float thickness, const float cutout_position, const float cutout_length, const float cutout_position2, const float cutout_length2) {
+		// Draw the top line.
+		sf::VertexArray lines(sf::LinesStrip, 2);
+		lines[0] = sf::Vertex(position, color);
+		lines[1] = sf::Vertex({ position.x + cutout_position, position.y }, color);
+		window.draw(lines);
+		lines[0] = sf::Vertex({ position.x + cutout_position + cutout_length, position.y }, color);
+		lines[1] = sf::Vertex({ position.x + cutout_position2, position.y }, color);
+		window.draw(lines);
+		lines[0] = sf::Vertex({ position.x + cutout_position2 + cutout_length2, position.y }, color);
+		lines[1] = sf::Vertex({ position.x + size.x, position.y }, color);
+		window.draw(lines);
+
+		// Draw the bottom line.
+		lines[0] = sf::Vertex({ position.x, position.y + size.y }, color);
+		lines[1] = sf::Vertex({ position.x + size.x, position.y + size.y }, color);
+		window.draw(lines);
+
+		// Draw the left and right lines of the cutout.
+		lines[0] = sf::Vertex(position, color);
+		lines[1] = sf::Vertex({ position.x, position.y + size.y }, color);
+		window.draw(lines);
+		lines[0] = sf::Vertex({ position.x + size.x, position.y }, color);
+		lines[1] = sf::Vertex({ position.x + size.x, position.y + size.y }, color);
+		window.draw(lines);
+	}
 }
