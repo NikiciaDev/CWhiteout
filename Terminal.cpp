@@ -64,3 +64,7 @@ void Terminal::on_key_press(const Key key) {
 		}
 	}
 }
+
+void Terminal::clean() {
+	sent_commands.clear();
+}

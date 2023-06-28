@@ -19,11 +19,13 @@ private:
 public:
 	Whiteout& whiteout;
 	sf::Vector2f input_pos{ 35, 35 };
-	std::vector<SentCommand> sent_commands; // Causes when it held 50 commands once a weird Abort has been calles on exit!
+	std::vector<SentCommand> sent_commands;
 
 	Terminal(Whiteout& whiteout);
 
 	void draw();
 
 	void on_key_press(const Key key);
+
+	void clean();
 };

@@ -117,6 +117,8 @@ void main_thread_f(HMODULE instance) {
     std::for_each(classes.begin(), classes.end(), [](const std::pair<const std::string, JavaClass*>& pair) {
         delete pair.second;
     });
+
+    gui.clean();
     classes.clear();
     UnhookWindowsHookEx(k_h_hook);
     UnhookWindowsHookEx(m_h_hook);

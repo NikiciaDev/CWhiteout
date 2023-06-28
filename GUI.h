@@ -22,4 +22,6 @@ public:
 
 	// Call this function when a key is pressed;
 	void on_key_event(const Key key);
+
+	void clean();
 };
