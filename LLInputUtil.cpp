@@ -20,12 +20,13 @@ namespace liu {
     // hs->mouseData = 65536 == XBUTTON1 | hs->mouseData = 131072 == XBUTTON2.
     // XBUTTON2 is weirdly bugged sometimes.
     LRESULT mousepress_handler(int nCode, WPARAM wParam, LPARAM lParam) {
-        if (nCode == HC_ACTION && (wParam == WM_XBUTTONDOWN || wParam == WM_LBUTTONDOWN || wParam == WM_RBUTTONDOWN) ) {
+        if (nCode == HC_ACTION && (wParam == WM_XBUTTONDOWN || wParam == WM_LBUTTONDOWN || wParam == WM_RBUTTONDOWN || wParam == WM_LBUTTONUP) ) {
             const bool ext = !jenv_ptr->CallStaticBooleanMethod(classes.find("Display")->second->jclass, *classes.find("Display")->second->jmethods.find("is_active")->second);
             if (!ext || whiteout->window.hasFocus()) {
                 PMSLLHOOKSTRUCT hs = (PMSLLHOOKSTRUCT) lParam;
                 if (wParam == WM_LBUTTONDOWN) hs->mouseData = 1;
                 if (wParam == WM_RBUTTONDOWN) hs->mouseData = 2;
+                if (wParam == WM_LBUTTONUP) hs->mouseData = 3;
                 POINT p{ 0, 0 };
                 GetCursorPos(&p);
                 ScreenToClient(whiteout->window.getSystemHandle(), &p);
