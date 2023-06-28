@@ -30,6 +30,7 @@ void Terminal::on_key_press(const Key key) {
 				sent_commands.push_back(SentCommand(input_pos, s, "Respnse"));
 				current_in.clear();
 				input_pos.y += font::height() * 2 + 10;
+				if (sent_commands.size() >= 50) sent_commands.erase(sent_commands.begin());
 				return;
 			}
 			current_in += (char) key.keycode;
