@@ -49,6 +49,3 @@ void GUI::on_key_event(const Key key) {
 		break;
 	}
 }
-
-void GUI::clean() {
-}

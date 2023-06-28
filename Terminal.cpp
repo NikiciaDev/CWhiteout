@@ -32,7 +32,7 @@ void Terminal::on_key_press(const Key key) {
 				std::string response{ "Error" };
 				unsigned short sp = current_in.find_first_of(" ");
 				if (current_in == "CLS") {
-					sent_commands.clear();
+					clean();
 					input_pos.x = 35; input_pos.y = 35;
 					goto end2;
 				}
@@ -67,4 +67,5 @@ void Terminal::on_key_press(const Key key) {
 
 void Terminal::clean() {
 	sent_commands.clear();
+	sent_commands.shrink_to_fit();
 }

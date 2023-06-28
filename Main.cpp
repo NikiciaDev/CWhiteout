@@ -118,7 +118,6 @@ void main_thread_f(HMODULE instance) {
         delete pair.second;
     });
 
-    gui.clean();
     classes.clear();
     UnhookWindowsHookEx(k_h_hook);
     UnhookWindowsHookEx(m_h_hook);
