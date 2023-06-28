@@ -1,6 +1,6 @@
 #include "GUI.h"
 
-GUI::GUI(Whiteout* whiteout) : whiteout(whiteout), terminal(*whiteout), selected_category(mdl::MODULE_CATEGORY::COMBAT), csb(*whiteout, sf::FloatRect(0, 0, 0, 0)) {}
+GUI::GUI(Whiteout* whiteout) : whiteout(whiteout), csb(*whiteout, sf::FloatRect(0, 0, 0, 0)), terminal(*whiteout, csb) {}
 
 void GUI::draw_base() {
 	if (csb.current == mdl::MODULE_CATEGORY::UNDECLARED) return;

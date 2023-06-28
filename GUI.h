@@ -9,7 +9,6 @@
 class GUI final {
 private:
 	Whiteout* whiteout;
-	mdl::MODULE_CATEGORY selected_category;
 	Terminal terminal;
 
 public:

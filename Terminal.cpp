@@ -1,6 +1,6 @@
 #include "Terminal.h"
 
-Terminal::Terminal(Whiteout& whiteout) : whiteout(whiteout) { }
+Terminal::Terminal(Whiteout& whiteout, CategorySelectionButton& csb) : whiteout(whiteout), csb(csb) { }
 
 void Terminal::draw() {
 	for (SentCommand& c : sent_commands) {
@@ -35,6 +35,20 @@ void Terminal::on_key_press(const Key key) {
 					clean();
 					input_pos.x = 35; input_pos.y = 35;
 					goto end2;
+				} else if (current_in.substr(0, 4) == "GOTO") {
+					if (current_in.size() <= 5) {
+						sent_commands.push_back(SentCommand(input_pos, s, "Failed to identify window!"));
+					} else {
+						std::string cat = current_in.substr(sp + 1, current_in.size() - 1);
+						auto cat_e = std::find(Module::mdcn.begin(), Module::mdcn.end(), cat);
+						if (cat_e != Module::mdcn.end()) {
+							csb.current = (mdl::MODULE_CATEGORY) (cat_e - Module::mdcn.begin());
+							sent_commands.push_back(SentCommand(input_pos, s, "Successfully changed windows."));
+						} else {
+							sent_commands.push_back(SentCommand(input_pos, s, "Failed to identify window!"));
+						}
+					}
+					goto end;
 				}
 
 				if (CommandManager::commands.find(current_in) != CommandManager::commands.end()) {
