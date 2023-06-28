@@ -74,6 +74,12 @@
     <ClCompile Include="RenderUtil.cpp">
       <Filter>source\util\sfml</Filter>
     </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>source\classes\whiteout\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="CategorySelectionButton.cpp">
+      <Filter>source\classes\whiteout\gui\impl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
@@ -181,6 +187,12 @@
     <Filter Include="headers\classes\whiteout\gui">
       <UniqueIdentifier>{830617ab-bca6-412f-bbf3-3057a2e38b55}</UniqueIdentifier>
     </Filter>
+    <Filter Include="headers\classes\whiteout\gui\impl">
+      <UniqueIdentifier>{a0a3d58c-0e64-45b8-8c57-7655c1478c58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\classes\whiteout\gui\impl">
+      <UniqueIdentifier>{ca3e07b2-42be-4de9-b106-de83ae791221}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Variables.h">
@@ -266,6 +278,15 @@
     </ClInclude>
     <ClInclude Include="RenderUtil.h">
       <Filter>headers\util\sfml</Filter>
+    </ClInclude>
+    <ClInclude Include="CategorySelectionButton.h">
+      <Filter>headers\classes\whiteout\gui\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>headers\classes\whiteout\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorUtil.h">
+      <Filter>headers\util\other</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -16,6 +16,9 @@ extern JNIEnv* jenv_ptr;
 
 class Module {
 public:
+	static std::vector<std::string> mdcn;
+	static std::vector<sf::Color> mdcc;
+
 	bool is_active{ false };
 	const std::string name;
 	const mdl::MODULE_CATEGORY category;
@@ -32,8 +35,6 @@ public:
 	virtual void on_disable(std::map<const std::string, JavaClass*>& classes);
 
 	void on_keypress(std::map<const std::string, JavaClass*>& classes);
-
-	static sf::Color get_module_color(const Module& module);
 
 	static void init_kb_string_represenation(unsigned long long keycode, std::string& string);
 };

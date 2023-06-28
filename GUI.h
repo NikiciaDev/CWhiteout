@@ -3,11 +3,13 @@
 #include "Whiteout.h"
 #include "FontRenderer.h"
 #include "RenderUtil.h"
+#include "CategorySelectionButton.h"
 
 class GUI final {
 private:
 	Whiteout* whiteout;
 	mdl::MODULE_CATEGORY selected_category;
+	CategorySelectionButton csb;
 
 public:
 	GUI(Whiteout* whiteout);
