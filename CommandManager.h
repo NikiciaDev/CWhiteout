@@ -3,6 +3,7 @@
 #include <algorithm>
 #include "Command.h"
 #include "ConfigCommand.h"
+#include "RandomCommand.h"
 
 namespace CommandManager {
 	extern std::map<const std::string, Command*> commands;

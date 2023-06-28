@@ -165,6 +165,7 @@
     <ClCompile Include="ModeSetting.cpp" />
     <ClCompile Include="Module.cpp" />
     <ClCompile Include="ModuleManager.cpp" />
+    <ClCompile Include="RandomCommand.cpp" />
     <ClCompile Include="RenderUtil.cpp" />
     <ClCompile Include="ScreenUtil.cpp" />
     <ClCompile Include="SentCommand.cpp" />
@@ -199,6 +200,7 @@
     <ClInclude Include="Module.h" />
     <ClInclude Include="ModuleManager.h" />
     <ClInclude Include="NumberSetting.h" />
+    <ClInclude Include="RandomCommand.h" />
     <ClInclude Include="RandomUtil.h" />
     <ClInclude Include="RenderUtil.h" />
     <ClInclude Include="ScreenUtil.h" />
