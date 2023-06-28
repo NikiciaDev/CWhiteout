@@ -149,6 +149,7 @@
     <ClCompile Include="CategorySelectionButton.cpp" />
     <ClCompile Include="ColorSetting.cpp" />
     <ClCompile Include="Command.cpp" />
+    <ClCompile Include="CommandManager.cpp" />
     <ClCompile Include="ConsoleUtil.cpp" />
     <ClCompile Include="DownloadUtil.cpp" />
     <ClCompile Include="FileUtil.cpp" />
@@ -181,6 +182,8 @@
     <ClInclude Include="CategorySelectionButton.h" />
     <ClInclude Include="ColorSetting.h" />
     <ClInclude Include="Command.h" />
+    <ClInclude Include="CommandManager.h" />
+    <ClInclude Include="ConfigCommand.h" />
     <ClInclude Include="ConsoleUtil.h" />
     <ClInclude Include="DownloadUtil.h" />
     <ClInclude Include="FileUtil.h" />

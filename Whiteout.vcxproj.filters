@@ -80,14 +80,17 @@
     <ClCompile Include="CategorySelectionButton.cpp">
       <Filter>source\classes\whiteout\gui\impl</Filter>
     </ClCompile>
+    <ClCompile Include="Command.cpp">
+      <Filter>source\classes\whiteout\gui\impl\terminal\command</Filter>
+    </ClCompile>
     <ClCompile Include="Terminal.cpp">
       <Filter>source\classes\whiteout\gui\impl\terminal</Filter>
     </ClCompile>
-    <ClCompile Include="Command.cpp">
-      <Filter>source\classes\whiteout\gui\impl\terminal</Filter>
-    </ClCompile>
     <ClCompile Include="SentCommand.cpp">
-      <Filter>source\classes\whiteout\gui\impl</Filter>
+      <Filter>source\classes\whiteout\gui\impl\terminal\command</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandManager.cpp">
+      <Filter>source\classes\whiteout\gui\impl\terminal\command</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -208,8 +211,17 @@
     <Filter Include="source\classes\whiteout\gui\impl\terminal">
       <UniqueIdentifier>{e80e3ded-2e8d-4326-b11a-eb7af5cebd9f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="headers\classes\whiteout\gui\impl\terminal\impl">
+    <Filter Include="headers\classes\whiteout\gui\impl\terminal\command">
+      <UniqueIdentifier>{ed66d3b8-4c1c-46de-a0ab-cff6b21fd54a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\classes\whiteout\gui\impl\terminal\command\impl">
       <UniqueIdentifier>{ff229ff1-7731-42d9-9dde-5041db1f0866}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\classes\whiteout\gui\impl\terminal\command">
+      <UniqueIdentifier>{296b01a4-469f-4799-929b-d3390df596e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\classes\whiteout\gui\impl\terminal\command\impl">
+      <UniqueIdentifier>{b006fa34-3d07-4337-b659-35bb71965131}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -310,10 +322,16 @@
       <Filter>headers\classes\whiteout\gui\impl\terminal</Filter>
     </ClInclude>
     <ClInclude Include="Command.h">
-      <Filter>headers\classes\whiteout\gui\impl\terminal</Filter>
+      <Filter>headers\classes\whiteout\gui\impl\terminal\command</Filter>
     </ClInclude>
     <ClInclude Include="SentCommand.h">
-      <Filter>headers\classes\whiteout\gui\impl\terminal</Filter>
+      <Filter>headers\classes\whiteout\gui\impl\terminal\command</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandManager.h">
+      <Filter>headers\classes\whiteout\gui\impl\terminal\command</Filter>
+    </ClInclude>
+    <ClInclude Include="ConfigCommand.h">
+      <Filter>headers\classes\whiteout\gui\impl\terminal\command\impl</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -15,7 +15,7 @@ void Terminal::draw() {
 		clock.reset();
 	}
 	if (display_a_c) s += "|";
-	font::render(whiteout.window, s, input_pos, font::mm, 14, sf::Text::Bold | sf::Text::Italic);
+	font::render(whiteout.window, s, input_pos, font::mm, 14, sf::Text::Italic);
 }
 
 void Terminal::on_key_press(const Key key) {
@@ -27,9 +27,35 @@ void Terminal::on_key_press(const Key key) {
 		} else {
 			if (key.keycode == 13) { // Enter.
 				std::string s(whiteout.name); s += "@"; s += Clock<std::chrono::seconds>::get_time(); s += ">";	s += current_in;
-				sent_commands.push_back(SentCommand(input_pos, s, "Respnse"));
-				current_in.clear();
+				
+				std::string response{ "Error" };
+				unsigned short sp = current_in.find_first_of(" ");
+				if (current_in == "CLS") {
+					sent_commands.clear();
+					input_pos.x = 35; input_pos.y = 35;
+					goto end2;
+				}
+
+				if (CommandManager::commands.find(current_in) != CommandManager::commands.end()) {
+					if (sp == std::string::npos) {
+						sent_commands.push_back(SentCommand(input_pos, s, "Command not found!"));
+						goto end;
+					}
+					response = CommandManager::commands.find(current_in)->second->on_call("");
+				} else {					
+					if (CommandManager::commands.find(current_in.substr(0, sp)) != CommandManager::commands.end()) {
+						response = CommandManager::commands.find(current_in.substr(0, sp))->second->on_call(current_in.substr(sp, current_in.size() - 1));
+					} else {
+						sent_commands.push_back(SentCommand(input_pos, s, "Command not found!"));
+						goto end;
+					}
+				}
+				
+				sent_commands.push_back(SentCommand(input_pos, s, response));
+			end:
 				input_pos.y += font::height() * 2 + 10;
+			end2:
+				current_in.clear();
 				if (sent_commands.size() >= 50) sent_commands.erase(sent_commands.begin());
 				return;
 			}

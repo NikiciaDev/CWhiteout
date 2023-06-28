@@ -3,9 +3,14 @@
 #include <jni.h>
 #include "Whiteout.h"
 #include "Module.h"
+#include "Command.h"
 
 namespace ModuleManager {
 	std::map<const std::string, Module*> modules;
+}
+
+namespace CommandManager {
+	std::map<const std::string, Command*> commands;
 }
 
 namespace font {

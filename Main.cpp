@@ -19,6 +19,7 @@
 #include "LLInputUtil.h"
 #include "FontRenderer.h"
 #include "GUI.h"
+#include "CommandManager.h"
 
 extern Whiteout* whiteout;
 extern JavaVM* jvm_ptr;
@@ -64,6 +65,7 @@ void main_thread_f(HMODULE instance) {
     HHOOK m_h_hook = SetWindowsHookEx(WH_MOUSE_LL, liu::mousepress_handler, NULL, 0);
     GUI gui(whiteout);
     ModuleManager::init_modules();
+    CommandManager::init_commands();
 
     whiteout->window.setActive(false); // This disables drawing in the current thread!
     std::thread draw_thread([&gui]() {
@@ -119,5 +121,6 @@ void main_thread_f(HMODULE instance) {
     UnhookWindowsHookEx(k_h_hook);
     UnhookWindowsHookEx(m_h_hook);
     ModuleManager::unload_modules();
+    CommandManager::unload_commands();
     FreeLibrary(instance);
 }

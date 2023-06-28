@@ -3,10 +3,10 @@
 
 class Command {
 public:
-	std::string alias{ "" };
-	std::string name { "" };
+	const std::string alias{ "" };
+	const std::string name { "" };
 
-	Command();
+	Command(const std::string alias, const std::string name);
 
-	virtual void on_call();
+	virtual std::string on_call(const std::string args);
 };

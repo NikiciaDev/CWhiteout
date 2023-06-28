@@ -113,7 +113,7 @@ namespace lul {
 		
 	}
 
-	unsigned short find_next_char(const std::string& line, char char_to_find, unsigned short start) {
+	unsigned short find_next_char(const std::string& line, const char char_to_find, const unsigned short start) {
 		for (unsigned short s = start; s < line.size(); s++) {
 			if (line[s] == char_to_find) {
 				return s;
