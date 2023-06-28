@@ -92,7 +92,8 @@ void main_thread_f(HMODULE instance) {
                 whiteout->window.close();
                 break;
             case sf::Event::Resized: // This prevents sprites from scaling with the window.
-                whiteout->window.setView(sf::View(sf::FloatRect(0, 0, event.size.width, event.size.height)));
+                whiteout->view = sf::View(sf::FloatRect(0, 0, event.size.width, event.size.height));
+                whiteout->window.setView(whiteout->view);
                 break;
             }
         }

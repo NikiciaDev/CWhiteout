@@ -12,6 +12,7 @@ Whiteout::Whiteout(const std::string title, const unsigned short antialiasing_le
     settings.antialiasingLevel = antialiasing_level;
     this->window.create(sf::VideoMode(width, height), title, sf::Style::Default, settings);
     window.setFramerateLimit(60);
+    this->view = sf::View(sf::FloatRect(0, 0, width, height));
 }
 
 Whiteout::~Whiteout() { }
