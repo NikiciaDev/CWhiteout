@@ -15,8 +15,6 @@ namespace font {
 
 	float width(const sf::Font& font = font::mm, const unsigned short font_size = 14, const bool smart = false, const std::string string = "Whiteout", const sf::Uint32 style = sf::Text::Regular, const float char_spacing = 1);
 
-	void basic_text_attributes(sf::Text& text, const std::string string, const sf::Font& font, const unsigned short font_size, const sf::Uint32 style = sf::Text::Regular);
-
 	float width(const sf::Text& text, const bool smart = false);
 
 	float height(const sf::Text& text, const bool smart = false);

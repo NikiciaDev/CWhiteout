@@ -23,14 +23,20 @@ namespace font {
 
 	float height(const sf::Font& font, const unsigned short font_size, const bool smart, const std::string string, const sf::Uint32 style) {
 		sf::Text text;
-		basic_text_attributes(text, string, font, font_size);
+		text.setString(string);
+		text.setFont(font);
+		text.setCharacterSize(font_size);
+		text.setStyle(style);
 		if (smart) return text.getCharacterSize();
 		return text.getLocalBounds().height;
 	}
 
 	float width(const sf::Font& font, const unsigned short font_size, const bool smart, const std::string string, const sf::Uint32 style, const float char_spacing) {
 		sf::Text text;
-		basic_text_attributes(text, string, font, font_size);
+		text.setString(string);
+		text.setFont(font);
+		text.setCharacterSize(font_size);
+		text.setStyle(style);
 		text.setLetterSpacing(char_spacing);
 		if (smart) return text.findCharacterPos(text.getString().getSize()).x - text.findCharacterPos(0).x;
 		return text.getLocalBounds().width;
@@ -54,12 +60,5 @@ namespace font {
 	float height_c(const sf::Text text, const bool smart) {
 		if (smart) return text.getCharacterSize();
 		return text.getLocalBounds().height;
-	}
-
-	void basic_text_attributes(sf::Text& text, const std::string string, const sf::Font& font, const unsigned short font_size, const sf::Uint32 style) {
-		text.setString(string);
-		text.setFont(font);
-		text.setCharacterSize(font_size);
-		text.setStyle(style);
 	}
 }
