@@ -11,8 +11,8 @@ void GUI::draw_base() {
 	// Scrolling outline.
 	render::rect_outline(whiteout->window, whiteout->window.mapPixelToCoords(sf::Vector2i(30, 30)), sf::Vector2f(window_size.x - 60, window_size.y - 60), Whiteout::bg_color, 50);
 
-	sf::Vector2f pos_csb(whiteout->window.getSize().x - 30 - 5 - font::width(font::mb, 16, false, Module::mdcn[csb.current], sf::Text::Bold, 5), 15 - font::height(font::mb, 16, true, Module::mdcn[csb.current], sf::Text::Bold) / 2);
-	sf::Text whiteout_t = font::text(whiteout->name, whiteout->window.mapPixelToCoords(sf::Vector2i(35, 15 - font::height(font::meb, 18, true, whiteout->name, sf::Text::Bold) / 2)), font::meb, 18, sf::Text::Bold, Whiteout::base_color, 5);
+	sf::Vector2f pos_csb(whiteout->window.getSize().x - 30 - 5 - font::width(Module::mdcn[csb.current], font::mb, 16, false, sf::Text::Bold, 5), 15 - font::height(Module::mdcn[csb.current], font::mb, 16, true, sf::Text::Bold) / 2);
+	sf::Text whiteout_t = font::text(whiteout->name, whiteout->window.mapPixelToCoords(sf::Vector2i(35, 15 - font::height(whiteout->name, font::meb, 18, true, sf::Text::Bold) / 2)), font::meb, 18, sf::Text::Bold, Whiteout::base_color, 5);
 	render::rect_outline_dcutout(whiteout->window, whiteout->window.mapPixelToCoords(sf::Vector2i(15, 15)), sf::Vector2f(window_size.x - 30, window_size.y - 30), Whiteout::text_color, 1, 15, font::width(whiteout_t) + 10,
 		pos_csb.x - 15 - 5, font::width(csb_text) + 10);
 

@@ -34,6 +34,8 @@ void Terminal::on_key_press(const Key key) {
 				if (current_in == "CLS") {
 					clean();
 					input_pos.x = 35; input_pos.y = 35;
+					whiteout.view.reset(sf::FloatRect(0, 0, whiteout.window.getSize().x, whiteout.window.getSize().y));
+					whiteout.window.setView(whiteout.view);
 					goto end2;
 				} else if (current_in.substr(0, 4) == "GOTO") {
 					if (current_in.size() <= 5) {
@@ -68,7 +70,7 @@ void Terminal::on_key_press(const Key key) {
 				
 				sent_commands.push_back(SentCommand(input_pos, s, response));
 			end:
-				input_pos.y += font::height() * 2 + 10;
+				input_pos.y += font::height(response) + font::height() + 10;
 			end2:
 				current_in.clear();
 				if (sent_commands.size() >= 50) sent_commands.erase(sent_commands.begin());

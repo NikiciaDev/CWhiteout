@@ -6,8 +6,8 @@ CategorySelectionButton::CategorySelectionButton(Whiteout& whiteout, sf::FloatRe
 }
 
 sf::Text CategorySelectionButton::get_draw_text() {
-	const float width = font::width(font::mb, 16, false, Module::mdcn[current], sf::Text::Bold, 5);
-	const float height = font::height(font::mb, 16, true, Module::mdcn[current], sf::Text::Bold);
+	const float width = font::width(Module::mdcn[current], font::mb, 16, false, sf::Text::Bold, 5);
+	const float height = font::height(Module::mdcn[current], font::mb, 16, true, sf::Text::Bold);
 	this->pos = sf::FloatRect(whiteout->window.getSize().x - 30 - 5 - width, 15 - height / 2, width, height);
 	return font::text(Module::mdcn[current], whiteout->window.mapPixelToCoords(sf::Vector2i(pos.getPosition().x, pos.getPosition().y)), font::mb, 16, sf::Text::Bold, Module::mdcc[current], 5);
 }

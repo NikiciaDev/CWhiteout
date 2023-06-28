@@ -21,7 +21,7 @@ namespace font {
 		window.draw(text);
 	}
 
-	float height(const sf::Font& font, const unsigned short font_size, const bool smart, const std::string string, const sf::Uint32 style) {
+	float height(const std::string string, const sf::Font& font, const unsigned short font_size, const bool smart,  const sf::Uint32 style) {
 		sf::Text text;
 		text.setString(string);
 		text.setFont(font);
@@ -31,7 +31,7 @@ namespace font {
 		return text.getLocalBounds().height;
 	}
 
-	float width(const sf::Font& font, const unsigned short font_size, const bool smart, const std::string string, const sf::Uint32 style, const float char_spacing) {
+	float width(const std::string string, const sf::Font& font, const unsigned short font_size, const bool smart,  const sf::Uint32 style, const float char_spacing) {
 		sf::Text text;
 		text.setString(string);
 		text.setFont(font);
