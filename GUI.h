@@ -3,6 +3,7 @@
 #include "Whiteout.h"
 #include "FontRenderer.h"
 #include "RenderUtil.h"
+#include "Terminal.h"
 #include "CategorySelectionButton.h"
 
 class GUI final {
@@ -10,6 +11,7 @@ private:
 	Whiteout* whiteout;
 	mdl::MODULE_CATEGORY selected_category;
 	CategorySelectionButton csb;
+	Terminal terminal;
 
 public:
 	GUI(Whiteout* whiteout);
@@ -19,5 +21,5 @@ public:
 	void draw_modules();
 
 	// Call this function when a key is pressed;
-	void on_mouse_event(const Key key);
+	void on_key_event(const Key key);
 };

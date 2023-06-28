@@ -80,6 +80,12 @@
     <ClCompile Include="CategorySelectionButton.cpp">
       <Filter>source\classes\whiteout\gui\impl</Filter>
     </ClCompile>
+    <ClCompile Include="Terminal.cpp">
+      <Filter>source\classes\whiteout\gui\impl\terminal</Filter>
+    </ClCompile>
+    <ClCompile Include="Command.cpp">
+      <Filter>source\classes\whiteout\gui\impl\terminal</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
@@ -193,6 +199,15 @@
     <Filter Include="source\classes\whiteout\gui\impl">
       <UniqueIdentifier>{ca3e07b2-42be-4de9-b106-de83ae791221}</UniqueIdentifier>
     </Filter>
+    <Filter Include="headers\classes\whiteout\gui\impl\terminal">
+      <UniqueIdentifier>{3c70e11a-a0cf-4b9e-9737-ecb8f0e5257f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\classes\whiteout\gui\impl\terminal">
+      <UniqueIdentifier>{e80e3ded-2e8d-4326-b11a-eb7af5cebd9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\classes\whiteout\gui\impl\terminal\impl">
+      <UniqueIdentifier>{ff229ff1-7731-42d9-9dde-5041db1f0866}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Variables.h">
@@ -287,6 +302,12 @@
     </ClInclude>
     <ClInclude Include="VectorUtil.h">
       <Filter>headers\util\other</Filter>
+    </ClInclude>
+    <ClInclude Include="Terminal.h">
+      <Filter>headers\classes\whiteout\gui\impl\terminal</Filter>
+    </ClInclude>
+    <ClInclude Include="Command.h">
+      <Filter>headers\classes\whiteout\gui\impl\terminal</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

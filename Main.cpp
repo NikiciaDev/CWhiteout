@@ -71,11 +71,12 @@ void main_thread_f(HMODULE instance) {
         while (whiteout->window.isOpen()) {
             Key key;
             while (whiteout->poll_keypresses(key, true)) {
-                gui.on_mouse_event(key);
+                gui.on_key_event(key);
             }
 
             whiteout->window.clear(whiteout->bg_color);
 
+            gui.draw_modules();
             gui.draw_base(); // This has to draw last.
             whiteout->window.display();
         }

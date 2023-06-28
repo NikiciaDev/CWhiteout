@@ -1,6 +1,6 @@
 #include "GUI.h"
 
-GUI::GUI(Whiteout* whiteout) : whiteout(whiteout), selected_category(mdl::MODULE_CATEGORY::COMBAT), csb(*whiteout, sf::FloatRect(0, 0, 0, 0)) {}
+GUI::GUI(Whiteout* whiteout) : whiteout(whiteout), terminal(*whiteout), selected_category(mdl::MODULE_CATEGORY::COMBAT), csb(*whiteout, sf::FloatRect(0, 0, 0, 0)) {}
 
 void GUI::draw_base() {
 	const sf::Vector2u window_size(whiteout->window.getSize());
@@ -20,14 +20,23 @@ void GUI::draw_base() {
 }
 
 void GUI::draw_modules() {
+	switch (csb.current) {
+	case mdl::MODULE_CATEGORY::TERMINAL:
+		terminal.draw();
+		break;
+	}
 }
 
-void GUI::on_mouse_event(const Key key) {
+void GUI::on_key_event(const Key key) {
 	switch (key.keycode) {
 	default:
+		if (csb.current == mdl::MODULE_CATEGORY::TERMINAL) {
+			terminal.on_key_press(key);
+		}
 		break;
 	case 1:
 	case 2:
+	case 3:
 		if (csb.on_mouse(key)) break;
 		break;
 	case 4:

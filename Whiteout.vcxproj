@@ -148,6 +148,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CategorySelectionButton.cpp" />
     <ClCompile Include="ColorSetting.cpp" />
+    <ClCompile Include="Command.cpp" />
     <ClCompile Include="ConsoleUtil.cpp" />
     <ClCompile Include="DownloadUtil.cpp" />
     <ClCompile Include="FileUtil.cpp" />
@@ -166,6 +167,7 @@
     <ClCompile Include="ScreenUtil.cpp" />
     <ClCompile Include="SettingBase.cpp" />
     <ClCompile Include="StringSetting.cpp" />
+    <ClCompile Include="Terminal.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Variables.cpp" />
     <ClCompile Include="Whiteout.cpp" />
@@ -177,6 +179,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="CategorySelectionButton.h" />
     <ClInclude Include="ColorSetting.h" />
+    <ClInclude Include="Command.h" />
     <ClInclude Include="ConsoleUtil.h" />
     <ClInclude Include="DownloadUtil.h" />
     <ClInclude Include="FileUtil.h" />
@@ -198,6 +201,7 @@
     <ClInclude Include="SettingBase.h" />
     <ClInclude Include="StringSetting.h" />
     <ClInclude Include="Clock.h" />
+    <ClInclude Include="Terminal.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Variables.h" />
     <ClInclude Include="VectorUtil.h" />
