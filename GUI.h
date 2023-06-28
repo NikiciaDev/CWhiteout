@@ -9,10 +9,10 @@
 class GUI final {
 private:
 	Whiteout* whiteout;
-	Terminal terminal;
 
 public:
 	CategorySelectionButton csb;
+	Terminal terminal;
 
 	GUI(Whiteout* whiteout);
 

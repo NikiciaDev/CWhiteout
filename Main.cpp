@@ -92,6 +92,7 @@ void main_thread_f(HMODULE instance) {
             default:
                 break;
             case sf::Event::Closed:
+                gui.terminal.clean();
                 gui.csb.current = mdl::MODULE_CATEGORY::UNDECLARED;
                 whiteout->window.close();
                 break;
