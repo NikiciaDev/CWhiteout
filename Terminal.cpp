@@ -3,7 +3,7 @@
 Terminal::Terminal(Whiteout& whiteout) : whiteout(whiteout) { }
 
 void Terminal::draw() {
-	for (SentCommand& c : sent_commands) { // The renders break it idk why.
+	for (SentCommand& c : sent_commands) {
 		font::render(whiteout.window, c.prompt, c.input_pos, font::mm, 14);
 		font::render(whiteout.window, c.response, sf::Vector2f(c.input_pos.x, c.input_pos.y + font::height() + 5), font::mm, 14);
 	}

@@ -10,10 +10,11 @@ class GUI final {
 private:
 	Whiteout* whiteout;
 	mdl::MODULE_CATEGORY selected_category;
-	CategorySelectionButton csb;
 	Terminal terminal;
 
 public:
+	CategorySelectionButton csb;
+
 	GUI(Whiteout* whiteout);
 
 	void draw_base();
