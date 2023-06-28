@@ -26,6 +26,7 @@ void Terminal::on_key_press(const Key key) {
 			return;
 		} else {
 			if (key.keycode == 13) { // Enter.
+				if (current_in.empty()) return;
 				std::string s(whiteout.name); s += "@"; s += Clock<std::chrono::seconds>::get_time(); s += ">";	s += current_in;
 				
 				std::string response{ "Error" };
@@ -44,7 +45,7 @@ void Terminal::on_key_press(const Key key) {
 					response = CommandManager::commands.find(current_in)->second->on_call("");
 				} else {					
 					if (CommandManager::commands.find(current_in.substr(0, sp)) != CommandManager::commands.end()) {
-						response = CommandManager::commands.find(current_in.substr(0, sp))->second->on_call(current_in.substr(sp, current_in.size() - 1));
+						response = CommandManager::commands.find(current_in.substr(0, sp))->second->on_call(current_in.substr(sp + 1, current_in.size() - 1));
 					} else {
 						sent_commands.push_back(SentCommand(input_pos, s, "Command not found!"));
 						goto end;

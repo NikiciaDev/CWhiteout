@@ -19,7 +19,7 @@ private:
 public:
 	Whiteout& whiteout;
 	sf::Vector2f input_pos{ 35, 35 };
-	std::vector<SentCommand> sent_commands;
+	std::vector<SentCommand> sent_commands; // Causes when it held 50 commands once a weird Abort has been calles on exit!
 
 	Terminal(Whiteout& whiteout);
 

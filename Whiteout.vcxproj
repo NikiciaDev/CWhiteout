@@ -150,6 +150,7 @@
     <ClCompile Include="ColorSetting.cpp" />
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="CommandManager.cpp" />
+    <ClCompile Include="ConfigCommand.cpp" />
     <ClCompile Include="ConsoleUtil.cpp" />
     <ClCompile Include="DownloadUtil.cpp" />
     <ClCompile Include="FileUtil.cpp" />

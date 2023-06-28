@@ -1,4 +1,5 @@
 #include "Whiteout.h"
+#include "ConsoleUtil.h"
 
 std::string Whiteout::name = "Whiteout";
 std::string Whiteout::build = "b0.0";
