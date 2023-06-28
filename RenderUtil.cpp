@@ -1,6 +1,23 @@
 #include "RenderUtil.h"
 
 namespace render {
+	void rect(sf::RenderWindow& window, const sf::Vector2f position, const sf::Vector2f size, const sf::Color color) {
+		sf::RectangleShape rect;
+		rect.setPosition(position);
+		rect.setSize(size);
+		rect.setFillColor(color);
+		window.draw(rect);
+	}
+
+	void circle(sf::RenderWindow& window, const sf::Vector2f position, const sf::Vector2f radius_points, const sf::Color color) {
+		sf::CircleShape circle;
+		circle.setPosition(position);
+		circle.setRadius(radius_points.x);
+		circle.setPointCount(radius_points.y);
+		circle.setFillColor(color);
+		window.draw(circle);
+	}
+
 	void rect_outline(sf::RenderWindow& window, const sf::Vector2f position, const sf::Vector2f size, const sf::Color color, const float thickness) {
 		sf::RectangleShape rectangle;
 		rectangle.setPosition(position);
