@@ -1,34 +1,33 @@
 #pragma once
 #include <random>
 
-namespace rul {
+namespace random {
+	static std::random_device rndm;
+	static std::mt19937 base_engine(rndm());
+
 	template<class T>
-	T rndm_int_ir(const T min, const T max) {
-		std::random_device seed;
-		std::mt19937 engine(seed());
+	T intg(const T min, const T max) {
 		std::uniform_int_distribution<T> dist(min, max);
-		return dist(engine);
+		return dist(base_engine);
 	}
 
 	template<class T>
-	T rndm_int_ir(const T min, const T max, long long seed) {
+	T intg(const T min, const T max, long long seed) {
 		std::mt19937 engine(seed);
 		std::uniform_int_distribution<T> dist(min, max);
 		return dist(engine);
 	}
 
 	template<class T>
-	T rndm_floatingpoint_ir(const T min, const T max) {
-		std::random_device seed;
-		static std::default_random_engine e(seed());
+	T fltp(const T min, const T max) {
 		static std::uniform_real_distribution<T> dis(min, max);
-		return dis(e);
+		return dis(base_engine);
 	}
 
 	template<class T>
-	T rndm_floatingpoint_ir(const T min, const T max, long long seed) {
-		static std::default_random_engine e(seed);
-		static std::uniform_real_distribution<T> dis(min, max);
-		return dis(e);
+	T fltp(const T min, const T max, long long seed) {
+		static std::default_random_engine engine(seed);
+		static std::uniform_real_distribution<T> dist(min, max);
+		return dist(engine);
 	}
 }

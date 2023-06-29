@@ -9,7 +9,7 @@ std::string RandomCommand::on_call(const std::string args) {
 
 		std::string random_numbers("Randomly generated numbers: { ");
 		for (unsigned int i = 0; i < numbers; i++) {
-			random_numbers += std::to_string(rul::rndm_floatingpoint_ir<float>(-1, 1));
+			random_numbers += std::to_string(random::fltp<float>(-1, 1));
 			if (i != numbers - 1) random_numbers += ",";
 			random_numbers += " ";
 		}
