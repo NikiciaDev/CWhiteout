@@ -7,6 +7,12 @@
 
 namespace ModuleManager {
 	std::map<const std::string, Module*> modules;
+
+	std::vector<Module*> c_modules;
+	std::vector<Module*> m_modules;
+	std::vector<Module*> p_modules;
+	std::vector<Module*> v_modules;
+	std::vector<Module*> e_modules;
 }
 
 namespace CommandManager {

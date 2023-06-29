@@ -15,6 +15,32 @@ namespace ModuleManager {
 		modules.insert(std::make_pair("Timer", timer));
 
 		/*VIUSAL*/
+
+		fill_vectors();
+	}
+
+	void fill_vectors() {
+		for (std::pair<const std::string, Module*>& pair : modules) {
+			switch (pair.second->category) {
+			default:
+				break;
+			case mdl::MODULE_CATEGORY::COMBAT:
+				c_modules.push_back(pair.second);
+				break;
+			case mdl::MODULE_CATEGORY::MOVEMENT:
+				m_modules.push_back(pair.second);
+				break;
+			case mdl::MODULE_CATEGORY::PLAYER:
+				p_modules.push_back(pair.second);
+				break;
+			case mdl::MODULE_CATEGORY::VISUAL:
+				v_modules.push_back(pair.second);
+				break;
+			case mdl::MODULE_CATEGORY::EXPLOIT:
+				e_modules.push_back(pair.second);
+				break;
+			}
+		}
 	}
 
 	void unload_modules() {

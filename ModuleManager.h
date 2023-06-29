@@ -8,9 +8,17 @@
 
 namespace ModuleManager {
 	extern std::map<const std::string, Module*> modules;
+	extern std::vector<Module*> c_modules;
+	extern std::vector<Module*> m_modules;
+	extern std::vector<Module*> p_modules;
+	extern std::vector<Module*> v_modules;
+	extern std::vector<Module*> e_modules;
 
 	// This function fills the modules map with one instance of each module!
 	void init_modules();
+
+	// This function get called in init_modues. Do not call anywhere else!
+	void fill_vectors();
 
 	// Deletes the module pointers in the modules map.
 	void unload_modules();
