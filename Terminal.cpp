@@ -71,7 +71,7 @@ void Terminal::on_key_press(const Key key) {
 				sent_commands.push_back(SentCommand(input_pos, s, response));
 			end:
 				input_pos.y += font::height(response) + font::height() + 15;
-				if (sent_commands.size() >= 50) sent_commands.erase(sent_commands.begin());
+				if (sent_commands.size() >= 30) sent_commands.erase(sent_commands.begin());
 			end2:
 				current_in.clear();
 				return;
@@ -83,5 +83,4 @@ void Terminal::on_key_press(const Key key) {
 
 void Terminal::clean() {
 	sent_commands.clear();
-	sent_commands.shrink_to_fit();
 }
