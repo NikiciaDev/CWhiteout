@@ -1,8 +1,8 @@
-#include "CMDCommand.h"
+#include "ShellCommand.h"
 
-CMDCommand::CMDCommand(const std::string name) : Command(name) {}
+ShellCommand::ShellCommand(const std::string name) : Command(name) {}
 
-std::string CMDCommand::on_call(const std::string args) { // Does not grag std::err.
+std::string ShellCommand::on_call(const std::string args) { // Does not grag std::err.
     std::array<char, 128> buffer;
     std::string result;
     std::unique_ptr<FILE, decltype(&_pclose)> pipe(_popen(args.c_str(), "r"), _pclose);

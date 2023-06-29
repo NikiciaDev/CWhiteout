@@ -147,7 +147,7 @@
     <ClCompile Include="BooleanSetting.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CategorySelectionButton.cpp" />
-    <ClCompile Include="CMDCommand.cpp" />
+    <ClCompile Include="ShellCommand.cpp" />
     <ClCompile Include="ColorSetting.cpp" />
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="CommandManager.cpp" />
@@ -183,7 +183,7 @@
     <ClInclude Include="BooleanSetting.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="CategorySelectionButton.h" />
-    <ClInclude Include="CMDCommand.h" />
+    <ClInclude Include="ShellCommand.h" />
     <ClInclude Include="ColorSetting.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="CommandManager.h" />

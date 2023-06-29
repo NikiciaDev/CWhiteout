@@ -4,7 +4,7 @@
 #include "Command.h"
 #include "ConfigCommand.h"
 #include "RandomCommand.h"
-#include "CMDCommand.h"
+#include "ShellCommand.h"
 
 namespace CommandManager {
 	extern std::map<const std::string, Command*> commands;

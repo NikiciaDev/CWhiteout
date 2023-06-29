@@ -8,8 +8,8 @@ namespace CommandManager {
 		RandomCommand* random_command = new RandomCommand("RANDOM");
 		commands.insert(std::make_pair(random_command->name, random_command));
 
-		CMDCommand* cmd_command = new CMDCommand("CMD");
-		commands.insert(std::make_pair(cmd_command->name, cmd_command));
+		ShellCommand* shell_command = new ShellCommand("SHELL");
+		commands.insert(std::make_pair(shell_command->name, shell_command));
 	}
 
 	void unload_commands() {

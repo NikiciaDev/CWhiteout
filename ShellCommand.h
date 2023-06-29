@@ -8,9 +8,9 @@
 #include <array>
 #include "Command.h"
 
-class CMDCommand final : public Command {
+class ShellCommand final : public Command {
 public:
-	CMDCommand(const std::string name);
+	ShellCommand(const std::string name);
 
 	std::string on_call(const std::string args) override;
 };
