@@ -109,7 +109,7 @@ void main_thread_f(HMODULE instance) {
                     }
                 }
                 break;
-            case sf::Event::Resized: // This prevents sprites from scaling with the window.
+            case sf::Event::Resized: // This prevents sprites from scaling with the window. We need this to keep the outline and make scrolling possibile.
                 whiteout->view = sf::View(sf::FloatRect(0, 0, event.size.width, event.size.height));
                 whiteout->window.setView(whiteout->view);
                 break;
