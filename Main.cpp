@@ -99,7 +99,7 @@ void main_thread_f(HMODULE instance) {
             case sf::Event::Closed:
                 should_exit = true;
                 s_exit = SentCommand::get_pre_string(*whiteout);
-                gui.terminal.sent_commands.push_back(SentCommand(gui.terminal.input_pos, s_exit + "Uninject", "Trying to uninject. Please wait and do not forcefully exit."));
+                gui.terminal.sent_commands.push_back(SentCommand(gui.terminal.input_pos, s_exit + "UNINJECT", "Trying to uninject. Please wait and do not forcefully exit."));
                 while (true) {
                     if (has_finnished) {
                         gui.terminal.clean();
