@@ -67,10 +67,13 @@ void main_thread_f(HMODULE instance) {
     ModuleManager::init_modules();
     CommandManager::init_commands();
 
+    std::atomic<bool> should_exit{ false };
+    std::atomic<bool> has_finnished { false };
+
     whiteout->window.setActive(false); // This disables drawing in the current thread!
-    std::thread draw_thread([&gui]() {
+    std::thread draw_thread([&gui, &should_exit, &has_finnished]() {
         whiteout->window.setActive();
-        while (whiteout->window.isOpen()) {
+        while (!should_exit) {
             Key key;
             while (whiteout->poll_keypresses(key, true)) {
                 gui.on_key_event(key);
@@ -82,9 +85,11 @@ void main_thread_f(HMODULE instance) {
             gui.draw_base(); // This has to draw last.
             whiteout->window.display();
         }
+        has_finnished = true;
     });
     draw_thread.detach();
 
+    std::string s_exit;
     while (whiteout->window.isOpen()) {
         sf::Event event;
         while (whiteout->window.pollEvent(event)) {
@@ -92,9 +97,17 @@ void main_thread_f(HMODULE instance) {
             default:
                 break;
             case sf::Event::Closed:
-                gui.terminal.clean();
-                gui.csb.current = mdl::MODULE_CATEGORY::UNDECLARED;
-                whiteout->window.close();
+                should_exit = true;
+                s_exit = SentCommand::get_pre_string(*whiteout);
+                gui.terminal.sent_commands.push_back(SentCommand(gui.terminal.input_pos, s_exit + "Uninject", "Trying to uninject. Please wait and do not forcefully exit."));
+                while (true) {
+                    if (has_finnished) {
+                        gui.terminal.clean();
+                        gui.csb.current = mdl::MODULE_CATEGORY::UNDECLARED;
+                        whiteout->window.close();
+                        break;
+                    }
+                }
                 break;
             case sf::Event::Resized: // This prevents sprites from scaling with the window.
                 whiteout->view = sf::View(sf::FloatRect(0, 0, event.size.width, event.size.height));

@@ -27,7 +27,7 @@ void Terminal::on_key_press(const Key key) {
 		} else {
 			if (key.keycode == 13) { // Enter.
 				if (current_in.empty()) return;
-				std::string s(whiteout.name); s += "@"; s += Clock<std::chrono::seconds>::get_time(); s += ">";	s += current_in;
+				std::string s(SentCommand::get_pre_string(whiteout)); s += current_in;
 				
 				std::string response{ "Error" };
 				unsigned short sp = current_in.find_first_of(" ");
