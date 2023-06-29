@@ -56,19 +56,19 @@ void Terminal::on_key_press(const Key key) {
 						std::string sub = current_in.substr(sp + 1, current_in.size() - 1);
 						if (sub == "RESET") {
 							whiteout.window.setSize(sf::Vector2u(1000, 600));
-							clean();
-							goto end2;
+							sent_commands.push_back(SentCommand(input_pos, s, "Successfully reset window scale."));
+							goto end;
 						}
 						float f = std::stof(sub);
 						whiteout.window.setSize(sf::Vector2u(f * whiteout.window.getSize().x, f * whiteout.window.getSize().y));
-						clean();
-						goto end2;
+						sent_commands.push_back(SentCommand(input_pos, s, "Successfully scaled window."));
+						goto end;
 					} catch (const std::invalid_argument e) {
 						sent_commands.push_back(SentCommand(input_pos, s, "Invalid Argument"));
-						goto end2;
+						goto end;
 					} catch (const std::out_of_range e) {
 						sent_commands.push_back(SentCommand(input_pos, s, "Argument out of range!"));
-						goto end2;
+						goto end;
 					}
 				}
 
