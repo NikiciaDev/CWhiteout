@@ -20,14 +20,14 @@ namespace random {
 
 	template<class T>
 	T fltp(const T min, const T max) {
-		static std::uniform_real_distribution<T> dis(min, max);
+		std::uniform_real_distribution<T> dis(min, max);
 		return dis(base_engine);
 	}
 
 	template<class T>
 	T fltp(const T min, const T max, long long seed) {
-		static std::default_random_engine engine(seed);
-		static std::uniform_real_distribution<T> dist(min, max);
+		std::default_random_engine engine(seed);
+		std::uniform_real_distribution<T> dist(min, max);
 		return dist(engine);
 	}
 }
