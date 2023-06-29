@@ -92,6 +92,15 @@
     <ClCompile Include="CommandManager.cpp">
       <Filter>source\classes\whiteout\gui\impl\terminal\command</Filter>
     </ClCompile>
+    <ClCompile Include="CMDCommand.cpp">
+      <Filter>source\classes\whiteout\gui\impl\terminal\command\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="ConfigCommand.cpp">
+      <Filter>source\classes\whiteout\gui\impl\terminal\command\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomCommand.cpp">
+      <Filter>source\classes\whiteout\gui\impl\terminal\command\impl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
@@ -331,6 +340,12 @@
       <Filter>headers\classes\whiteout\gui\impl\terminal\command</Filter>
     </ClInclude>
     <ClInclude Include="ConfigCommand.h">
+      <Filter>headers\classes\whiteout\gui\impl\terminal\command\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="CMDCommand.h">
+      <Filter>headers\classes\whiteout\gui\impl\terminal\command\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomCommand.h">
       <Filter>headers\classes\whiteout\gui\impl\terminal\command\impl</Filter>
     </ClInclude>
   </ItemGroup>
