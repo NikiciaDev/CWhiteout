@@ -5,9 +5,9 @@
 namespace font {
 	extern sf::Font meb, mb, mm, mr;
 
-	sf::Text text(const std::string string, const sf::Vector2f position, const sf::Font& font = font::mm, const unsigned short size = 16, const sf::Uint32 style = sf::Text::Regular, const sf::Color color = Whiteout::text_color, const float letter_spacing = 1);
+	sf::Text text(const std::string string, const sf::Vector2f position, const sf::Vector2f scale = sf::Vector2f(1, 1), const sf::Font& font = font::mm, const unsigned short size = 16, const sf::Uint32 style = sf::Text::Regular, const sf::Color color = Whiteout::text_color, const float letter_spacing = 1);
 
-	void render(sf::RenderWindow& window, const std::string string, const sf::Vector2f position, const sf::Font& font = font::mm, const unsigned short size = 16, const sf::Uint32 style = sf::Text::Regular, const sf::Color color = Whiteout::text_color);
+	void render(sf::RenderWindow& window, const std::string string, const sf::Vector2f position, const sf::Vector2f scale = sf::Vector2f(1, 1), const sf::Font& font = font::mm, const unsigned short size = 16, const sf::Uint32 style = sf::Text::Regular, const sf::Color color = Whiteout::text_color);
 
 	void render(sf::RenderWindow& window, const sf::Text& text);
 

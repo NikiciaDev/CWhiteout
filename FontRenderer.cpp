@@ -1,7 +1,7 @@
 #include "FontRenderer.h"
 
 namespace font {
-	sf::Text text(const std::string string, const sf::Vector2f position, const sf::Font& font, const unsigned short size, const sf::Uint32 style, const sf::Color color, const float letter_spacing) {
+	sf::Text text(const std::string string, const sf::Vector2f position, const sf::Vector2f scale, const sf::Font& font, const unsigned short size, const sf::Uint32 style, const sf::Color color, const float letter_spacing) {
 		sf::Text text;
 		text.setFont(font);
 		text.setPosition(position);
@@ -10,11 +10,12 @@ namespace font {
 		text.setStyle(style);
 		text.setFillColor(color);
 		text.setLetterSpacing(letter_spacing);
+		text.setScale(scale);
 		return text;
 	}
 
-	void render(sf::RenderWindow& window, const std::string string, const sf::Vector2f position, const sf::Font& font, const unsigned short size, const sf::Uint32 style, const sf::Color color) {
-		window.draw(font::text(string, position, font, size, style, color));
+	void render(sf::RenderWindow& window, const std::string string, const sf::Vector2f position, const sf::Vector2f scale, const sf::Font& font, const unsigned short size, const sf::Uint32 style, const sf::Color color) {
+		window.draw(font::text(string, position, scale, font, size, style, color));
 	}
 
 	void render(sf::RenderWindow& window, const sf::Text& text) {
