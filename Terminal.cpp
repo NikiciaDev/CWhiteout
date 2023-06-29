@@ -51,6 +51,25 @@ void Terminal::on_key_press(const Key key) {
 						}
 					}
 					goto end;
+				} else if (current_in.substr(0, 5) == "SCALE") {
+					try {
+						std::string sub = current_in.substr(sp + 1, current_in.size() - 1);
+						if (sub == "RESET") {
+							whiteout.window.setSize(sf::Vector2u(1000, 600));
+							clean();
+							goto end2;
+						}
+						float f = std::stof(sub);
+						whiteout.window.setSize(sf::Vector2u(f * whiteout.window.getSize().x, f * whiteout.window.getSize().y));
+						clean();
+						goto end2;
+					} catch (const std::invalid_argument e) {
+						sent_commands.push_back(SentCommand(input_pos, s, "Invalid Argument"));
+						goto end2;
+					} catch (const std::out_of_range e) {
+						sent_commands.push_back(SentCommand(input_pos, s, "Argument out of range!"));
+						goto end2;
+					}
 				}
 
 				if (CommandManager::commands.find(current_in) != CommandManager::commands.end()) {
