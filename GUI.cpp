@@ -42,11 +42,7 @@ void GUI::draw_modules() {
 			render::rect_outline_cutout(whiteout->window, sf::Vector2f(x, y), sf::Vector2f((window_size.x / 2) - 0.5f - 60 - 15, height), Whiteout::text_color, 15, font::width(name_t, true));
 			font::render(whiteout->window, name_t);
 
-			if (s % 2 == 0) {
-				c1_pos_y += 150;
-			} else {
-				c2_pos_y += 150;
-			}
+			y += height;
 		}
 
 	}
