@@ -23,5 +23,7 @@ namespace ModuleManager {
 	// Deletes the module pointers in the modules map.
 	void unload_modules();
 
+	std::vector<Module*> module_vec_by_cat(mdl::MODULE_CATEGORY category);
+
 	std::string get_category_name_string(const mdl::MODULE_CATEGORY category);
 };

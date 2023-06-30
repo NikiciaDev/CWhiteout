@@ -28,12 +28,9 @@ void GUI::draw_modules() {
 		sf::Vector2f scale(window_size.x / 1000.f, window_size.y / 600.f);
 		render::rect(whiteout->window, sf::Vector2f((window_size.x / 2) - 0.5f, -9999), sf::Vector2f(1, 9999 * 2), Module::mdcc[csb.current]);
 
-		switch (csb.current) {
-		case mdl::MODULE_CATEGORY::COMBAT:
-			sf::Text i = font::text("Hello", sf::Vector2f(100, 100), scale);
-			whiteout->window.draw(i);
-			break;
+		for (Module* m : ModuleManager::module_vec_by_cat(csb.current)) {
 		}
+
 	}
 }
 
