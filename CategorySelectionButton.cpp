@@ -9,7 +9,7 @@ sf::Text CategorySelectionButton::get_draw_text() {
 	const float width = font::width(Module::mdcn[current], font::mb, 20, false, sf::Text::Bold, 5);
 	const float height = font::height(Module::mdcn[current], font::mb, 20, true, sf::Text::Bold);
 	this->pos = sf::FloatRect(whiteout->window.getSize().x - 30 - 5 - width, 15 - height / 2, width, height);
-	return font::text(Module::mdcn[current], whiteout->window.mapPixelToCoords(sf::Vector2i(pos.getPosition().x, pos.getPosition().y)), sf::Vector2f(1, 1), font::mb, 20, sf::Text::Bold, Module::mdcc[current], 5);
+	return font::text(Module::mdcn[current], whiteout->window.mapPixelToCoords(sf::Vector2i(pos.getPosition().x, pos.getPosition().y)), font::mb, 20, sf::Text::Bold, Module::mdcc[current], 5);
 }
 
 void CategorySelectionButton::draw() {

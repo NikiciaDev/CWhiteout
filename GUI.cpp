@@ -12,7 +12,7 @@ void GUI::draw_base() {
 	render::rect_outline(whiteout->window, whiteout->window.mapPixelToCoords(sf::Vector2i(30, 30)), sf::Vector2f(window_size.x - 60, window_size.y - 60), Whiteout::bg_color, 50);
 
 	sf::Vector2f pos_csb(whiteout->window.getSize().x - 30 - 5 - font::width(csb_text), 15 - font::height(Module::mdcn[csb.current], font::mb, 24, true, sf::Text::Bold) / 2);
-	sf::Text whiteout_t = font::text(whiteout->name, whiteout->window.mapPixelToCoords(sf::Vector2i(35, 15 - font::height(whiteout->name, font::meb, 24, true, sf::Text::Bold) / 2)), sf::Vector2f(1, 1), font::meb, 24, sf::Text::Bold, Whiteout::base_color, 5);
+	sf::Text whiteout_t = font::text(whiteout->name, whiteout->window.mapPixelToCoords(sf::Vector2i(35, 15 - font::height(whiteout->name, font::meb, 24, true, sf::Text::Bold) / 2)), font::meb, 24, sf::Text::Bold, Whiteout::base_color, 5);
 	render::rect_outline_dcutout(whiteout->window, whiteout->window.mapPixelToCoords(sf::Vector2i(15, 15)), sf::Vector2f(window_size.x - 30, window_size.y - 30), Whiteout::text_color, 15, font::width(whiteout_t) + 10,
 		pos_csb.x - 15 - 5, font::width(csb_text) + 10);
 
@@ -26,7 +26,6 @@ void GUI::draw_modules() {
 	} else {
 		sf::Vector2u window_size = whiteout->window.getSize();
 		sf::Vector2f scale(window_size.x / 1000.f, window_size.y / 600.f);
-		sf::Vector2f scale_t(1, 1);
 		render::rect(whiteout->window, sf::Vector2f((window_size.x / 2) - 0.5f, -9999), sf::Vector2f(1, 9999 * 2), Whiteout::text_color);
 
 		float c1_pos_y{ 45 }, c2_pos_y{ 45 };
@@ -38,7 +37,7 @@ void GUI::draw_modules() {
 
 
 
-			sf::Text name_t = font::text(m->name, sf::Vector2f(x + 15, y - font::height(m->name, font::mm, 18) * 0.65f), scale_t, font::mm, 18, sf::Text::Regular, Module::mdcc[csb.current]);
+			sf::Text name_t = font::text(m->name, sf::Vector2f(x + 15, y - font::height(m->name, font::mm, 18) * 0.65f), font::mm, 18, sf::Text::Regular, Module::mdcc[csb.current]);
 			render::rect_outline_cutout(whiteout->window, sf::Vector2f(x, y), sf::Vector2f((window_size.x / 2) - 0.5f - 60 - 15, height), Whiteout::text_color, 15, font::width(name_t, true));
 			font::render(whiteout->window, name_t);
 

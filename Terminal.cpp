@@ -4,8 +4,8 @@ Terminal::Terminal(Whiteout& whiteout, CategorySelectionButton& csb) : whiteout(
 
 void Terminal::draw() {
 	for (SentCommand& c : sent_commands) {
-		font::render(whiteout.window, c.prompt, c.input_pos, sf::Vector2f(1, 1), font::mm);
-		font::render(whiteout.window, c.response, sf::Vector2f(c.input_pos.x, c.input_pos.y + font::height() + 5), sf::Vector2f(1, 1), font::mm);
+		font::render(whiteout.window, c.prompt, c.input_pos, font::mm);
+		font::render(whiteout.window, c.response, sf::Vector2f(c.input_pos.x, c.input_pos.y + font::height() + 5), font::mm);
 	}
 
 	std::string s(whiteout.name); s += "@"; s += Clock<std::chrono::seconds>::get_time(); s += ">";	s += current_in;
@@ -15,7 +15,7 @@ void Terminal::draw() {
 		clock.reset();
 	}
 	if (display_a_c) s += "|";
-	font::render(whiteout.window, s, input_pos, sf::Vector2f(1, 1), font::mm, 16, sf::Text::Italic);
+	font::render(whiteout.window, s, input_pos, font::mm, 16, sf::Text::Italic);
 }
 
 void Terminal::on_key_press(const Key key) {
