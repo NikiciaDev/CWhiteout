@@ -104,6 +104,9 @@
     <ClCompile Include="Random.cpp">
       <Filter>source\util\other</Filter>
     </ClCompile>
+    <ClCompile Include="NumberSetting.cpp">
+      <Filter>source\classes\whiteout\setting\impl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
