@@ -1,14 +1,13 @@
 #pragma once
 #include <random>
 
+// Can only be used in one thread.
 class Random {
 public:
-	std::random_device rndm;
-	std::mt19937 base_engine;
+	static std::random_device rndm;
+	static std::mt19937 base_engine;
 
-	Random() {
-		base_engine = std::mt19937(rndm());
-	}
+	Random() { }
 
 	template<class T>
 	T intg(const T min, const T max) {

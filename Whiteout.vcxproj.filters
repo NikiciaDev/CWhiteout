@@ -101,6 +101,9 @@
     <ClCompile Include="ShellCommand.cpp">
       <Filter>source\classes\whiteout\gui\impl\terminal\command\impl</Filter>
     </ClCompile>
+    <ClCompile Include="Random.cpp">
+      <Filter>source\util\other</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
