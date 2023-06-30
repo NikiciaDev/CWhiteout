@@ -22,7 +22,7 @@ namespace font {
 		window.draw(text);
 	}
 
-	float height(const std::string string, const sf::Font& font, const unsigned short font_size, const bool smart,  const sf::Uint32 style) {
+	float height(const std::string string, const sf::Font& font, const unsigned short font_size, const bool smart, const sf::Uint32 style) {
 		sf::Text text;
 		text.setString(string);
 		text.setFont(font);
