@@ -203,7 +203,7 @@
     <ClInclude Include="ModuleManager.h" />
     <ClInclude Include="NumberSetting.h" />
     <ClInclude Include="RandomCommand.h" />
-    <ClInclude Include="RandomUtil.h" />
+    <ClInclude Include="Random.h" />
     <ClInclude Include="RenderUtil.h" />
     <ClInclude Include="ScreenUtil.h" />
     <ClInclude Include="SentCommand.h" />

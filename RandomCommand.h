@@ -1,8 +1,11 @@
 #pragma once
 #include "Command.h"
-#include "RandomUtil.h"
+#include "Random.h"
 
 class RandomCommand final : public Command {
+private:
+	Random rndm;
+
 public:
 	RandomCommand(const std::string name);
 

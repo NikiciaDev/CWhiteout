@@ -285,7 +285,7 @@
     <ClInclude Include="SettingBase.h">
       <Filter>headers\classes\whiteout\setting</Filter>
     </ClInclude>
-    <ClInclude Include="RandomUtil.h">
+    <ClInclude Include="Random.h">
       <Filter>headers\util\other</Filter>
     </ClInclude>
     <ClInclude Include="AutoClicker.h">

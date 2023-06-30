@@ -5,11 +5,15 @@
 #include "Module.h"
 #include "NumberSetting.h"
 #include "BooleanSetting.h"
-#include "RandomUtil.h"
+#include "Random.h"
 #include "ConsoleUtil.h"
 #include "Clock.h"
 
 class AutoClicker final : public Module {
+private:
+	Random rndm;
+	RandomVar<short> delay;
+
 public:
 	const NumberSetting<short> left_cps = NumberSetting<short>("Left-Click CPS", this, 0, 25, 15, 0, [] { return true; });
 	const NumberSetting<short> right_cps = NumberSetting<short>("Right-Click CPS", this, 0, 25, 15, 0, [] { return true; });
