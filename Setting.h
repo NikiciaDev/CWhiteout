@@ -2,8 +2,7 @@
 #include <any>
 #include <functional>
 #include <string>
-
-class Module;
+#include "Module.h"
 
 namespace setting {
 	enum Type;
@@ -15,13 +14,13 @@ protected:
 
 public:
 	const std::string name;
-	const Module* parent;
 	const std::function<bool(void)> dependency;
 	const setting::Type type;
+	Module* parent;
 
 	virtual ~Setting();
 
-	Setting(const std::string name, const Module* parent, const std::any default_value, const setting::Type type, const std::function<bool(void)> dependency);
+	Setting(const std::string name, Module* parent, const std::any default_value, const setting::Type type, const std::function<bool(void)> dependency);
 
 	void sv(std::any value);
 	 

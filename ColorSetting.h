@@ -4,7 +4,7 @@
 
 class ColorSetting final : public Setting {
 public:
-	ColorSetting(const std::string name, const Module* parent, sf::Color default_value, const std::function<bool(void)> dependency);
+	ColorSetting(const std::string name, Module* parent, const sf::Color default_value, const std::function<bool(void)> dependency);
 
 	~ColorSetting();
 };
