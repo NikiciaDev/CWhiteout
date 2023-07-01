@@ -35,8 +35,37 @@ void GUI::draw_modules() {
 			float& y = s % 2 == 0 ? c1_pos_y : c2_pos_y;
 			float height{ 100 }; // Change to 0 after module setting drawing has been implemented!
 
-			for (Setting* s : m->settings) {
+			BooleanSetting* bs;
+			ColorSetting* cs;
+			ModeSetting* ms;
+			NumberSetting* ns;
+			StringSetting* ss;
 
+			for (Setting* s : m->settings) {
+				switch (s->type) {
+				case setting::Type::BOOLEAN:
+					bs = static_cast<BooleanSetting*>(s);
+
+					break;
+				case setting::Type::COLOR:
+					cs = static_cast<ColorSetting*>(s);
+
+					break;
+				case setting::Type::MODE:
+					ms = static_cast<ModeSetting*>(s);
+
+					break;
+				case setting::Type::NUMBER:
+					ns = static_cast<NumberSetting*>(s);
+
+					break;
+				case setting::Type::STRING:
+					ss = static_cast<StringSetting*>(s);
+
+					break;
+				default:
+					break;
+				}
 			}
 
 			sf::Text name_t = font::text(m->name, sf::Vector2f(x + 15, y - font::height(m->name, font::mm, 18) * 0.65f), font::mm, 18, sf::Text::Regular, Module::mdcc[csb.current]);
