@@ -4,14 +4,15 @@
 
 class DrawableSetting {
 protected:
-	sf::Vector2f pos;
+	const sf::Vector2f pos;
 
 	DrawableSetting(const sf::Vector2f pos);
 
 public:
 	virtual ~DrawableSetting();
 
-	virtual void draw();
+	// Returns the occupied height by the drawing.
+	virtual float draw();
 
 	// Returns true if the key was handled otherwise 0.
 	virtual bool on_event(const Key key);

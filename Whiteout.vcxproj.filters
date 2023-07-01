@@ -107,6 +107,9 @@
     <ClCompile Include="DrawableSetting.cpp">
       <Filter>source\classes\whiteout\gui\impl\setting</Filter>
     </ClCompile>
+    <ClCompile Include="DrawableBool.cpp">
+      <Filter>source\classes\whiteout\gui\impl\setting\impl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
@@ -244,6 +247,12 @@
     <Filter Include="source\classes\whiteout\gui\impl\setting">
       <UniqueIdentifier>{7df5f4b2-3916-43c0-ac9d-9386bb090175}</UniqueIdentifier>
     </Filter>
+    <Filter Include="headers\classes\whiteout\gui\impl\setting\impl">
+      <UniqueIdentifier>{f7b385d0-2d62-44f6-ab78-c92b8856f857}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\classes\whiteout\gui\impl\setting\impl">
+      <UniqueIdentifier>{d99dc4ab-595d-4e56-abf9-f97891c6a566}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Variables.h">
@@ -356,6 +365,9 @@
     </ClInclude>
     <ClInclude Include="DrawableSetting.h">
       <Filter>headers\classes\whiteout\gui\impl\setting</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawableBool.h">
+      <Filter>headers\classes\whiteout\gui\impl\setting\impl</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
