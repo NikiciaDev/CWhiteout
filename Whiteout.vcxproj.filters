@@ -23,9 +23,6 @@
     <ClCompile Include="DownloadUtil.cpp">
       <Filter>source\util\other</Filter>
     </ClCompile>
-    <ClCompile Include="ScreenUtil.cpp">
-      <Filter>source\util\sfml</Filter>
-    </ClCompile>
     <ClCompile Include="Whiteout.cpp">
       <Filter>source\classes\whiteout</Filter>
     </ClCompile>
@@ -269,9 +266,6 @@
     </ClInclude>
     <ClInclude Include="DownloadUtil.h">
       <Filter>headers\util\other</Filter>
-    </ClInclude>
-    <ClInclude Include="ScreenUtil.h">
-      <Filter>headers\util\sfml</Filter>
     </ClInclude>
     <ClInclude Include="Whiteout.h">
       <Filter>headers\classes\whiteout</Filter>

@@ -14,7 +14,6 @@
 #include "ConsoleUtil.h"
 #include "DownloadUtil.h"
 #include "Whiteout.h"
-#include "ScreenUtil.h"
 #include "ModuleManager.h"
 #include "LLInputUtil.h"
 #include "FontRenderer.h"
