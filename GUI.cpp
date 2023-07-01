@@ -33,7 +33,8 @@ void GUI::draw_modules() {
 		for (Module* m : ModuleManager::module_vec_by_cat(csb.current)) {
 			float x = s % 2 == 0 ? 45 : (window_size.x / 2) - 0.5f + 30;
 			float& y = s % 2 == 0 ? c1_pos_y : c2_pos_y;
-			float height{ 100 }; // Change to 0 after module setting drawing has been implemented!
+			float height{ 10 }; // Change to 0 after module setting drawing has been implemented!
+			sf::Vector2f outline_r_w((window_size.x / 2) - 0.5f - 60 - 30, height);
 
 			BooleanSetting* bs;
 			ColorSetting* cs;
@@ -42,9 +43,12 @@ void GUI::draw_modules() {
 			StringSetting* ss;
 
 			for (Setting* s : m->settings) {
+				if (!s->dependency()) continue;
+
 				switch (s->type) {
 				case setting::Type::BOOLEAN:
 					bs = static_cast<BooleanSetting*>(s);
+					if (bs->gv<bool>()) render::rect(whiteout->window, sf::Vector2f(x + 15, y + height + 2.5f), sf::Vector2f(outline_r_w.x - 30, font::height()), Module::mdcc[csb.current]);
 
 					break;
 				case setting::Type::COLOR:
@@ -66,10 +70,16 @@ void GUI::draw_modules() {
 				default:
 					break;
 				}
-			}
 
-			sf::Text name_t = font::text(m->name, sf::Vector2f(x + 15, y - font::height(m->name, font::mm, 18) * 0.65f), font::mm, 18, sf::Text::Regular, Module::mdcc[csb.current]);
-			render::rect_outline_cutout(whiteout->window, sf::Vector2f(x, y), sf::Vector2f((window_size.x / 2) - 0.5f - 60 - 15, height), Whiteout::text_color, 15, font::width(name_t, true));
+				sf::Text sn = font::text(s->name, sf::Vector2f(x + 15, y + height));
+				font::render(whiteout->window, sn);
+				height += font::height(sn, true) + 5;
+			}
+			height += 5;
+			
+			outline_r_w.y = height;
+			sf::Text name_t = font::text(m->name, sf::Vector2f(x + 30, y - font::height(m->name, font::mm, 22) * 0.65f), font::mm, 22, sf::Text::Regular, Module::mdcc[csb.current]);
+			render::rect_outline_cutout(whiteout->window, sf::Vector2f(x, y), outline_r_w, Whiteout::text_color, 30, font::width(name_t, true));
 			font::render(whiteout->window, name_t);
 
 			y += height;

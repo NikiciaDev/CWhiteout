@@ -147,6 +147,7 @@
     <ClCompile Include="BooleanSetting.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CategorySelectionButton.cpp" />
+    <ClCompile Include="DrawableSetting.cpp" />
     <ClCompile Include="NumberSetting.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="Setting.cpp" />
@@ -185,6 +186,7 @@
     <ClInclude Include="BooleanSetting.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="CategorySelectionButton.h" />
+    <ClInclude Include="DrawableSetting.h" />
     <ClInclude Include="ShellCommand.h" />
     <ClInclude Include="ColorSetting.h" />
     <ClInclude Include="Command.h" />
