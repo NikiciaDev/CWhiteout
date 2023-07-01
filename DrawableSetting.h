@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "Key.h"
 
 class DrawableSetting {
 protected:
@@ -12,5 +13,6 @@ public:
 
 	virtual void draw();
 
-	virtual void on_event();
+	// Returns true if the key was handled otherwise 0.
+	virtual bool on_event(const Key key);
 };

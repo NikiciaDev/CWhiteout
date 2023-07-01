@@ -6,4 +6,4 @@ DrawableSetting::~DrawableSetting() {}
 
 void DrawableSetting::draw() { }
 
-void DrawableSetting::on_event() { }
+bool DrawableSetting::on_event(const Key key) { return false; }
