@@ -149,6 +149,7 @@
     <ClCompile Include="CategorySelectionButton.cpp" />
     <ClCompile Include="NumberSetting.cpp" />
     <ClCompile Include="Random.cpp" />
+    <ClCompile Include="Setting.cpp" />
     <ClCompile Include="ShellCommand.cpp" />
     <ClCompile Include="ColorSetting.cpp" />
     <ClCompile Include="Command.cpp" />

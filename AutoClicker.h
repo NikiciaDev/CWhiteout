@@ -19,8 +19,8 @@ public:
 	NumberSetting right_cps = NumberSetting("Right-Click CPS", this, 0, 25, 15, 0, [] { return true; });
 	NumberSetting random_left = NumberSetting("Left CPS Random", this, 0, 10, 2, 0, [] { return true; });
 	NumberSetting random_right = NumberSetting("Right CPS Random", this, 0, 10, 2, 0, [] { return true; });
-	const BooleanSetting change_rcd_delay = BooleanSetting("Change RCD Ddelay", this, false, [] { return true; });
-	NumberSetting rcd_delay = NumberSetting("RCD Delay", this, 0, 4, 4, 1, [&] { return change_rcd_delay.value; });
+	BooleanSetting change_rcd_delay = BooleanSetting("Change RCD Ddelay", this, false, [] { return true; });
+	NumberSetting rcd_delay = NumberSetting("RCD Delay", this, 0, 4, 4, 1, [&] { return change_rcd_delay.gv<bool>(); });
 	Clock<std::chrono::milliseconds> clock;
 
 	AutoClicker(const std::string name, const mdl::MODULE_CATEGORY category);

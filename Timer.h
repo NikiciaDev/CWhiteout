@@ -6,8 +6,8 @@
 class Timer final : public Module {
 public:
 	NumberSetting speed = NumberSetting("Timer Speed", this, 0.1f, 10, 2, 0.025, [] { return true; });
-	const BooleanSetting tick = BooleanSetting("Tick", this, false, [] { return true; });
-	NumberSetting tick_modulo = NumberSetting("Tick Modulo", this, 2, 10, 2, 1, [&] { return tick.value; });
+	BooleanSetting tick = BooleanSetting("Tick", this, false, [] { return true; });
+	NumberSetting tick_modulo = NumberSetting("Tick Modulo", this, 2, 10, 2, 1, [&] { return tick.gv<bool>(); });
 
 	Timer(const std::string name, const mdl::MODULE_CATEGORY category);
 

@@ -1,16 +1,18 @@
 #pragma once
+#include <any>
 #include "SettingBase.h"
 
-template<class T>
 class Setting : public SettingBase {
+protected:
+	std::any value;
+
 public:
-	T value;
+	Setting(const std::string name, const Module* parent, const stg::SETTING_TYPE type, const std::any default_value, const std::function<bool(void)> dependency);
 
-	/*****************************************************IMPLEMENTATION*****************************************************/
-	// This has to be done this way because of the way C++ handels template classes.
-	// Template class constructos should not be inlined.
+	void sv(std::any value);
 
-	Setting(const std::string name, const Module* parent, const stg::SETTING_TYPE type, T default_value, const std::function<bool(void)> dependency) :
-		SettingBase(name, parent, type, dependency), value(default_value) {
+	template<class T>
+	T gv() {
+		return std::any_cast<T>(value);
 	}
 };

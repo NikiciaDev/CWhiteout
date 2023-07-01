@@ -107,6 +107,9 @@
     <ClCompile Include="NumberSetting.cpp">
       <Filter>source\classes\whiteout\setting\impl</Filter>
     </ClCompile>
+    <ClCompile Include="Setting.cpp">
+      <Filter>source\classes\whiteout\setting</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">

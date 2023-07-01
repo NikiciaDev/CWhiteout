@@ -1,7 +1,7 @@
 #pragma once
 #include "Setting.h"
 
-class ModeSetting final : public Setting<std::string> {
+class ModeSetting final : public Setting {
 public:
 	const std::vector<std::string> options;
 
