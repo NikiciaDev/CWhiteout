@@ -7,7 +7,7 @@
 #include "ConsoleUtil.h"
 #include "Whiteout.h"
 
-class SettingBase; // Avoid circular dependency.
+class Setting; // Avoid circular dependency.
 namespace mdl {
 	enum MODULE_CATEGORY;
 }
@@ -24,7 +24,7 @@ public:
 	const mdl::MODULE_CATEGORY category;
 	unsigned long long keybind{ NULL };
 	std::string keybind_s_rep{ "" };
-	std::vector<SettingBase*> settings; // These pointers should be allocated on the stack to prevent memory leaks.
+	std::vector<Setting*> settings; // These pointers should be allocated on the stack to prevent memory leaks.
 
 	Module(const std::string name, const mdl::MODULE_CATEGORY category, const unsigned long long default_keybind);
 
