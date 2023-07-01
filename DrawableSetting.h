@@ -5,7 +5,7 @@ class DrawableSetting {
 protected:
 	sf::Vector2f pos;
 
-	DrawableSetting();
+	DrawableSetting(const sf::Vector2f pos);
 
 public:
 	virtual ~DrawableSetting();
