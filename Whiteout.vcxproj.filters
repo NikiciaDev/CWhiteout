@@ -44,9 +44,6 @@
     <ClCompile Include="StringSetting.cpp">
       <Filter>source\classes\whiteout\setting\impl</Filter>
     </ClCompile>
-    <ClCompile Include="SettingBase.cpp">
-      <Filter>source\classes\whiteout\setting</Filter>
-    </ClCompile>
     <ClCompile Include="AutoClicker.cpp">
       <Filter>source\classes\whiteout\module\impl\combat</Filter>
     </ClCompile>
@@ -290,9 +287,6 @@
     </ClInclude>
     <ClInclude Include="ColorSetting.h">
       <Filter>headers\classes\whiteout\setting\impl</Filter>
-    </ClInclude>
-    <ClInclude Include="SettingBase.h">
-      <Filter>headers\classes\whiteout\setting</Filter>
     </ClInclude>
     <ClInclude Include="Random.h">
       <Filter>headers\util\other</Filter>

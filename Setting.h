@@ -1,13 +1,22 @@
 #pragma once
 #include <any>
-#include "SettingBase.h"
+#include <functional>
+#include <string>
 
-class Setting : public SettingBase {
+class Module;
+
+class Setting {
 protected:
 	std::any value;
 
 public:
-	Setting(const std::string name, const Module* parent, const stg::SETTING_TYPE type, const std::any default_value, const std::function<bool(void)> dependency);
+	const std::string name;
+	const Module* parent;
+	const std::function<bool(void)> dependency;
+
+	virtual ~Setting();
+
+	Setting(const std::string name, const Module* parent, const std::any default_value, const std::function<bool(void)> dependency);
 
 	void sv(std::any value);
 

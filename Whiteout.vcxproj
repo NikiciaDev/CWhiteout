@@ -173,7 +173,6 @@
     <ClCompile Include="RenderUtil.cpp" />
     <ClCompile Include="ScreenUtil.cpp" />
     <ClCompile Include="SentCommand.cpp" />
-    <ClCompile Include="SettingBase.cpp" />
     <ClCompile Include="StringSetting.cpp" />
     <ClCompile Include="Terminal.cpp" />
     <ClCompile Include="Timer.cpp" />
@@ -211,7 +210,6 @@
     <ClInclude Include="ScreenUtil.h" />
     <ClInclude Include="SentCommand.h" />
     <ClInclude Include="Setting.h" />
-    <ClInclude Include="SettingBase.h" />
     <ClInclude Include="StringSetting.h" />
     <ClInclude Include="Clock.h" />
     <ClInclude Include="Terminal.h" />
