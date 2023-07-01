@@ -35,7 +35,9 @@ void GUI::draw_modules() {
 			float& y = s % 2 == 0 ? c1_pos_y : c2_pos_y;
 			float height{ 100 }; // Change to 0 after module setting drawing has been implemented!
 
+			for (Setting* s : m->settings) {
 
+			}
 
 			sf::Text name_t = font::text(m->name, sf::Vector2f(x + 15, y - font::height(m->name, font::mm, 18) * 0.65f), font::mm, 18, sf::Text::Regular, Module::mdcc[csb.current]);
 			render::rect_outline_cutout(whiteout->window, sf::Vector2f(x, y), sf::Vector2f((window_size.x / 2) - 0.5f - 60 - 15, height), Whiteout::text_color, 15, font::width(name_t, true));
