@@ -13,3 +13,11 @@ void init_variables(const std::string font_path) {
     font::mm.setSmooth(false);
     font::mr.setSmooth(false);
 }
+
+void clean_variables() {
+    font::meb.~Font();
+    font::mb.~Font();
+    font::mm.~Font();
+    font::mr.~Font();
+    delete whiteout;
+}

@@ -28,3 +28,5 @@ JavaVM* jvm_ptr{ nullptr };
 JNIEnv* jenv_ptr{ nullptr };
 
 void init_variables(const std::string font_path);
+
+void clean_variables();

@@ -24,6 +24,7 @@ extern Whiteout* whiteout;
 extern JavaVM* jvm_ptr;
 extern JNIEnv* jenv_ptr;
 extern void init_variables(const std::string font_path);
+extern void clean_variables();
 
 void main_thread_f(HMODULE instance);
 
@@ -137,5 +138,6 @@ void main_thread_f(HMODULE instance) {
     UnhookWindowsHookEx(m_h_hook);
     ModuleManager::unload_modules();
     CommandManager::unload_commands();
+    clean_variables();
     FreeLibrary(instance);
 }
