@@ -2,6 +2,10 @@
 
 Terminal::Terminal(Whiteout& whiteout, CategorySelectionButton& csb) : whiteout(whiteout), csb(csb) { }
 
+Terminal::~Terminal() {
+	clean();
+}
+
 void Terminal::draw() {
 	for (SentCommand& c : sent_commands) {
 		font::render(whiteout.window, c.prompt, c.input_pos, font::mm, 16);

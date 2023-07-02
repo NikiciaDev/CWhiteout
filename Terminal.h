@@ -26,6 +26,8 @@ public:
 
 	Terminal(Whiteout& whiteout, CategorySelectionButton& csb);
 
+	~Terminal();
+
 	void draw();
 
 	void on_key_press(const Key key);
