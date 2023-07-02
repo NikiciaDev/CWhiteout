@@ -1,6 +1,6 @@
 #include "DrawableSetting.h"
 
-DrawableSetting::DrawableSetting(const sf::Vector2f pos) : pos(pos) { }
+DrawableSetting::DrawableSetting(const sf::Vector2f pos, Whiteout& whiteout) : pos(pos), whiteout(whiteout) { }
 
 DrawableSetting::~DrawableSetting() {}
 

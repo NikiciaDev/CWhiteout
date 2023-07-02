@@ -148,7 +148,11 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CategorySelectionButton.cpp" />
     <ClCompile Include="DrawableBool.cpp" />
+    <ClCompile Include="DrawableColor.cpp" />
+    <ClCompile Include="DrawableMode.cpp" />
+    <ClCompile Include="DrawableNumber.cpp" />
     <ClCompile Include="DrawableSetting.cpp" />
+    <ClCompile Include="DrawableString.cpp" />
     <ClCompile Include="NumberSetting.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="Setting.cpp" />
@@ -187,7 +191,11 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="CategorySelectionButton.h" />
     <ClInclude Include="DrawableBool.h" />
+    <ClInclude Include="DrawableColor.h" />
+    <ClInclude Include="DrawableMode.h" />
+    <ClInclude Include="DrawableNumber.h" />
     <ClInclude Include="DrawableSetting.h" />
+    <ClInclude Include="DrawableString.h" />
     <ClInclude Include="ShellCommand.h" />
     <ClInclude Include="ColorSetting.h" />
     <ClInclude Include="Command.h" />

@@ -1,12 +1,14 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Key.h"
+#include "Whiteout.h"
 
 class DrawableSetting {
 protected:
 	const sf::Vector2f pos;
+	Whiteout& whiteout;
 
-	DrawableSetting(const sf::Vector2f pos);
+	DrawableSetting(const sf::Vector2f pos, Whiteout& whiteout);
 
 public:
 	virtual ~DrawableSetting();

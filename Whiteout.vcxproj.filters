@@ -110,6 +110,18 @@
     <ClCompile Include="DrawableBool.cpp">
       <Filter>source\classes\whiteout\gui\impl\setting\impl</Filter>
     </ClCompile>
+    <ClCompile Include="DrawableColor.cpp">
+      <Filter>source\classes\whiteout\gui\impl\setting\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawableMode.cpp">
+      <Filter>source\classes\whiteout\gui\impl\setting\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawableNumber.cpp">
+      <Filter>source\classes\whiteout\gui\impl\setting\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawableString.cpp">
+      <Filter>source\classes\whiteout\gui\impl\setting\impl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
@@ -367,6 +379,18 @@
       <Filter>headers\classes\whiteout\gui\impl\setting</Filter>
     </ClInclude>
     <ClInclude Include="DrawableBool.h">
+      <Filter>headers\classes\whiteout\gui\impl\setting\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawableColor.h">
+      <Filter>headers\classes\whiteout\gui\impl\setting\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawableMode.h">
+      <Filter>headers\classes\whiteout\gui\impl\setting\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawableNumber.h">
+      <Filter>headers\classes\whiteout\gui\impl\setting\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawableString.h">
       <Filter>headers\classes\whiteout\gui\impl\setting\impl</Filter>
     </ClInclude>
   </ItemGroup>

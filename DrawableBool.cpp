@@ -1,6 +1,6 @@
 #include "DrawableBool.h"
 
-DrawableBool::DrawableBool(const sf::Vector2f position, BooleanSetting* setting) : DrawableSetting(position), setting(setting) { }
+DrawableBool::DrawableBool(const sf::Vector2f position, BooleanSetting* setting, Whiteout& whiteout) : DrawableSetting(position, whiteout), setting(setting) { }
 
 float DrawableBool::draw() {
 	return 0;
