@@ -126,13 +126,11 @@ void main_thread_f(HMODULE instance) {
             if (pair.second->is_active) pair.second->on_call(classes);
         });
     }
-    
-    jvm_ptr->DetachCurrentThread();
     std::for_each(classes.begin(), classes.end(), [](const std::pair<const std::string, JavaClass*>& pair) {
         delete pair.second;
     });
-
     classes.clear();
+
     UnhookWindowsHookEx(k_h_hook);
     UnhookWindowsHookEx(m_h_hook);
     ModuleManager::unload_modules();

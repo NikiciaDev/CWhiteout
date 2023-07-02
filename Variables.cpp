@@ -15,6 +15,8 @@ void init_variables(const std::string font_path) {
 }
 
 void clean_variables() {
+    jvm_ptr->DetachCurrentThread();
+
     font::meb.~Font();
     font::mb.~Font();
     font::mm.~Font();
