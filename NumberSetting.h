@@ -14,6 +14,12 @@ public:
 	// DO NOT USE UNLESS YOU ABSOLUTLEY HAVE TO!
 	long double force_value();
 
+	// DO NOT USE UNLESS YOU ABSOLUTLEY HAVE TO!
+	long double force_max();
+
+	// DO NOT USE UNLESS YOU ABSOLUTLEY HAVE TO!
+	long double force_min();
+
 	template<class T>
 	T mn() {
 		return std::any_cast<T>(min);

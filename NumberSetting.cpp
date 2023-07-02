@@ -18,3 +18,31 @@ long double NumberSetting::force_value() {
 
 	return 0;
 }
+
+long double NumberSetting::force_max() {
+	try {
+		return (long double) std::any_cast<int>(max);
+	} catch (std::bad_any_cast ignored) {}
+	try {
+		return (long double) std::any_cast<float>(max);
+	} catch (std::bad_any_cast ignored) {}
+	try {
+		return (long double) std::any_cast<long>(max);
+	} catch (std::bad_any_cast ignored) {}
+
+	return 0;
+}
+
+long double NumberSetting::force_min() {
+	try {
+		return (long double) std::any_cast<int>(min);
+	} catch (std::bad_any_cast ignored) {}
+	try {
+		return (long double) std::any_cast<float>(min);
+	} catch (std::bad_any_cast ignored) {}
+	try {
+		return (long double) std::any_cast<long>(min);
+	} catch (std::bad_any_cast ignored) {}
+
+	return 0;
+}
