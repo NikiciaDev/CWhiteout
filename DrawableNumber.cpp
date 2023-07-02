@@ -4,9 +4,12 @@ DrawableNumber::DrawableNumber(const sf::Vector2f position, const setting::Type 
 
 void DrawableNumber::draw(float& height, sf::Vector2f outline_r_w) {
 	if (!setting->dependency()) return;
+	std::string value_rep;
+
 	font::render(whiteout.window, setting->name, pos);
-	std::string s = std::to_string(setting->force_value());
-	font::render(whiteout.window, s, sf::Vector2f(outline_r_w.x - 20 - font::width(s), pos.y));
+	long double d = setting->force_value();
+	std::floor(d) == (int) d ? value_rep = std::to_string((int) d) : value_rep = std::to_string(d);
+	font::render(whiteout.window, value_rep, sf::Vector2f(pos.x + outline_r_w.x - 20 - 10 - font::width(value_rep), pos.y));
 
 	height += font::height() + 5;
 }
