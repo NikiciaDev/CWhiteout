@@ -8,6 +8,8 @@
 #include "Whiteout.h"
 
 class Setting; // Avoid circular dependency.
+class DrawableSetting;
+
 namespace mdl {
 	enum MODULE_CATEGORY;
 }
@@ -25,8 +27,11 @@ public:
 	unsigned long long keybind{ NULL };
 	std::string keybind_s_rep{ "" };
 	std::vector<Setting*> settings; // These pointers should be allocated on the stack to prevent memory leaks.
+	std::vector<DrawableSetting*> drawables;
 
 	Module(const std::string name, const mdl::MODULE_CATEGORY category, const unsigned long long default_keybind);
+
+	~Module();
 
 	virtual void on_call(std::map<const std::string, JavaClass*>& classes);
 

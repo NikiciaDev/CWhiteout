@@ -6,9 +6,9 @@ class DrawableBool final : public DrawableSetting {
 public:
 	BooleanSetting* setting;
 
-	DrawableBool(const sf::Vector2f position, BooleanSetting* setting, Whiteout& whiteout);
+	DrawableBool(const sf::Vector2f position, const setting::Type type, BooleanSetting* setting, Whiteout& whiteout);
 
-	float draw() override;
+	void draw(float& height, sf::Vector2f outline_r_w) override;
 
 	bool on_event(const Key key) override;
 };

@@ -6,9 +6,9 @@ class DrawableString final : public DrawableSetting {
 public:
 	StringSetting* setting;
 
-	DrawableString(const sf::Vector2f position, StringSetting* setting, Whiteout& whiteout);
+	DrawableString(const sf::Vector2f position, const setting::Type type, StringSetting* setting, Whiteout& whiteout);
 
-	float draw() override;
+	void draw(float& height, sf::Vector2f outline_r_w) override;
 
 	bool on_event(const Key key) override;
 };

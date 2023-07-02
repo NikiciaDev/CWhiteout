@@ -8,6 +8,11 @@
 #include "ColorSetting.h"
 #include "ModeSetting.h"
 #include "StringSetting.h"
+#include "DrawableBool.h"
+#include "DrawableColor.h"
+#include "DrawableMode.h"
+#include "DrawableNumber.h"
+#include "DrawableString.h"
 
 class GUI final {
 private:

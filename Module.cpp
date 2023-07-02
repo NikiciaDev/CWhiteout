@@ -33,3 +33,9 @@ void Module::init_kb_string_represenation(unsigned long long keycode, std::strin
 		string = (char) keycode;
 	}
 }
+
+Module::~Module() {
+	std::for_each(drawables.begin(), drawables.end(), [](DrawableSetting* d) {
+		delete d;
+	});
+}

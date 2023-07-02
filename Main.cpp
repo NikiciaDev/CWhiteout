@@ -62,9 +62,9 @@ void main_thread_f(HMODULE instance) {
 
     HHOOK k_h_hook = SetWindowsHookEx(WH_KEYBOARD_LL, liu::keypress_handler, NULL, 0);
     HHOOK m_h_hook = SetWindowsHookEx(WH_MOUSE_LL, liu::mousepress_handler, NULL, 0);
-    GUI gui(whiteout);
     ModuleManager::init_modules(); // Dont call fill_vectors!
     CommandManager::init_commands();
+    GUI gui(whiteout);
 
     std::atomic<bool> should_exit{ false };
     std::atomic<bool> has_finnished { false };

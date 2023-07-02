@@ -1,9 +1,9 @@
 #include "DrawableSetting.h"
 
-DrawableSetting::DrawableSetting(const sf::Vector2f pos, Whiteout& whiteout) : pos(pos), whiteout(whiteout) { }
+DrawableSetting::DrawableSetting(const sf::Vector2f pos, const setting::Type type, Whiteout& whiteout) : pos(pos), type(type), whiteout(whiteout) {}
 
 DrawableSetting::~DrawableSetting() {}
 
-float DrawableSetting::draw() { return 0; }
+void DrawableSetting::draw(float& height, sf::Vector2f outline_r_w) { }
 
 bool DrawableSetting::on_event(const Key key) { return false; }

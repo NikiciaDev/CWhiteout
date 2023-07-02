@@ -1,6 +1,36 @@
 #include "GUI.h"
 
-GUI::GUI(Whiteout* whiteout) : whiteout(whiteout), csb(*whiteout, sf::FloatRect(0, 0, 0, 0)), terminal(*whiteout, csb) {}
+GUI::GUI(Whiteout* whiteout) : whiteout(whiteout), csb(*whiteout, sf::FloatRect(0, 0, 0, 0)), terminal(*whiteout, csb) {
+	for (unsigned short m = mdl::MODULE_CATEGORY::COMBAT; m < mdl::MODULE_CATEGORY::UNDECLARED; m++) {
+		for (Module* mod : ModuleManager::module_vec_by_cat(static_cast<mdl::MODULE_CATEGORY>(m))) {
+			for (Setting* s : mod->settings) {
+				DrawableSetting* d; // These get cleaned up in the module destrcutor.
+				switch (s->type) {
+				case setting::Type::BOOLEAN:
+					d = new DrawableBool(sf::Vector2f(0, 0), s->type, static_cast<BooleanSetting*>(s), *whiteout);
+					mod->drawables.push_back(d);
+					break;
+				case setting::Type::COLOR:
+					d = new DrawableColor(sf::Vector2f(0, 0), s->type, static_cast<ColorSetting*>(s), *whiteout);
+					mod->drawables.push_back(d);
+					break;
+				case setting::Type::MODE:
+					d = new DrawableMode(sf::Vector2f(0, 0), s->type, static_cast<ModeSetting*>(s), *whiteout);
+					mod->drawables.push_back(d);
+					break;
+				case setting::Type::NUMBER:
+					d = new DrawableNumber(sf::Vector2f(0, 0), s->type, static_cast<NumberSetting*>(s), *whiteout);
+					mod->drawables.push_back(d);
+					break;
+				case setting::Type::STRING:
+					d = new DrawableString(sf::Vector2f(0, 0), s->type, static_cast<StringSetting*>(s), *whiteout);
+					mod->drawables.push_back(d);
+					break;
+				}
+			}
+		}
+	}
+}
 
 void GUI::draw_base() {
 	if (csb.current == mdl::MODULE_CATEGORY::UNDECLARED) return;
@@ -36,44 +66,9 @@ void GUI::draw_modules() {
 			float height{ 10 }; // Change to 0 after module setting drawing has been implemented!
 			sf::Vector2f outline_r_w((window_size.x / 2) - 0.5f - 60 - 30, height);
 
-			BooleanSetting* bs;
-			ColorSetting* cs;
-			ModeSetting* ms;
-			NumberSetting* ns;
-			StringSetting* ss;
-
-			for (Setting* s : m->settings) {
-				if (!s->dependency()) continue;
-
-				switch (s->type) {
-				case setting::Type::BOOLEAN:
-					bs = static_cast<BooleanSetting*>(s);
-					if (bs->gv<bool>()) render::rect(whiteout->window, sf::Vector2f(x + 15, y + height + 2.5f), sf::Vector2f(outline_r_w.x - 30, font::height()), Module::mdcc[csb.current]);
-
-					break;
-				case setting::Type::COLOR:
-					cs = static_cast<ColorSetting*>(s);
-
-					break;
-				case setting::Type::MODE:
-					ms = static_cast<ModeSetting*>(s);
-
-					break;
-				case setting::Type::NUMBER:
-					ns = static_cast<NumberSetting*>(s);
-
-					break;
-				case setting::Type::STRING:
-					ss = static_cast<StringSetting*>(s);
-
-					break;
-				default:
-					break;
-				}
-
-				sf::Text sn = font::text(s->name, sf::Vector2f(x + 15, y + height));
-				font::render(whiteout->window, sn);
-				height += font::height(sn, true) + 5;
+			for (DrawableSetting* s : m->drawables) {
+				s->pos = sf::Vector2f(x, y + height);
+				s->draw(height, outline_r_w);
 			}
 			height += 5;
 			
