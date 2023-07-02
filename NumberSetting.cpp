@@ -10,10 +10,7 @@ long double NumberSetting::force_value() {
 		return (long double) std::any_cast<int>(value);
 	}catch(std::bad_any_cast ignored) { }
 	try {
-		return (long double) std::any_cast<float>(value);
-	} catch (std::bad_any_cast ignored) {}
-	try {
-		return (long double) std::any_cast<long>(value);
+		return (long double) std::any_cast<double>(value);
 	} catch (std::bad_any_cast ignored) {}
 
 	return 0;
@@ -24,10 +21,7 @@ long double NumberSetting::force_max() {
 		return (long double) std::any_cast<int>(max);
 	} catch (std::bad_any_cast ignored) {}
 	try {
-		return (long double) std::any_cast<float>(max);
-	} catch (std::bad_any_cast ignored) {}
-	try {
-		return (long double) std::any_cast<long>(max);
+		return (long double) std::any_cast<double>(max);
 	} catch (std::bad_any_cast ignored) {}
 
 	return 0;
@@ -38,11 +32,8 @@ long double NumberSetting::force_min() {
 		return (long double) std::any_cast<int>(min);
 	} catch (std::bad_any_cast ignored) {}
 	try {
-		return (long double) std::any_cast<float>(min);
+		return (long double) std::any_cast<double>(min);
 	} catch (std::bad_any_cast ignored) {}
-	try {
-		return (long double) std::any_cast<long>(min);
-	} catch (std::bad_any_cast ignored) {}
-
+	
 	return 0;
 }
