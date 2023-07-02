@@ -5,7 +5,7 @@
 #include "RenderUtil.h"
 #include "Terminal.h"
 #include "CategorySelectionButton.h"
-#include "ColorSetting.h";
+#include "ColorSetting.h"
 #include "ModeSetting.h"
 #include "StringSetting.h"
 
