@@ -63,14 +63,14 @@ void GUI::draw_modules() {
 		for (Module* m : ModuleManager::module_vec_by_cat(csb.current)) {
 			float x = s % 2 == 0 ? 45 : (window_size.x / 2) - 0.5f + 30;
 			float& y = s % 2 == 0 ? c1_pos_y : c2_pos_y;
-			float height{ 10 }; // Change to 0 after module setting drawing has been implemented!
+			float height{ 10 };
 			sf::Vector2f outline_r_w((window_size.x / 2) - 0.5f - 60 - 30, height);
 
 			for (DrawableSetting* s : m->drawables) {
-				s->pos = sf::Vector2f(x, y + height);
+				s->pos = sf::Vector2f(x + 15, y + height);
 				s->draw(height, outline_r_w);
 			}
-			height += 5;
+			height += 10 - 5;
 			
 			outline_r_w.y = height;
 			sf::Text name_t = font::text(m->name, sf::Vector2f(x + 30, y - font::height(m->name, font::mm, 22) * 0.65f), font::mm, 22, sf::Text::Regular, Module::mdcc[csb.current]);
