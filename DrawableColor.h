@@ -2,6 +2,7 @@
 #include "DrawableSetting.h"
 #include "ColorSetting.h"
 
+// https://stackoverflow.com/questions/48968250/sfml-color-picker-issue
 class DrawableColor final : public DrawableSetting {
 public:
 	ColorSetting* setting;
