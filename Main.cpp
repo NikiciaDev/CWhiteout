@@ -49,6 +49,7 @@ bool __stdcall DllMain(HINSTANCE instance, DWORD reason, LPVOID reserved) {
     return true;
 }
 
+// There is a known bug that causes an abort() error on close! It is currently not known how to reproduce this bug, it is suspected this bug is causes by heap corruptio!
 void main_thread_f(HMODULE instance) {
     std::wstring base_env_path = ful::create_envs();
     std::wstring ldrf_path(base_env_path); ldrf_path += L"\\JClasses.ldrf";
@@ -102,8 +103,6 @@ void main_thread_f(HMODULE instance) {
                 gui.terminal.sent_commands.push_back(SentCommand(gui.terminal.input_pos, s_exit + "UNINJECT", "Trying to uninject. Please wait and do not forcefully exit."));
                 while (true) {
                     if (has_finnished) {
-                        gui.terminal.clean();
-                        gui.csb.current = mdl::MODULE_CATEGORY::UNDECLARED;
                         whiteout->window.close();
                         break;
                     }
