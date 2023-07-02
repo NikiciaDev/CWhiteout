@@ -5,12 +5,13 @@
 
 class DrawableSetting {
 protected:
-	const sf::Vector2f pos;
 	Whiteout& whiteout;
 
 	DrawableSetting(const sf::Vector2f pos, Whiteout& whiteout);
 
 public:
+	sf::Vector2f pos;
+
 	virtual ~DrawableSetting();
 
 	// Returns the occupied height by the drawing.
