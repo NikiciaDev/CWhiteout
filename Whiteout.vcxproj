@@ -140,6 +140,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);jvm.lib;sfml-graphics-s.lib;opengl32.lib;freetype.lib;sfml-window-s.lib;sfml-system-s.lib;winmm.lib;gdi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutiuonDir)Dependencies\Lib;C:\Users\LRieh\.jdks\jdk-17\lib;E:\C++ Libraries\SFML-2.6.0\lib</AdditionalLibraryDirectories>
+      <AssemblyDebug>false</AssemblyDebug>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

@@ -2,6 +2,7 @@
 #include "SFML/Graphics.hpp"
 #include "Whiteout.h"
 
+// Text should preferable be renderd at integer positions.
 namespace font {
 	extern sf::Font meb, mb, mm, mr;
 

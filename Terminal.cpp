@@ -15,7 +15,7 @@ void Terminal::draw() {
 		clock.reset();
 	}
 	if (display_a_c) s += "|";
-	font::render(whiteout.window, s, input_pos, font::mm, 16, sf::Text::Italic);
+	font::render(whiteout.window, s, input_pos, font::mm, 16, sf::Text::Bold);
 }
 
 void Terminal::on_key_press(const Key key) {

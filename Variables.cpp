@@ -8,8 +8,8 @@ void init_variables(const std::string font_path) {
     if (!font::mb.loadFromFile(font_path + "\\Mukta-Bold.ttf")) print_err("Failed to load mb font\n");
     if (!font::mm.loadFromFile(font_path + "\\Mukta-Medium.ttf")) print_err("Failed to load mm font\n");
     if (!font::mr.loadFromFile(font_path + "\\Mukta-Regular.ttf")) print_err("Failed to load mr font\n");
-    //font::meb.setSmooth(false);
-    //font::mb.setSmooth(false);
-    //font::mm.setSmooth(false);
-    //font::mr.setSmooth(false);
+    font::meb.setSmooth(false);
+    font::mb.setSmooth(false);
+    font::mm.setSmooth(false);
+    font::mr.setSmooth(false);
 }
