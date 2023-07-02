@@ -59,10 +59,11 @@ void GUI::draw_modules() {
 		render::rect(whiteout->window, sf::Vector2f((window_size.x / 2) - 0.5f, -9999), sf::Vector2f(1, 9999 * 2), Whiteout::text_color);
 
 		float c1_pos_y{ 45 }, c2_pos_y{ 45 };
-		unsigned short s{ 0 };
+		unsigned short count{ 0 };
+		
 		for (Module* m : ModuleManager::module_vec_by_cat(csb.current)) {
-			float x = s % 2 == 0 ? 45 : (window_size.x / 2) - 0.5f + 30;
-			float& y = s % 2 == 0 ? c1_pos_y : c2_pos_y;
+			float x = count % 2 == 0 ? 45 : (window_size.x / 2) - 0.5f + 30;
+			float& y = count % 2 == 0 ? c1_pos_y : c2_pos_y;
 			float height{ 10 };
 			sf::Vector2f outline_r_w((window_size.x / 2) - 0.5f - 60 - 30, height);
 
@@ -73,11 +74,13 @@ void GUI::draw_modules() {
 			height += 10 - 5;
 			
 			outline_r_w.y = height;
-			sf::Text name_t = font::text(m->name, sf::Vector2f(x + 30, y - font::height(m->name, font::mm, 22) * 0.65f), font::mm, 22, sf::Text::Regular, Module::mdcc[csb.current]);
+			sf::Text name_t = font::text(m->name, sf::Vector2f(x + 30, y - font::height(m->name, font::mm, 22) * 0.65f), font::mm, 22, sf::Text::Regular, m->is_active ? Module::mdcc[csb.current] : Whiteout::text_color);
+			m_names.insert_or_assign(m, std::make_pair(m->category, name_t.getGlobalBounds()));
 			render::rect_outline_cutout(whiteout->window, sf::Vector2f(x, y), outline_r_w, Whiteout::text_color, 30, font::width(name_t, true));
 			font::render(whiteout->window, name_t);
 
 			y += height;
+			count++;
 		}
 
 	}
@@ -97,7 +100,13 @@ void GUI::on_key_event(const Key key) {
 				whiteout->view.move(0, terminal.input_pos.y - 30);
 			}
 			whiteout->window.setView(whiteout->view);
-			break;
+			return;
+		}
+		for (const std::pair<Module*, std::pair<mdl::MODULE_CATEGORY, sf::FloatRect>> p : m_names) {
+			if (csb.current == p.second.first && p.second.second.contains(sf::Vector2f(key.mouse_pos.x, key.mouse_pos.y))) {
+				p.first->on_keypress(classes);
+				return;
+			}
 		}
 		break;
 	case 3:

@@ -26,6 +26,7 @@ namespace font {
 Whiteout* whiteout;
 JavaVM* jvm_ptr{ nullptr };
 JNIEnv* jenv_ptr{ nullptr };
+std::map<const std::string, JavaClass*> classes;
 
 void init_variables(const std::string font_path);
 

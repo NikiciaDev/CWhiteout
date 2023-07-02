@@ -17,6 +17,11 @@ void init_variables(const std::string font_path) {
 void clean_variables() {
     jvm_ptr->DetachCurrentThread();
 
+    std::for_each(classes.begin(), classes.end(), [](const std::pair<const std::string, JavaClass*>& pair) {
+        delete pair.second;
+    });
+    classes.clear();
+
     font::meb.~Font();
     font::mb.~Font();
     font::mm.~Font();

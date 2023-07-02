@@ -23,12 +23,11 @@
 extern Whiteout* whiteout;
 extern JavaVM* jvm_ptr;
 extern JNIEnv* jenv_ptr;
+extern std::map<const std::string, JavaClass*> classes;
 extern void init_variables(const std::string font_path);
 extern void clean_variables();
 
 void main_thread_f(HMODULE instance);
-
-std::map<const std::string, JavaClass*> classes;
 
 bool __stdcall DllMain(HINSTANCE instance, DWORD reason, LPVOID reserved) {
     static FILE* file_ptr{ nullptr };
@@ -126,10 +125,6 @@ void main_thread_f(HMODULE instance) {
             if (pair.second->is_active) pair.second->on_call(classes);
         });
     }
-    std::for_each(classes.begin(), classes.end(), [](const std::pair<const std::string, JavaClass*>& pair) {
-        delete pair.second;
-    });
-    classes.clear();
 
     UnhookWindowsHookEx(k_h_hook);
     UnhookWindowsHookEx(m_h_hook);
