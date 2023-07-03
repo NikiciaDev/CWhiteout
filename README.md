@@ -35,23 +35,35 @@ Latest LDRF:
 {
 
   class: "ave" -> "Minecraft" <"S",Lave;,Lave;,true> {
+  
     fields: [<true,"S","instance",Lave;>, <false,"ap","right_click_delay_timer",I>, <false,"Y","timer",Lavl;>]
+    
     methods: [<false,"aw","click_mouse",()V>, <false,"ax","right_click_mouse",()V>]
+    
   };
   
   class: "avl" -> "Timer" <"Y",Lavl;,Minecraft,false> {
+  
     fields: [<false,"d","timer_speed",F>]
+    
     methods: []
+    
   };
-
+  
   class: "org/lwjgl/opengl/Display" -> "Display" <?> {
+  
     fields: []
+    
     methods: [<true,"isActive","is_active",()Z>]
+    
   }
 
   class: "bew" -> "EntityPlayerSp" <"h",Lbew;,Minecraft,false> {
+  
     fields: [<false,"W","ticks_existed",I>]
+    
     methods: []
+    
   };
   
 };
