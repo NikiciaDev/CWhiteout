@@ -31,7 +31,7 @@ Then we specify a class by first saying its compiled name the name we would like
 We di this by opening up angled brackets and first saying the compiled name then the signature then where you we can find the instance in if its the same as the class signature we will look inside the class if its diffrent we look for it using the map which contains already loaded classes. At last we specify if the instance is static. The way we do it for fields/methods is similar (note arrays are fields!).
 
 Latest LDRF:
-
+```ldrf
 {
 
   class: "ave" -> "Minecraft" <"S",Lave;,Lave;,true> {
@@ -67,3 +67,4 @@ Latest LDRF:
   };
   
 };
+```
