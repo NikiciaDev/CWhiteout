@@ -16,7 +16,6 @@ private:
 	RandomVar<short> delay;
 
 public:
-	ModeSetting test = ModeSetting("Test", this, 0, {"Hello", "asda"}, [] { return true; });
 	NumberSetting left_cps = NumberSetting("Left-Click CPS", this, 0, 25, 15, 1, num::Type::I, [] { return true; });
 	NumberSetting random_left = NumberSetting("Left CPS Random", this, 0, 10, 2, 1, num::Type::I, [] { return true; });
 	NumberSetting right_cps = NumberSetting("Right-Click CPS", this, 0, 25, 15, 1, num::Type::I, [] { return true; });
