@@ -7,10 +7,15 @@ void DrawableNumber::draw(float& height, sf::Vector2f outline_r_w) {
 	std::string value_rep;
 	long double d = setting->force_any(setting->value);
 	long double perc = d / setting->force_any(setting->max);
+	if (d == std::floor(d)) {
+		value_rep = std::to_string((long long) d);
+		if (setting->type >= num::F) value_rep += ".0";
+	} else {
+		value_rep = std::to_string(d);
+	}
 
 	render::rect(whiteout.window, sf::Vector2f(pos.x - 5, pos.y + 2.5f), sf::Vector2f((outline_r_w.x - 20) * perc, font::height()), Module::mdcc[setting->parent->category]);
 	font::render(whiteout.window, setting->name, pos);
-	std::floor(d) == (int) d ? value_rep = std::to_string((int) d) : value_rep = std::to_string(d);
 	font::render(whiteout.window, value_rep, sf::Vector2f(pos.x + outline_r_w.x - 20 - 10 - font::width(value_rep), pos.y));
 
 	height += font::height() + 5;

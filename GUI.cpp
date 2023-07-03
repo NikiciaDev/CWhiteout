@@ -109,10 +109,10 @@ void GUI::on_key_event(const Key key) {
 				p.first->on_keypress(classes);
 				return;
 			}else if (p.second.first.contains(mp)) {
-					for (DrawableSetting* ds : p.first->drawables) {
-						if (ds->on_event(key)) return;
-					}
+				for (DrawableSetting* ds : p.first->drawables) {
+					if (ds->on_event(key)) return;
 				}
+			}
 		}
 		break;
 	case 3:
