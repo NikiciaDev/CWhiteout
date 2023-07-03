@@ -95,29 +95,29 @@ void GUI::on_key_event(const Key key) {
 		}
 		break;
 	case 1:
-	case 2:
-		if (csb.on_mouse(key)) {
-			if (csb.current == mdl::MODULE_CATEGORY::TERMINAL) {
-				whiteout->view.move(0, terminal.input_pos.y - 30);
+	case 3:
+		if (key.keycode != 3) {
+			if (csb.on_mouse(key)) {
+				if (csb.current == mdl::MODULE_CATEGORY::TERMINAL) {
+					whiteout->view.move(0, terminal.input_pos.y - 30);
+				}
+				whiteout->window.setView(whiteout->view);
+				return;
 			}
-			whiteout->window.setView(whiteout->view);
-			return;
 		}
 
 		for (const std::pair<Module*, std::pair<sf::FloatRect, sf::FloatRect>> p : m_names) {
-			if (csb.current == p.first->category && p.second.second.contains(mp)) {
+			if (key.keycode != 3 && csb.current == p.first->category && p.second.second.contains(mp)) {
 				p.first->on_keypress(classes);
 				return;
-			}else if (p.second.first.contains(mp)) {
+			}
+			if (p.second.first.contains(mp)) {
 				for (DrawableSetting* ds : p.first->drawables) {
 					if (ds->on_event(key)) return;
 				}
 			}
 		}
 		break;
-	case 3:
-
-	break;
 	case 4:
 		whiteout->view.move(0, 25);
 		whiteout->window.setView(whiteout->view);

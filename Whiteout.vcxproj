@@ -197,6 +197,7 @@
     <ClInclude Include="DrawableNumber.h" />
     <ClInclude Include="DrawableSetting.h" />
     <ClInclude Include="DrawableString.h" />
+    <ClInclude Include="MathUtil.h" />
     <ClInclude Include="ShellCommand.h" />
     <ClInclude Include="ColorSetting.h" />
     <ClInclude Include="Command.h" />

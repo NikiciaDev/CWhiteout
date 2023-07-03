@@ -8,9 +8,13 @@
 
 class DrawableSetting {
 protected:
+	bool dragging{ false };
+	sf::Vector2f outline_r_w;
 	Whiteout& whiteout;
 
 	DrawableSetting(const sf::Vector2f pos, const setting::Type type, Whiteout& whiteout);
+
+	bool bounds_contain(const Key key, const Setting* setting);
 
 public:
 	const setting::Type type;

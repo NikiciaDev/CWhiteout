@@ -1,8 +1,13 @@
 #pragma once
 #include "DrawableSetting.h"
 #include "NumberSetting.h"
+#include "MathUtil.h"
+#include "LLInputUtil.h"
 
 class DrawableNumber final : public DrawableSetting {
+private:
+	long double max, min, inc;
+
 public:
 	NumberSetting* setting;
 

@@ -2,6 +2,7 @@
 #define NOMINMAX
 
 #include <Windows.h>
+#include <SFML/Graphics.hpp>
 #include <algorithm>
 #include "ModuleManager.h"
 #include "WindowsUtil.h"
@@ -25,4 +26,6 @@ namespace liu {
     LRESULT CALLBACK keypress_handler(int nCode, WPARAM wParam, LPARAM lParam);
 
     LRESULT CALLBACK mousepress_handler(int nCode, WPARAM wParam, LPARAM lParam);
+
+    sf::Vector2i get_cursor_pos();
 }

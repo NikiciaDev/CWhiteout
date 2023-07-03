@@ -25,3 +25,23 @@ long double NumberSetting::force_any(const std::any any) {
 	}
 	return 0;
 }
+
+void NumberSetting::force_set_any(std::any& any, const long double value) {
+	switch (type) {
+	case num::Type::I:
+		any = (int) value;
+		break;
+	case num::Type::LL:
+		any = (long long) value;
+		break;
+	case num::Type::F:
+		any = (float) value;
+		break;
+	case num::Type::D:
+		any = (double) value;
+		break;
+	case num::Type::LD:
+		any = (long double) value;
+		break;
+	}
+}

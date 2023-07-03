@@ -37,4 +37,11 @@ namespace liu {
         }
         return 0;
     }
+
+    sf::Vector2i get_cursor_pos() {
+        POINT p{ 0, 0 };
+        GetCursorPos(&p);
+        ScreenToClient(whiteout->window.getSystemHandle(), &p);
+        return sf::Vector2i(p.x, p.y);
+    }
 }

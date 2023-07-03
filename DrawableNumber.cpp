@@ -1,9 +1,21 @@
 #include "DrawableNumber.h"
 
-DrawableNumber::DrawableNumber(const sf::Vector2f position, const setting::Type type, NumberSetting* setting, Whiteout& whiteout) : DrawableSetting(position, type, whiteout), setting(setting) { }
+DrawableNumber::DrawableNumber(const sf::Vector2f position, const setting::Type type, NumberSetting* setting, Whiteout& whiteout) : DrawableSetting(position, type, whiteout), setting(setting) {
+	max = setting->force_any(setting->max);
+	min = setting->force_any(setting->min);
+	inc = setting->force_any(setting->increment);
+}
 
 void DrawableNumber::draw(float& height, sf::Vector2f outline_r_w) {
 	if (!setting->dependency()) return;
+	this->outline_r_w = outline_r_w;
+
+	if (dragging) {
+		long double nr_val = (liu::get_cursor_pos().x - pos.x - 5) * (max - min) / (outline_r_w.x - 20) + min;
+		long double val = math::round_to_increment<long double>(nr_val, inc);
+		if(min <= val && max >= val) setting->force_set_any(setting->value, val);
+	}
+
 	std::string value_rep;
 	long double d = setting->force_any(setting->value);
 	long double perc = d / setting->force_any(setting->max);
@@ -22,5 +34,13 @@ void DrawableNumber::draw(float& height, sf::Vector2f outline_r_w) {
 }
 
 bool DrawableNumber::on_event(const Key key) {
+	if (bounds_contain(key, setting)) {
+		if (key.keycode == 1) {
+			dragging = true;
+		} else if (key.keycode == 3) {
+			dragging = false;
+		}
+		return true;
+	}
 	return false;
 }

@@ -393,5 +393,8 @@
     <ClInclude Include="DrawableString.h">
       <Filter>headers\classes\whiteout\gui\impl\setting\impl</Filter>
     </ClInclude>
+    <ClInclude Include="MathUtil.h">
+      <Filter>headers\util\other</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -19,6 +19,9 @@ public:
 	// DO NOT USE UNLESS YOU ABSOLUTLEY HAVE TO!
 	long double force_any(const std::any any);
 
+	// DO NOT USE UNLESS ABSOLUTLEY NECESSARY!
+	void force_set_any(std::any& any, const long double value);
+
 	template<class T>
 	T mn() {
 		return std::any_cast<T>(min);

@@ -15,10 +15,10 @@ private:
 	RandomVar<short> delay;
 
 public:
-	NumberSetting left_cps = NumberSetting("Left-Click CPS", this, 0, 25, 15, 0, num::Type::I, [] { return true; });
-	NumberSetting random_left = NumberSetting("Left CPS Random", this, 0, 10, 2, 0, num::Type::I, [] { return true; });
-	NumberSetting right_cps = NumberSetting("Right-Click CPS", this, 0, 25, 15, 0, num::Type::I, [] { return true; });
-	NumberSetting random_right = NumberSetting("Right CPS Random", this, 0, 10, 2, 0, num::Type::I, [] { return true; });
+	NumberSetting left_cps = NumberSetting("Left-Click CPS", this, 0, 25, 15, 1, num::Type::I, [] { return true; });
+	NumberSetting random_left = NumberSetting("Left CPS Random", this, 0, 10, 2, 1, num::Type::I, [] { return true; });
+	NumberSetting right_cps = NumberSetting("Right-Click CPS", this, 0, 25, 15, 1, num::Type::I, [] { return true; });
+	NumberSetting random_right = NumberSetting("Right CPS Random", this, 0, 10, 2, 1, num::Type::I, [] { return true; });
 	BooleanSetting change_rcd_delay = BooleanSetting("Change RCDT", this, false, [] { return true; });
 	NumberSetting rcd_delay = NumberSetting("RCDT Delay", this, 0, 4, 4, 1, num::Type::I, [&] { return change_rcd_delay.gv<bool>(); });
 	Clock<std::chrono::milliseconds> clock;
