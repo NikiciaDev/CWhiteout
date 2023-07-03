@@ -23,15 +23,25 @@ void Module::on_keypress(std::map<const std::string, JavaClass*>& classes) {
 }
 
 void Module::init_kb_string_represenation(unsigned long long keycode, std::string& string) {
+	string = "[";
 	if (keycode == NULL) {
-		string = "NULL";
+		string += "N/A";
+	} else if (keycode == 1) {
+		string += "MB1";
+	} else if (keycode == 2) {
+		string += "MB2";
+	} else if (keycode == 4) {
+		string += "MWU";
+	} else if (keycode == 5) {
+		string += "MWD";
 	} else if (keycode == 65536) {
-		string = "MB1";
+		string += "XB1";
 	} else if (keycode == 131072) {
-		string = "MB2";
+		string += "XB2";
 	} else {
-		string = (char) keycode;
+		string += (char) keycode;
 	}
+	string += "]";
 }
 
 Module::~Module() {

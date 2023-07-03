@@ -20,6 +20,8 @@ class GUI final {
 private:
 	Whiteout* whiteout;
 	std::map<Module*, std::pair<sf::FloatRect, sf::FloatRect>> m_names;
+	std::map<Module*, sf::FloatRect> m_binds;
+	Module* m_binding{ nullptr };
 
 public:
 	CategorySelectionButton csb;

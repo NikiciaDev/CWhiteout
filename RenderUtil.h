@@ -14,4 +14,6 @@ namespace render {
 	void rect_outline_cutout(sf::RenderWindow& window, const sf::Vector2f position, const sf::Vector2f size, const sf::Color color, const float cutout_position, const float cutout_length);
 
 	void rect_outline_dcutout(sf::RenderWindow& window, const sf::Vector2f position, const sf::Vector2f size, const sf::Color color, const float cutout_position, const float cutout_length, const float cutout_position2, const float cutout_length2);
+
+	void rect_outline_dcutout2(sf::RenderWindow& window, const sf::Vector2f position, const sf::Vector2f size, const sf::Color color, const float cutout_position, const float cutout_length, const float cutout_position2, const float cutout_length2);
 }

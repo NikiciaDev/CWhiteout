@@ -75,14 +75,16 @@ void GUI::draw_modules() {
 			
 			outline_r_w.y = height;
 			sf::Text name_t = font::text(m->name, sf::Vector2f(x + 30, y - font::height(m->name, font::mm, 22) * 0.65f), font::mm, 22, sf::Text::Regular, m->is_active ? Module::mdcc[csb.current] : Whiteout::text_color);
-			m_names.insert_or_assign(m, std::make_pair(sf::FloatRect(x, y, outline_r_w.x, outline_r_w.y), name_t.getGlobalBounds()));
-			render::rect_outline_cutout(whiteout->window, sf::Vector2f(x, y), outline_r_w, Whiteout::text_color, 30, font::width(name_t, true));
+			sf::Text bind_t = font::text(m->keybind_s_rep, sf::Vector2f(x + outline_r_w.x - 30 - font::width(m->keybind_s_rep, font::mr, 15), y - font::height(m->keybind_s_rep, font::mm, 15) * 0.65f), font::mr, 15);
+			render::rect_outline_dcutout2(whiteout->window, sf::Vector2f(x, y), outline_r_w, Whiteout::text_color, 30, font::width(name_t, true), outline_r_w.x - 30 - font::width(bind_t), font::width(bind_t));
 			font::render(whiteout->window, name_t);
+			font::render(whiteout->window, bind_t);
 
+			m_names.insert_or_assign(m, std::make_pair(sf::FloatRect(x, y, outline_r_w.x, outline_r_w.y), name_t.getGlobalBounds()));
+			m_binds.insert_or_assign(m, bind_t.getGlobalBounds());
 			y += height;
 			count++;
 		}
-
 	}
 }
 
@@ -92,11 +94,27 @@ void GUI::on_key_event(const Key key) {
 	default:
 		if (csb.current == mdl::MODULE_CATEGORY::TERMINAL) {
 			terminal.on_key_press(key);
+		} else {
+			if (m_binding != nullptr) {
+				if (key.keycode == 27) { // ESC
+					m_binding->init_kb_string_represenation(m_binding->keybind, m_binding->keybind_s_rep);
+					m_binding = nullptr;
+					return;
+				}
+				m_binding->keybind = key.keycode;
+				m_binding->init_kb_string_represenation(key.keycode, m_binding->keybind_s_rep);
+				m_binding = nullptr;
+			}
 		}
-		break;
+		return;
 	case 1:
 	case 2:
 	case 3:
+		if (key.keycode != 3 && m_binding != nullptr) {
+			m_binding->init_kb_string_represenation(m_binding->keybind, m_binding->keybind_s_rep);
+			m_binding = nullptr;
+			return;
+		}
 		if (key.keycode != 3) {
 			if (csb.on_mouse(key)) {
 				if (csb.current == mdl::MODULE_CATEGORY::TERMINAL) {
@@ -105,9 +123,17 @@ void GUI::on_key_event(const Key key) {
 				whiteout->window.setView(whiteout->view);
 				return;
 			}
+
+			for (const std::pair<Module*, sf::FloatRect>& p : m_binds) {
+				if (p.second.contains(key.mouse_pos)) {
+					m_binding = p.first;
+					m_binding->keybind_s_rep = "[?]";
+					return;
+				}
+			}
 		}
 
-		for (const std::pair<Module*, std::pair<sf::FloatRect, sf::FloatRect>> p : m_names) {
+		for (const std::pair<Module*, std::pair<sf::FloatRect, sf::FloatRect>>& p : m_names) {
 			if (key.keycode != 3 && csb.current == p.first->category && p.second.second.contains(mp)) {
 				p.first->on_keypress(classes);
 				return;
@@ -118,14 +144,14 @@ void GUI::on_key_event(const Key key) {
 				}
 			}
 		}
-		break;
+		return;
 	case 4:
 		whiteout->view.move(0, 25);
 		whiteout->window.setView(whiteout->view);
-		break;
+		return;
 	case 5:
 		whiteout->view.move(0, -25);
 		whiteout->window.setView(whiteout->view);
-		break;
+		return;
 	}
 }
