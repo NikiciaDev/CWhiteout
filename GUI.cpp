@@ -95,6 +95,7 @@ void GUI::on_key_event(const Key key) {
 		}
 		break;
 	case 1:
+	case 2:
 	case 3:
 		if (key.keycode != 3) {
 			if (csb.on_mouse(key)) {
