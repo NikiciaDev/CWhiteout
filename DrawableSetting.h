@@ -14,7 +14,7 @@ protected:
 
 	DrawableSetting(const sf::Vector2f pos, const setting::Type type, Whiteout& whiteout);
 
-	bool bounds_contain(const Key key, const Setting* setting);
+	bool bounds_contain(const Key key, const Setting* setting, const mdl::MODULE_CATEGORY current);
 
 public:
 	const setting::Type type;
@@ -26,5 +26,5 @@ public:
 	virtual void draw(float& height, sf::Vector2f outline_r_w);
 
 	// Returns true if the key was handled otherwise 0.
-	virtual bool on_event(const Key key);
+	virtual bool on_event(const Key key, const mdl::MODULE_CATEGORY current);
 };

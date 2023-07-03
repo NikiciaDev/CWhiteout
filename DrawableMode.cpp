@@ -10,6 +10,6 @@ void DrawableMode::draw(float& height, sf::Vector2f outline_r_w) {
 	height += font::height() + 5;
 }
 
-bool DrawableMode::on_event(const Key key) {
+bool DrawableMode::on_event(const Key key, const mdl::MODULE_CATEGORY current) {
 	return false;
 }

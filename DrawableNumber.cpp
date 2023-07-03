@@ -11,12 +11,20 @@ void DrawableNumber::draw(float& height, sf::Vector2f outline_r_w) {
 	this->outline_r_w = outline_r_w;
 
 	if (dragging) {
-		sf::Vector2i mp(liu::get_cursor_pos());
-		if (mp.y < pos.y + 2.5f - 10 || mp.y > pos.y + font::height() + 10 || mp.x < pos.x - 5 - 10 || mp.x > pos.x + outline_r_w.x + 10) {
+		long double nr_val{ 0 }, val{ 0 };
+		sf::Vector2i mp(liu::get_cursor_pos(true));
+		mp.x += 10;
+		if (mp.x <= pos.x) {
+			val = min;
+			dragging = false;
+		}if (mp.x >= pos.x + outline_r_w.x - 20 + 5) {
+			val = max;
+			dragging = false;
+		}if (mp.y < pos.y + 2.5f - 5 || mp.y > pos.y + font::height() + 5) {
 			dragging = false;
 		} else {
-			long double nr_val = (mp.x - pos.x - 5) * (max - min) / (outline_r_w.x - 20) + min;
-			long double val = math::round_to_increment<long double>(nr_val, inc);
+			nr_val = (mp.x - pos.x - 5.0) / (outline_r_w.x - 20.0) * (max - min) + min;
+			if (val == 0) val = math::round_to_increment<long double>(nr_val, inc);
 			if (min <= val && max >= val) setting->force_set_any(setting->value, val);
 		}
 	}
@@ -29,6 +37,12 @@ void DrawableNumber::draw(float& height, sf::Vector2f outline_r_w) {
 		if (setting->type >= num::F) value_rep += ".0";
 	} else {
 		value_rep = std::to_string(d);
+		if (value_rep.find('.') != std::string::npos) {
+			value_rep = value_rep.substr(0, value_rep.find_last_not_of('0') + 1);
+			if (value_rep.find('.') == value_rep.size() - 1) {
+				value_rep = value_rep.substr(0, value_rep.size() - 1);
+			}
+		}
 	}
 
 	render::rect(whiteout.window, sf::Vector2f(pos.x - 5, pos.y + 2.5f), sf::Vector2f((outline_r_w.x - 20) * perc, font::height()), Module::mdcc[setting->parent->category]);
@@ -38,8 +52,8 @@ void DrawableNumber::draw(float& height, sf::Vector2f outline_r_w) {
 	height += font::height() + 5;
 }
 
-bool DrawableNumber::on_event(const Key key) {
-	if (bounds_contain(key, setting)) {
+bool DrawableNumber::on_event(const Key key, const mdl::MODULE_CATEGORY current) {
+	if (bounds_contain(key, setting, current)) {
 		if (key.keycode == 1) {
 			dragging = true;
 		} else if (key.keycode == 3) {

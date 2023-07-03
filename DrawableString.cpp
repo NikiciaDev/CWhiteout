@@ -10,6 +10,6 @@ void DrawableString::draw(float& height, sf::Vector2f outline_r_w) {
 	font::render(whiteout.window, render_s, pos);
 }
 
-bool DrawableString::on_event(const Key key) {
+bool DrawableString::on_event(const Key key, const mdl::MODULE_CATEGORY current) {
 	return false;
 }

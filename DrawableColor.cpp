@@ -4,6 +4,6 @@ DrawableColor::DrawableColor(const sf::Vector2f position, const setting::Type ty
 
 void DrawableColor::draw(float& height, sf::Vector2f outline_r_w) { }
 
-bool DrawableColor::on_event(const Key key) {
+bool DrawableColor::on_event(const Key key, const mdl::MODULE_CATEGORY current) {
 	return false;
 }

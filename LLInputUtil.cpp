@@ -38,10 +38,12 @@ namespace liu {
         return 0;
     }
 
-    sf::Vector2i get_cursor_pos() {
+    sf::Vector2f get_cursor_pos(const bool rel) {
         POINT p{ 0, 0 };
         GetCursorPos(&p);
+        if (!rel) return sf::Vector2f(p.x, p.y);
         ScreenToClient(whiteout->window.getSystemHandle(), &p);
-        return sf::Vector2i(p.x, p.y);
+        sf::Vector2i pos(p.x, p.y);
+        return whiteout->window.mapPixelToCoords(pos);
     }
 }

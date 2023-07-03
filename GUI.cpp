@@ -114,7 +114,7 @@ void GUI::on_key_event(const Key key) {
 			}
 			if (p.second.first.contains(mp)) {
 				for (DrawableSetting* ds : p.first->drawables) {
-					if (ds->on_event(key)) return;
+					if (ds->on_event(key, csb.current)) return;
 				}
 			}
 		}

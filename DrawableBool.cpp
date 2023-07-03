@@ -13,8 +13,8 @@ void DrawableBool::draw(float& height, sf::Vector2f outline_r_w) {
 	height += font::height() + 5;
 }
 
-bool DrawableBool::on_event(const Key key) {
-	if (bounds_contain(key, setting)) {
+bool DrawableBool::on_event(const Key key, const mdl::MODULE_CATEGORY current) {
+	if (bounds_contain(key, setting, current)) {
 		if (key.keycode == 3) return true;
 		setting->sv(!setting->gv<bool>());
 		return true;

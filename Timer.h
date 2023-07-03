@@ -5,7 +5,7 @@
 
 class Timer final : public Module {
 public:
-	NumberSetting speed = NumberSetting("Timer Speed", this, 0.1f, 10.f, 2.f, 0.025f, num::Type::F, [] { return true; });
+	NumberSetting speed = NumberSetting("Timer Speed", this, 0.25f, 10.f, 2.f, 0.25f, num::Type::F, [] { return true; });
 	BooleanSetting tick = BooleanSetting("Tick", this, false, [] { return true; });
 	NumberSetting tick_modulo = NumberSetting("Tick Modulo", this, 2, 10, 2, 1, num::Type::I, [&] { return tick.gv<bool>(); });
 

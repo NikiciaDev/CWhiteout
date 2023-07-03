@@ -27,5 +27,5 @@ namespace liu {
 
     LRESULT CALLBACK mousepress_handler(int nCode, WPARAM wParam, LPARAM lParam);
 
-    sf::Vector2i get_cursor_pos();
+    sf::Vector2f get_cursor_pos(const bool rel);
 }
