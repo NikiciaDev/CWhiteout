@@ -11,7 +11,7 @@ public:
 
 	Timer(const std::string name, const mdl::MODULE_CATEGORY category);
 
-	void on_enable(std::map<const std::string, JavaClass*>& classes) override;
+	void on_call(std::map<const std::string, JavaClass*>& classes) override;
 
 	void on_disable(std::map<const std::string, JavaClass*>& classes) override;
 };
