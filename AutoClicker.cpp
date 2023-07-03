@@ -28,7 +28,7 @@ void AutoClicker::on_call(std::map<const std::string, JavaClass*>& classes) {
 		}
 	}
 
-	if (change_rcd_delay.gv<bool>() && rcd_delay.gv<short>() != rcd_delay.mx<short>()) {
-		jenv_ptr->SetIntField(classes.find("Minecraft")->second->instance, *classes.find("Minecraft")->second->jfields.find("right_click_delay_timer")->second, rcd_delay.gv<short>());
+	if (change_rcd_delay.gv<bool>() && rcd_delay.gv<int>() != rcd_delay.mx<int>()) {
+		jenv_ptr->SetIntField(classes.find("Minecraft")->second->instance, *classes.find("Minecraft")->second->jfields.find("right_click_delay_timer")->second, rcd_delay.gv<int>());
 	}
 }
