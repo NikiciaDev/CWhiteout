@@ -30,13 +30,15 @@ void DrawableNumber::draw(float& height, sf::Vector2f outline_r_w) {
 	}
 
 	std::string value_rep;
-	long double d = setting->force_any(setting->value);
-	long double perc = d / setting->force_any(setting->max);
-	if (d == std::floor(d)) {
-		value_rep = std::to_string((long long) d);
+	long double c_val = setting->force_any(setting->value);
+	float p = (outline_r_w.x - 20) / (max - min);
+	float bar_width = p * c_val - p * min;
+
+	if (c_val == std::floor(c_val)) {
+		value_rep = std::to_string((long long) c_val);
 		if (setting->type >= num::F) value_rep += ".0";
 	} else {
-		value_rep = std::to_string(d);
+		value_rep = std::to_string(c_val);
 		if (value_rep.find('.') != std::string::npos) {
 			value_rep = value_rep.substr(0, value_rep.find_last_not_of('0') + 1);
 			if (value_rep.find('.') == value_rep.size() - 1) {
@@ -45,7 +47,7 @@ void DrawableNumber::draw(float& height, sf::Vector2f outline_r_w) {
 		}
 	}
 
-	render::rect(whiteout.window, sf::Vector2f(pos.x - 5, pos.y + 2.5f), sf::Vector2f((outline_r_w.x - 20) * perc, font::height()), Module::mdcc[setting->parent->category]);
+	render::rect(whiteout.window, sf::Vector2f(pos.x - 5, pos.y + 2.5f), sf::Vector2f(bar_width, font::height()), Module::mdcc[setting->parent->category]);
 	font::render(whiteout.window, setting->name, pos);
 	font::render(whiteout.window, value_rep, sf::Vector2f(pos.x + outline_r_w.x - 20 - 10 - font::width(value_rep), pos.y));
 
