@@ -1,12 +1,12 @@
 #pragma once
-#include <Windows.h>
+#include <SFML/Graphics.hpp>
 
 class Key final {
 public:
 	unsigned long keycode { 0 };
-	POINT mouse_pos{ 0, 0 };
+	sf::Vector2f mouse_pos{ 0, 0 };
 
 	Key();
 
-	explicit Key(const unsigned long keyode, const POINT mouse_pos);
+	explicit Key(const unsigned long keyode, const sf::Vector2f mouse_pos);
 };

@@ -10,7 +10,8 @@ namespace liu {
                 unsigned long long c = MapVirtualKey(hs->vkCode, MAPVK_VK_TO_CHAR);
                 if (c != 0) {
                     POINT p{ 0, 0 };
-                    whiteout->dispatch_keypress(Key(c, p), ext);
+                    sf::Vector2f pos = ext ? whiteout->window.mapPixelToCoords(sf::Vector2i(p.x, p.y)) : sf::Vector2f(p.x, p.y);
+                    whiteout->dispatch_keypress(Key(c, pos), ext);
                 }
             }
         }
@@ -31,8 +32,9 @@ namespace liu {
                 if (hs->mouseData == 7864320) hs->mouseData = 5;
                 POINT p{ 0, 0 };
                 GetCursorPos(&p);
-                ScreenToClient(whiteout->window.getSystemHandle(), &p);
-                whiteout->dispatch_keypress(Key(hs->mouseData, p), ext);
+                if(ext) ScreenToClient(whiteout->window.getSystemHandle(), &p);
+                sf::Vector2f pos = ext ? whiteout->window.mapPixelToCoords(sf::Vector2i(p.x, p.y)) : sf::Vector2f(p.x, p.y);
+                whiteout->dispatch_keypress(Key(hs->mouseData, pos), ext);
             }
         }
         return 0;
