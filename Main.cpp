@@ -98,8 +98,6 @@ void main_thread_f(HMODULE instance) {
                 break;
             case sf::Event::Closed:
                 should_exit = true;
-                s_exit = SentCommand::get_pre_string(*whiteout);
-                gui.terminal.sent_commands.push_back(SentCommand(gui.terminal.input_pos, s_exit + "UNINJECT", "Trying to uninject. Please wait and do not forcefully exit."));
                 while (true) {
                     if (has_finnished) {
                         whiteout->window.close();

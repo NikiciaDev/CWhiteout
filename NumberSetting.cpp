@@ -1,39 +1,27 @@
 #include "NumberSetting.h"
 
-NumberSetting::NumberSetting(const std::string name, Module* parent, const std::any min, const std::any max, const std::any default_value, const std::any increment, const std::function<bool(void)> dependency) :
-	min(min), max(max), increment(increment), Setting(name, parent, default_value, setting::Type::NUMBER, dependency) { }
+NumberSetting::NumberSetting(const std::string name, Module* parent, const std::any min, const std::any max, const std::any default_value, const std::any increment, const num::Type type, const std::function<bool(void)> dependency) :
+	min(min), max(max), increment(increment), type(type), Setting(name, parent, default_value, setting::Type::NUMBER, dependency) { }
 
 NumberSetting::~NumberSetting() { }
 
-long double NumberSetting::force_value() {
-	try {
-		return (long double) std::any_cast<int>(value);
-	}catch(std::bad_any_cast ignored) { }
-	try {
-		return (long double) std::any_cast<double>(value);
-	} catch (std::bad_any_cast ignored) {}
-
-	return 0;
-}
-
-long double NumberSetting::force_max() {
-	try {
-		return (long double) std::any_cast<int>(max);
-	} catch (std::bad_any_cast ignored) {}
-	try {
-		return (long double) std::any_cast<double>(max);
-	} catch (std::bad_any_cast ignored) {}
-
-	return 0;
-}
-
-long double NumberSetting::force_min() {
-	try {
-		return (long double) std::any_cast<int>(min);
-	} catch (std::bad_any_cast ignored) {}
-	try {
-		return (long double) std::any_cast<double>(min);
-	} catch (std::bad_any_cast ignored) {}
-	
+long double NumberSetting::force_any(const std::any any) {
+	switch (type) {
+	case num::Type::I:
+		return std::any_cast<int>(any);
+		break;
+	case num::Type::LL:
+		return std::any_cast<long long>(any);
+		break;
+	case num::Type::F:
+		return std::any_cast<float>(any);
+		break;
+	case num::Type::D:
+		return std::any_cast<double>(any);
+		break;
+	case num::Type::LD:
+		return std::any_cast<long double>(any);
+		break;
+	}
 	return 0;
 }

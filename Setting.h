@@ -9,10 +9,8 @@ namespace setting {
 }
 
 class Setting {
-protected:
-	std::any value;
-
 public:
+	std::any value;
 	const std::string name;
 	const std::function<bool(void)> dependency;
 	const setting::Type type;
