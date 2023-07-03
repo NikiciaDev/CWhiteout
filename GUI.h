@@ -19,7 +19,7 @@ extern std::map<const std::string, JavaClass*> classes;
 class GUI final {
 private:
 	Whiteout* whiteout;
-	std::map<Module*, std::pair<mdl::MODULE_CATEGORY, sf::FloatRect>> m_names;
+	std::map<Module*, std::pair<sf::FloatRect, sf::FloatRect>> m_names;
 
 public:
 	CategorySelectionButton csb;

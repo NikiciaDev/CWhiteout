@@ -75,7 +75,7 @@ void GUI::draw_modules() {
 			
 			outline_r_w.y = height;
 			sf::Text name_t = font::text(m->name, sf::Vector2f(x + 30, y - font::height(m->name, font::mm, 22) * 0.65f), font::mm, 22, sf::Text::Regular, m->is_active ? Module::mdcc[csb.current] : Whiteout::text_color);
-			m_names.insert_or_assign(m, std::make_pair(m->category, name_t.getGlobalBounds()));
+			m_names.insert_or_assign(m, std::make_pair(sf::FloatRect(x, y, outline_r_w.x, outline_r_w.y), name_t.getGlobalBounds()));
 			render::rect_outline_cutout(whiteout->window, sf::Vector2f(x, y), outline_r_w, Whiteout::text_color, 30, font::width(name_t, true));
 			font::render(whiteout->window, name_t);
 
@@ -87,6 +87,7 @@ void GUI::draw_modules() {
 }
 
 void GUI::on_key_event(const Key key) {
+	sf::Vector2f mp(key.mouse_pos.x, key.mouse_pos.y);
 	switch (key.keycode) {
 	default:
 		if (csb.current == mdl::MODULE_CATEGORY::TERMINAL) {
@@ -102,11 +103,16 @@ void GUI::on_key_event(const Key key) {
 			whiteout->window.setView(whiteout->view);
 			return;
 		}
-		for (const std::pair<Module*, std::pair<mdl::MODULE_CATEGORY, sf::FloatRect>> p : m_names) {
-			if (csb.current == p.second.first && p.second.second.contains(sf::Vector2f(key.mouse_pos.x, key.mouse_pos.y))) {
+
+		for (const std::pair<Module*, std::pair<sf::FloatRect, sf::FloatRect>> p : m_names) {
+			if (csb.current == p.first->category && p.second.second.contains(mp)) {
 				p.first->on_keypress(classes);
 				return;
-			}
+			}else if (p.second.first.contains(mp)) {
+					for (DrawableSetting* ds : p.first->drawables) {
+						if (ds->on_event(key)) return;
+					}
+				}
 		}
 		break;
 	case 3:
