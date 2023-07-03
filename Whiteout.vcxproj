@@ -227,7 +227,7 @@
     <ClInclude Include="Terminal.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Variables.h" />
-    <ClInclude Include="VectorUtil.h" />
+    <ClInclude Include="VecMapUtil.h" />
     <ClInclude Include="Whiteout.h" />
     <ClInclude Include="WindowsUtil.h" />
   </ItemGroup>

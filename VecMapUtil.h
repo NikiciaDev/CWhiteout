@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 
-namespace vul {
+namespace vmu {
 	template<class T>
 	unsigned short next(const std::vector<T>& vector, const unsigned short pos, const bool down) {
 		if (down) {

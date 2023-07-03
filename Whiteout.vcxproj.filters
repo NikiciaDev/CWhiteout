@@ -351,7 +351,7 @@
     <ClInclude Include="Button.h">
       <Filter>headers\classes\whiteout\gui</Filter>
     </ClInclude>
-    <ClInclude Include="VectorUtil.h">
+    <ClInclude Include="VecMapUtil.h">
       <Filter>headers\util\other</Filter>
     </ClInclude>
     <ClInclude Include="Terminal.h">

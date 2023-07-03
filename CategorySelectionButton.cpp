@@ -19,7 +19,7 @@ void CategorySelectionButton::draw() {
 bool CategorySelectionButton::on_mouse(const Key key) {
 	bool b{ false };
 	if (b = pos.contains(sf::Vector2f(key.mouse_pos.x, key.mouse_pos.y))) {
-		current = (mdl::MODULE_CATEGORY) vul::next<std::string>(Module::mdcn, current, key.keycode == 2);
+		current = (mdl::MODULE_CATEGORY) vmu::next<std::string>(Module::mdcn, current, key.keycode == 2);
 		whiteout->view.reset(sf::FloatRect(0, 0, whiteout->window.getSize().x, whiteout->window.getSize().y));
 		return true;
 	}

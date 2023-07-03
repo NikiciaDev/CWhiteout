@@ -1,6 +1,8 @@
 #pragma once
+#include <algorithm>
 #include "DrawableSetting.h"
 #include "ModeSetting.h"
+#include "VecMapUtil.h"
 
 class DrawableMode final : public DrawableSetting {
 public:
