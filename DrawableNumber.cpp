@@ -11,9 +11,14 @@ void DrawableNumber::draw(float& height, sf::Vector2f outline_r_w) {
 	this->outline_r_w = outline_r_w;
 
 	if (dragging) {
-		long double nr_val = (liu::get_cursor_pos().x - pos.x - 5) * (max - min) / (outline_r_w.x - 20) + min;
-		long double val = math::round_to_increment<long double>(nr_val, inc);
-		if(min <= val && max >= val) setting->force_set_any(setting->value, val);
+		sf::Vector2i mp(liu::get_cursor_pos());
+		if (mp.y < pos.y + 2.5f - 10 || mp.y > pos.y + font::height() + 10 || mp.x < pos.x - 5 - 10 || mp.x > pos.x + outline_r_w.x + 10) {
+			dragging = false;
+		} else {
+			long double nr_val = (mp.x - pos.x - 5) * (max - min) / (outline_r_w.x - 20) + min;
+			long double val = math::round_to_increment<long double>(nr_val, inc);
+			if (min <= val && max >= val) setting->force_set_any(setting->value, val);
+		}
 	}
 
 	std::string value_rep;
