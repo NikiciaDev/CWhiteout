@@ -11,7 +11,7 @@ public:
 	sf::RectangleShape color_rect;
 	sf::RectangleShape bar_bounds;
 
-	float hue_bar_y{ 0 };
+	float hue_bar_x{ 0 };
 	bool extened{ false };
 	bool dragging_bar{ false }, dragging_rect{ false };
 
@@ -21,5 +21,5 @@ public:
 
 	bool on_event(const Key key, const mdl::MODULE_CATEGORY current) override;
 
-	void create_hue_vertecies(sf::VertexArray& vertices, const sf::Vector2f pos);
+	void create_hue_vertecies(sf::VertexArray& vertices, const sf::Vector2f pos, const float width_per, const float height);
 };
