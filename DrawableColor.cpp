@@ -5,23 +5,59 @@ DrawableColor::DrawableColor(const sf::Vector2f position, const setting::Type ty
 void DrawableColor::draw(float& height, sf::Vector2f outline_r_w) {
 	if (!setting->dependency()) return;
 	this->outline_r_w = outline_r_w;
+	const float rec_w = font::height();
+
 	sf::Text n_t = font::text(setting->name, pos);
 	font::render(whiteout.window, n_t);
-	render::rect(whiteout.window, sf::Vector2f(pos.x + outline_r_w.x - 20 - 10 - font::height(), pos.y + 2.5f), sf::Vector2f(font::height(), font::height()), setting->gv<sf::Color>());
+	color_rect.setPosition(sf::Vector2f(pos.x + outline_r_w.x - 20 - 10 - rec_w, pos.y + 2.5f));
+	color_rect.setSize(sf::Vector2f(rec_w, rec_w));
+	color_rect.setFillColor(setting->gv<sf::Color>());
+	whiteout.window.draw(color_rect);
 
-	sf::Vector2 _pos(pos.x + font::width(n_t), pos.y + font::height(n_t));
+	sf::Vector2 _pos(pos.x + outline_r_w.x - 20 - 10 - rec_w + 1, pos.y + font::height(n_t) + 15);
 	if (extened) {
 		sf::VertexArray vertices(sf::PrimitiveType::Quads, 24);
 		create_hue_vertecies(vertices, _pos);
+		bar_bounds.setPosition(_pos);
+		bar_bounds.setSize(sf::Vector2f(30, 180));
 		whiteout.window.draw(vertices);
 
-		height += 300;
+		if (dragging_bar) {
+			if (bar_bounds.getGlobalBounds().contains(liu::get_cursor_pos(true))) {
+				hue_bar_y = liu::get_cursor_pos(true).y;
+				sf::Texture texture;
+				texture.create(whiteout.window.getSize().x, whiteout.window.getSize().y);
+				texture.update(whiteout.window);
+				sf::Image img = texture.copyToImage();
+				setting->sv(img.getPixel(_pos.x + 5, hue_bar_y));
+			} else {
+				dragging_bar = false;
+			}
+		}
+
+		if (hue_bar_y != 0) {
+			render::rect_outline(whiteout.window, sf::Vector2f(_pos.x - 2, hue_bar_y - 2), sf::Vector2f(rec_w + 3, 4), Whiteout::text_color, 2.f);
+		}
+
+		height += 200;
 	}
 
-	height += font::height();
+	height += rec_w;
 }
 
 bool DrawableColor::on_event(const Key key, const mdl::MODULE_CATEGORY current) {
+	if (bounds_contain(key, setting, current)) {
+		if (key.keycode == 3) return true;
+		if (color_rect.getGlobalBounds().contains(key.mouse_pos)) {
+			extened = !extened;
+		}
+		return true;
+	} else if (extened) {
+		if (bar_bounds.getGlobalBounds().contains(key.mouse_pos)) {
+			dragging_bar = key.keycode != 3;
+		}
+		return true;
+	}
 	return false;
 }
 

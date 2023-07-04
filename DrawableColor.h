@@ -1,12 +1,17 @@
 #pragma once
 #include "DrawableSetting.h"
 #include "ColorSetting.h"
+#include "LLInputUtil.h"
 
 // https://stackoverflow.com/questions/48968250/sfml-color-picker-issue
 // https://github.com/Dreamykass/bitsofkass/tree/master/cpp-sfml/2021-06-20--sfml-color-picker-lerp
 class DrawableColor final : public DrawableSetting {
 public:
 	ColorSetting* setting;
+	sf::RectangleShape color_rect;
+	sf::RectangleShape bar_bounds;
+
+	float hue_bar_y{ 0 };
 	bool extened{ false };
 	bool dragging_bar{ false }, dragging_rect{ false };
 

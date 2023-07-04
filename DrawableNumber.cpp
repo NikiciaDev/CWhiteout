@@ -13,7 +13,7 @@ void DrawableNumber::draw(float& height, sf::Vector2f outline_r_w) {
 	if (dragging) {
 		long double nr_val{ 0 }, val{ 0 };
 		sf::Vector2i mp(liu::get_cursor_pos(true));
-		mp.x += 10;
+		mp.x += 10; // Idk why this is needed its retared.
 		if (mp.x <= pos.x) {
 			val = min;
 			dragging = false;
