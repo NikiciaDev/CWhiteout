@@ -34,11 +34,11 @@ void DrawableColor::draw(float& height, sf::Vector2f outline_r_w) {
 		whiteout.window.draw(val_bar);
 
 		if (dragging_bar) {
-			manage_drag(bar_bounds.getGlobalBounds(), dragging_bar, hue_bar_x, _pos.y, rec_w);
+			manage_drag(bar_bounds.getGlobalBounds(), _pos, dragging_bar, hue_bar_x, _pos.y, rec_w);
 		} else if (dragging_s) {
-			manage_drag(sat_bounds.getGlobalBounds(), dragging_s, sat_bar_x, _pos.y + rec_w + 10, rec_w);
+			manage_drag(sat_bounds.getGlobalBounds(), _pos, dragging_s, sat_bar_x, _pos.y + rec_w + 10, rec_w);
 		} else if (dragging_v) {
-			manage_drag(val_bounds.getGlobalBounds(), dragging_v, val_bar_x, _pos.y + rec_w + 10 + rec_w + 10, rec_w);
+			manage_drag(val_bounds.getGlobalBounds(), _pos, dragging_v, val_bar_x, _pos.y + rec_w + 10 + rec_w + 10, rec_w);
 		}
 
 		if (hue_bar_x != 0) {
@@ -56,15 +56,21 @@ void DrawableColor::draw(float& height, sf::Vector2f outline_r_w) {
 	height += rec_w + 2;
 }
 
-void DrawableColor::manage_drag(const sf::FloatRect& global_bounds, bool& drag_bool, float& bar_x, const float y, const float rec_w) {
+void DrawableColor::manage_drag(const sf::FloatRect& global_bounds, const sf::Vector2f _pos, bool& drag_bool, float& bar_x, const float y, const float rec_w) {
 	sf::Texture texture;
 	texture.create(whiteout.window.getSize().x, whiteout.window.getSize().y);
 	sf::Image img;
-	if (global_bounds.contains(liu::get_cursor_pos(true))) {
-		bar_x = liu::get_cursor_pos(true).x;
+	sf::Vector2f mp(liu::get_cursor_pos(true));
+	if (global_bounds.contains(mp)) {
+		bar_x = mp.x;
 		texture.update(whiteout.window);
 		img = texture.copyToImage();
 		sf::Vector2i mapped_vec = whiteout.window.mapCoordsToPixel(sf::Vector2f(bar_x, y + 3));
+		if (mapped_vec.x < _pos.x) {
+			mapped_vec.x = _pos.x;
+		} else if (mapped_vec.x > _pos.x + outline_r_w.x - 20 - 1) {
+			mapped_vec.x = _pos.x + outline_r_w.x - 20 - 1;
+		}
 		if (bar_x == hue_bar_x) {
 			base_rgb = img.getPixel(mapped_vec.x, mapped_vec.y);
 			setting->sv(base_rgb);

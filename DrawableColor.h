@@ -26,5 +26,5 @@ public:
 
 	void add_quad_verts(sf::VertexArray& vertices, const sf::Vector2f pos, const sf::Vector2f size, const sf::Color base_color);
 
-	void manage_drag(const sf::FloatRect& global_bounds, bool& drag_bool, float& bar_x, const float y, const float rec_w);
+	void manage_drag(const sf::FloatRect& global_bounds, const sf::Vector2f _pos, bool& drag_bool, float& bar_x, const float y, const float rec_w);
 };
