@@ -65,7 +65,7 @@ void GUI::draw_modules() {
 			float x = count % 2 == 0 ? 45 : (window_size.x / 2) - 0.5f + 30;
 			float& y = count % 2 == 0 ? c1_pos_y : c2_pos_y;
 			float height{ 10 };
-			sf::Vector2f outline_r_w((window_size.x / 2) - 0.5f - 60 - 30, height);
+			sf::Vector2f outline_r_w((window_size.x / 2) - 0.5f - 60 - 15, height);
 
 			for (DrawableSetting* s : m->drawables) {
 				s->pos = sf::Vector2f(x + 15, y + height);

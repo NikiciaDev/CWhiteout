@@ -7,6 +7,8 @@
 class DrawableColor final : public DrawableSetting {
 public:
 	ColorSetting* setting;
+	bool extened{ false };
+	bool dragging_bar{ false }, dragging_rect{ false };
 
 	DrawableColor(const sf::Vector2f position, const setting::Type type, ColorSetting* setting, Whiteout& whiteout);
 
@@ -14,5 +16,5 @@ public:
 
 	bool on_event(const Key key, const mdl::MODULE_CATEGORY current) override;
 
-	void create_hue_vertecies(sf::VertexArray& vertices);
+	void create_hue_vertecies(sf::VertexArray& vertices, const sf::Vector2f pos);
 };
