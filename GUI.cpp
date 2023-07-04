@@ -125,7 +125,7 @@ void GUI::on_key_event(const Key key) {
 			}
 
 			for (const std::pair<Module*, sf::FloatRect>& p : m_binds) {
-				if (p.second.contains(key.mouse_pos)) {
+				if (p.second.contains(key.mouse_pos) && csb.current == p.first->category) {
 					m_binding = p.first;
 					m_binding->keybind_s_rep = "[?]";
 					return;
