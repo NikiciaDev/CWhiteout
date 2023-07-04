@@ -19,7 +19,7 @@ void DrawableColor::draw(float& height, sf::Vector2f outline_r_w) {
 		sf::VertexArray vertices(sf::PrimitiveType::Quads, 24);
 		create_hue_vertecies(vertices, _pos, (outline_r_w.x - 20) / 6.0f, rec_w);
 		bar_bounds.setPosition(_pos);
-		bar_bounds.setSize(sf::Vector2f(outline_r_w.x - 20, rec_w));
+		bar_bounds.setSize(sf::Vector2f(outline_r_w.x - 20, rec_w - 1));
 		whiteout.window.draw(vertices);
 
 		sf::VertexArray sat_bar(sf::PrimitiveType::Quads, 4);
@@ -27,9 +27,9 @@ void DrawableColor::draw(float& height, sf::Vector2f outline_r_w) {
 		add_quad_verts(sat_bar, sf::Vector2f(_pos.x, _pos.y + rec_w + 10), sf::Vector2f(outline_r_w.x - 20, rec_w), sf::Color::White);
 		add_quad_verts(val_bar, sf::Vector2f(_pos.x, _pos.y + rec_w + 10 + rec_w + 10), sf::Vector2f(outline_r_w.x - 20, rec_w), sf::Color::Black);
 		sat_bounds.setPosition(sf::Vector2f(_pos.x, _pos.y + rec_w + 10));
-		sat_bounds.setSize(sf::Vector2f(outline_r_w.x - 20, rec_w));
+		sat_bounds.setSize(sf::Vector2f(outline_r_w.x - 20, rec_w - 1));
 		val_bounds.setPosition(sf::Vector2f(_pos.x, _pos.y + rec_w + 10 + rec_w + 10));
-		val_bounds.setSize(sf::Vector2f(outline_r_w.x - 20, rec_w));
+		val_bounds.setSize(sf::Vector2f(outline_r_w.x - 20, rec_w - 1));
 		whiteout.window.draw(sat_bar);
 		whiteout.window.draw(val_bar);
 
