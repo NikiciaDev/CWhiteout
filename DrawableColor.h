@@ -13,4 +13,6 @@ public:
 	void draw(float& height, sf::Vector2f outline_r_w) override;
 
 	bool on_event(const Key key, const mdl::MODULE_CATEGORY current) override;
+
+	void create_hue_vertecies(sf::VertexArray& vertices);
 };
