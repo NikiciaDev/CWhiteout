@@ -3,6 +3,7 @@
 #include "ColorSetting.h"
 
 // https://stackoverflow.com/questions/48968250/sfml-color-picker-issue
+// https://github.com/Dreamykass/bitsofkass/tree/master/cpp-sfml/2021-06-20--sfml-color-picker-lerp
 class DrawableColor final : public DrawableSetting {
 public:
 	ColorSetting* setting;
