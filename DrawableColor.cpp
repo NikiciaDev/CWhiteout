@@ -68,10 +68,14 @@ void DrawableColor::manage_drag(const sf::FloatRect& global_bounds, const sf::Ve
 		}
 
 		sf::Color set_c;
-		if (bar_x == hue_bar_x) {
+		if (&bar_x == &hue_bar_x) {
 			set_c = base_rgb = img.getPixel(mapped_vec.x, mapped_vec.y);
-		} else if(bar_x == sat_bar_x){
+			base_rgb_sat = set_c;
+			sat_bar_x = -999;
+			val_bar_x = -999;
+		} else if(&bar_x == &sat_bar_x){
 			set_c = base_rgb_sat = img.getPixel(mapped_vec.x, mapped_vec.y);
+			val_bar_x = -999;
 		} else {
 			set_c = img.getPixel(mapped_vec.x, mapped_vec.y);
 		}

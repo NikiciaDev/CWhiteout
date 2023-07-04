@@ -12,7 +12,7 @@ public:
 	sf::RectangleShape color_rect;
 	sf::RectangleShape bar_bounds, sat_bounds, val_bounds;
 
-	float hue_bar_x{ 300 }, sat_bar_x{ 300 }, val_bar_x{ 300 };
+	float hue_bar_x{ -999 }, sat_bar_x{ -999 }, val_bar_x{ -999 };
 	bool dragging_bar{ false }, dragging_s{ false }, dragging_v{ false };
 	bool extened{ false };
 
