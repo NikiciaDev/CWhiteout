@@ -14,12 +14,12 @@ void Module::on_enable(std::map<const std::string, JavaClass*>& classes) { }
 void Module::on_disable(std::map<const std::string, JavaClass*>& classes) { }
 
 void Module::on_keypress(std::map<const std::string, JavaClass*>& classes) {
-	if (is_active) {
+	is_active = !is_active;
+	if (!is_active) {
 		on_disable(classes);
 	} else {
 		on_enable(classes);
 	}
-	is_active = !is_active;
 }
 
 void Module::init_kb_string_represenation(unsigned long long keycode, std::string& string) {
