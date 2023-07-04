@@ -9,11 +9,11 @@ class DrawableColor final : public DrawableSetting {
 public:
 	ColorSetting* setting;
 	sf::RectangleShape color_rect;
-	sf::RectangleShape bar_bounds;
+	sf::RectangleShape bar_bounds, sat_bounds, val_bounds;
 
-	float hue_bar_x{ 0 };
+	float hue_bar_x{ 0 }, sat_bar_x{ 0 }, val_bar_x{ 0 };
+	bool dragging_bar{ false }, dragging_s{ false }, dragging_v{ false };
 	bool extened{ false };
-	bool dragging_bar{ false }, dragging_rect{ false };
 
 	DrawableColor(const sf::Vector2f position, const setting::Type type, ColorSetting* setting, Whiteout& whiteout);
 
@@ -22,4 +22,10 @@ public:
 	bool on_event(const Key key, const mdl::MODULE_CATEGORY current) override;
 
 	void create_hue_vertecies(sf::VertexArray& vertices, const sf::Vector2f pos, const float width_per, const float height);
+
+	void create_sat_bar(sf::VertexArray& vertices, const sf::Vector2f pos, const sf::Vector2f size);
+
+	void create_val_bar(sf::VertexArray& vertices, const sf::Vector2f pos, const sf::Vector2f size);
+
+	void manage_drag(const sf::FloatRect& global_bounds, bool& drag_bool, float& bar_x, const float y, const float rec_w);
 };

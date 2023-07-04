@@ -22,26 +22,49 @@ void DrawableColor::draw(float& height, sf::Vector2f outline_r_w) {
 		bar_bounds.setSize(sf::Vector2f(outline_r_w.x - 20, rec_w));
 		whiteout.window.draw(vertices);
 
+		sf::VertexArray sat_bar(sf::PrimitiveType::Quads, 4);
+		sf::VertexArray val_bar(sf::PrimitiveType::Quads, 4);
+		create_sat_bar(sat_bar, sf::Vector2f(_pos.x, _pos.y + rec_w + 10), sf::Vector2f(outline_r_w.x - 20, rec_w));
+		create_val_bar(val_bar, sf::Vector2f(_pos.x, _pos.y + rec_w + 10 + rec_w + 10), sf::Vector2f(outline_r_w.x - 20, rec_w));
+		whiteout.window.draw(sat_bar);
+		whiteout.window.draw(val_bar);
+
 		if (dragging_bar) {
-			if (bar_bounds.getGlobalBounds().contains(liu::get_cursor_pos(true))) {
-				hue_bar_x = liu::get_cursor_pos(true).x;
-				sf::Texture texture;
-				texture.create(whiteout.window.getSize().x, whiteout.window.getSize().y);
-				texture.update(whiteout.window);
-				sf::Image img = texture.copyToImage();
-				setting->sv(img.getPixel(hue_bar_x, _pos.y + 3));
-			} else {
-				dragging_bar = false;
-			}
+			manage_drag(bar_bounds.getGlobalBounds(), dragging_bar, hue_bar_x, _pos.y, rec_w);
+		} else if (dragging_s) {
+			manage_drag(bar_bounds.getGlobalBounds(), dragging_s, sat_bar_x, _pos.y + rec_w + 10, rec_w);
+		} else if (dragging_v) {
+			manage_drag(bar_bounds.getGlobalBounds(), dragging_v, val_bar_x, _pos.y + rec_w + 10 + rec_w + 10, rec_w);
 		}
 
 		if (hue_bar_x != 0) {
 			render::rect_outline(whiteout.window, sf::Vector2f(hue_bar_x - 2, _pos.y - 2), sf::Vector2f(4, rec_w + 2), Whiteout::text_color, 2.f);
 		}
-		height += rec_w * 2;
+		if (sat_bar_x != 0) {
+			render::rect_outline(whiteout.window, sf::Vector2f(sat_bar_x - 2, _pos.y + rec_w + 10 - 2), sf::Vector2f(4, rec_w + 2), Whiteout::text_color, 2.f);
+		}
+		if (val_bar_x != 0) {
+			render::rect_outline(whiteout.window, sf::Vector2f(val_bar_x - 2, _pos.y + rec_w + 10 + rec_w + 10 - 2), sf::Vector2f(4, rec_w + 2), Whiteout::text_color, 2.f);
+		}
+		height += rec_w * 5 + 3;
 	}
 
-	height += rec_w;
+	height += rec_w + 2;
+}
+
+void DrawableColor::manage_drag(const sf::FloatRect& global_bounds, bool& drag_bool, float& bar_x, const float y, const float rec_w) {
+	sf::Texture texture;
+	texture.create(whiteout.window.getSize().x, whiteout.window.getSize().y);
+	sf::Image img;
+	if (global_bounds.contains(liu::get_cursor_pos(true))) {
+		bar_x = liu::get_cursor_pos(true).x;
+		texture.update(whiteout.window);
+		img = texture.copyToImage();
+		sf::Vector2i mapped_vec = whiteout.window.mapCoordsToPixel(sf::Vector2f(bar_x, y + 3));
+		setting->sv(img.getPixel(mapped_vec.x, mapped_vec.y));
+	} else {
+		drag_bool = false;
+	}
 }
 
 bool DrawableColor::on_event(const Key key, const mdl::MODULE_CATEGORY current) {
@@ -54,10 +77,42 @@ bool DrawableColor::on_event(const Key key, const mdl::MODULE_CATEGORY current) 
 	} else if (extened) {
 		if (bar_bounds.getGlobalBounds().contains(key.mouse_pos)) {
 			dragging_bar = key.keycode != 3;
+			return true;
+		} else if (sat_bounds.getGlobalBounds().contains(key.mouse_pos)) {
+			dragging_s = key.keycode != 3;
+			return true;
+		} else if (val_bounds.getGlobalBounds().contains(key.mouse_pos)) {
+			dragging_v = key.keycode != 3;
+			return true;
 		}
-		return true;
 	}
 	return false;
+}
+
+void DrawableColor::create_sat_bar(sf::VertexArray& vertices, const sf::Vector2f pos, const sf::Vector2f size) {
+	sat_bounds.setPosition(pos);
+	sat_bounds.setSize(size);
+	vertices[0].position = sf::Vector2f(pos.x, pos.y + size.y);
+	vertices[1].position = sf::Vector2f(pos.x, pos.y);
+	vertices[2].position = sf::Vector2f(pos.x + size.x, pos.y);
+	vertices[3].position = sf::Vector2f(pos.x + size.x, pos.y + size.y);
+	vertices[0].color = sf::Color::White;
+	vertices[1].color = sf::Color::White;
+	vertices[2].color = setting->gv<sf::Color>();
+	vertices[3].color = setting->gv<sf::Color>();
+}
+
+void DrawableColor::create_val_bar(sf::VertexArray& vertices, const sf::Vector2f pos, const sf::Vector2f size) {
+	val_bounds.setPosition(pos);
+	val_bounds.setSize(size);
+	vertices[0].position = sf::Vector2f(pos.x, pos.y + size.y);
+	vertices[1].position = sf::Vector2f(pos.x, pos.y);
+	vertices[2].position = sf::Vector2f(pos.x + size.x, pos.y);
+	vertices[3].position = sf::Vector2f(pos.x + size.x, pos.y + size.y);
+	vertices[0].color = sf::Color::Black;
+	vertices[1].color = sf::Color::Black;
+	vertices[2].color = setting->gv<sf::Color>();
+	vertices[3].color = setting->gv<sf::Color>();
 }
 
 void DrawableColor::create_hue_vertecies(sf::VertexArray& vertices, const sf::Vector2f pos, const float width_per, const float height) {
