@@ -7,6 +7,7 @@
 // https://github.com/Dreamykass/bitsofkass/tree/master/cpp-sfml/2021-06-20--sfml-color-picker-lerp
 class DrawableColor final : public DrawableSetting {
 public:
+	sf::Color base_rgb;
 	ColorSetting* setting;
 	sf::RectangleShape color_rect;
 	sf::RectangleShape bar_bounds, sat_bounds, val_bounds;
@@ -23,9 +24,7 @@ public:
 
 	void create_hue_vertecies(sf::VertexArray& vertices, const sf::Vector2f pos, const float width_per, const float height);
 
-	void create_sat_bar(sf::VertexArray& vertices, const sf::Vector2f pos, const sf::Vector2f size);
-
-	void create_val_bar(sf::VertexArray& vertices, const sf::Vector2f pos, const sf::Vector2f size);
+	void add_quad_verts(sf::VertexArray& vertices, const sf::Vector2f pos, const sf::Vector2f size, const sf::Color base_color);
 
 	void manage_drag(const sf::FloatRect& global_bounds, bool& drag_bool, float& bar_x, const float y, const float rec_w);
 };
