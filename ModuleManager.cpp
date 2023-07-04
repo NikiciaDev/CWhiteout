@@ -12,7 +12,7 @@ namespace ModuleManager {
 
 		/*EXPLOIT*/
 		Module* timer = new Timer("Timer", mdl::MODULE_CATEGORY::EXPLOIT);
-		modules.insert(std::make_pair("Timer", timer));
+		modules.insert(std::make_pair("Timer 2", timer));
 
 		/*VIUSAL*/
 

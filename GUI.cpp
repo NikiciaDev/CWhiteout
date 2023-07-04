@@ -76,13 +76,17 @@ void GUI::draw_modules() {
 			outline_r_w.y = height;
 			sf::Text name_t = font::text(m->name, sf::Vector2f(x + 30, y - font::height(m->name, font::mm, 22) * 0.65f), font::mm, 22, sf::Text::Regular, m->is_active ? Module::mdcc[csb.current] : Whiteout::text_color);
 			sf::Text bind_t = font::text(m->keybind_s_rep, sf::Vector2f(x + outline_r_w.x - 30 - font::width(m->keybind_s_rep, font::mr, 15), y - font::height(m->keybind_s_rep, font::mm, 15) * 0.65f), font::mr, 15);
-			render::rect_outline_dcutout2(whiteout->window, sf::Vector2f(x, y), outline_r_w, Whiteout::text_color, 30, font::width(name_t, true), outline_r_w.x - 30 - font::width(bind_t), font::width(bind_t));
+			if (count % 2 == 0) {
+				render::rect_outline_dcutout2(whiteout->window, sf::Vector2f(x, y), outline_r_w, Whiteout::text_color, 30, font::width(name_t, true), outline_r_w.x - 30 - font::width(bind_t), font::width(bind_t));
+			} else {
+				render::rect_outline_dcutout(whiteout->window, sf::Vector2f(x, y), outline_r_w, Whiteout::text_color, 30, font::width(name_t, true), outline_r_w.x - 30 - font::width(bind_t), font::width(bind_t));
+			}
 			font::render(whiteout->window, name_t);
 			font::render(whiteout->window, bind_t);
 
 			m_names.insert_or_assign(m, std::make_pair(sf::FloatRect(x, y, outline_r_w.x, outline_r_w.y), name_t.getGlobalBounds()));
 			m_binds.insert_or_assign(m, bind_t.getGlobalBounds());
-			y += height;
+			y += height + 30;
 			count++;
 		}
 	}
