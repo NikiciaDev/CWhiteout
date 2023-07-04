@@ -4,7 +4,7 @@ namespace ModuleManager {
 	void init_modules() {
 		/*COMBAT*/
 		Module* auto_clicker = new AutoClicker("Auto Clicker", mdl::MODULE_CATEGORY::COMBAT);
-		modules.insert(std::make_pair("Auto Clicker", auto_clicker));
+		modules.insert(std::make_pair(auto_clicker->name, auto_clicker));
 
 		/*MOVEMENT*/
 
@@ -12,9 +12,11 @@ namespace ModuleManager {
 
 		/*EXPLOIT*/
 		Module* timer = new Timer("Timer", mdl::MODULE_CATEGORY::EXPLOIT);
-		modules.insert(std::make_pair("Timer 2", timer));
+		modules.insert(std::make_pair(timer->name, timer));
 
 		/*VIUSAL*/
+		Module* wgui = new WGUI("GUI", mdl::MODULE_CATEGORY::VISUAL);
+		modules.insert(std::make_pair(wgui->name, wgui));
 
 		fill_vectors();
 	}

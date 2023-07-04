@@ -5,6 +5,7 @@
 #include "Module.h"
 #include "AutoClicker.h"
 #include "Timer.h"
+#include "WGUI.h"
 
 namespace ModuleManager {
 	extern std::map<const std::string, Module*> modules;

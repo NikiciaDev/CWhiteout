@@ -4,6 +4,8 @@
 #include "MathUtil.h"
 #include "LLInputUtil.h"
 
+extern sf::Color mdcc(unsigned short index);
+
 class DrawableNumber final : public DrawableSetting {
 private:
 	long double max, min, inc;

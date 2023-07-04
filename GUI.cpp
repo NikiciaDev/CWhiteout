@@ -41,7 +41,7 @@ void GUI::draw_base() {
 	// Scrolling outline.
 	render::rect_outline(whiteout->window, whiteout->window.mapPixelToCoords(sf::Vector2i(30, 30)), sf::Vector2f(window_size.x - 60, window_size.y - 60), Whiteout::bg_color, 50);
 
-	sf::Vector2f pos_csb(whiteout->window.getSize().x - 30 - 5 - font::width(csb_text), 15 - font::height(Module::mdcn[csb.current], font::mb, 24, true, sf::Text::Bold) / 2);
+	sf::Vector2f pos_csb(whiteout->window.getSize().x - 30 - 5 - font::width(csb_text), 15 - font::height(mdcn_a[csb.current], font::mb, 24, true, sf::Text::Bold) / 2);
 	sf::Text whiteout_t = font::text(whiteout->name, whiteout->window.mapPixelToCoords(sf::Vector2i(35, 15 - font::height(whiteout->name, font::meb, 24, true, sf::Text::Bold) / 2)), font::meb, 24, sf::Text::Bold, Whiteout::base_color, 5);
 	render::rect_outline_dcutout(whiteout->window, whiteout->window.mapPixelToCoords(sf::Vector2i(15, 15)), sf::Vector2f(window_size.x - 30, window_size.y - 30), Whiteout::text_color, 15, font::width(whiteout_t) + 10,
 		pos_csb.x - 15 - 5, font::width(csb_text) + 10);
@@ -74,7 +74,7 @@ void GUI::draw_modules() {
 			height += 10 - 5;
 			
 			outline_r_w.y = height;
-			sf::Text name_t = font::text(m->name, sf::Vector2f(x + 30, y - font::height(m->name, font::mm, 22) * 0.65f), font::mm, 22, sf::Text::Regular, m->is_active ? Module::mdcc[csb.current] : Whiteout::text_color);
+			sf::Text name_t = font::text(m->name, sf::Vector2f(x + 30, y - font::height(m->name, font::mm, 22) * 0.65f), font::mm, 22, sf::Text::Regular, m->is_active ? mdcc(csb.current) : Whiteout::text_color);
 			sf::Text bind_t = font::text(m->keybind_s_rep, sf::Vector2f(x + outline_r_w.x - 30 - font::width(m->keybind_s_rep, font::mr, 15), y - font::height(m->keybind_s_rep, font::mm, 15) * 0.65f), font::mr, 15);
 			if (count % 2 == 0) {
 				render::rect_outline_dcutout2(whiteout->window, sf::Vector2f(x, y), outline_r_w, Whiteout::text_color, 30, font::width(name_t, true), outline_r_w.x - 30 - font::width(bind_t), font::width(bind_t));

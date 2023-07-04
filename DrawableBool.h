@@ -2,6 +2,8 @@
 #include "DrawableSetting.h"
 #include "BooleanSetting.h"
 
+extern sf::Color mdcc(unsigned short index);
+
 class DrawableBool final : public DrawableSetting {
 public:
 	BooleanSetting* setting;

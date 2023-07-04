@@ -5,6 +5,9 @@
 #include "FontRenderer.h"
 #include "VecMapUtil.h"
 
+extern std::vector<std::string> mdcn_a;
+extern sf::Color mdcc(unsigned short index);
+
 class CategorySelectionButton final : public Button  {
 private:
 	Whiteout* whiteout;

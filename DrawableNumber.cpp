@@ -47,7 +47,7 @@ void DrawableNumber::draw(float& height, sf::Vector2f outline_r_w) {
 		}
 	}
 
-	render::rect(whiteout.window, sf::Vector2f(pos.x - 5, pos.y + 2.5f), sf::Vector2f(bar_width, font::height()), Module::mdcc[setting->parent->category]);
+	render::rect(whiteout.window, sf::Vector2f(pos.x - 5, pos.y + 2.5f), sf::Vector2f(bar_width, font::height()), mdcc(setting->parent->category));
 	font::render(whiteout.window, setting->name, pos);
 	font::render(whiteout.window, value_rep, sf::Vector2f(pos.x + outline_r_w.x - 20 - 10 - font::width(value_rep), pos.y));
 

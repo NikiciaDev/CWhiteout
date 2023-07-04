@@ -18,9 +18,6 @@ extern JNIEnv* jenv_ptr;
 
 class Module {
 public:
-	static std::vector<std::string> mdcn;
-	static std::vector<sf::Color> mdcc;
-
 	bool is_active{ false };
 	const std::string name;
 	const mdl::MODULE_CATEGORY category;

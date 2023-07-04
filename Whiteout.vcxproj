@@ -183,6 +183,7 @@
     <ClCompile Include="Terminal.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Variables.cpp" />
+    <ClCompile Include="WGUI.cpp" />
     <ClCompile Include="Whiteout.cpp" />
     <ClCompile Include="WindowsUtil.cpp" />
   </ItemGroup>
@@ -228,6 +229,7 @@
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Variables.h" />
     <ClInclude Include="VecMapUtil.h" />
+    <ClInclude Include="WGUI.h" />
     <ClInclude Include="Whiteout.h" />
     <ClInclude Include="WindowsUtil.h" />
   </ItemGroup>

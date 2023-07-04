@@ -7,7 +7,7 @@ void DrawableBool::draw(float& height, sf::Vector2f outline_r_w) {
 	this->outline_r_w = outline_r_w;
 
 	sf::Text sn = font::text(setting->name, pos);
-	if (setting->gv<bool>()) render::rect(whiteout.window, sf::Vector2f(pos.x - 5, pos.y + 2.5f), sf::Vector2f(outline_r_w.x - 20, font::height()), Module::mdcc[setting->parent->category]);
+	if (setting->gv<bool>()) render::rect(whiteout.window, sf::Vector2f(pos.x - 5, pos.y + 2.5f), sf::Vector2f(outline_r_w.x - 20, font::height()), mdcc(setting->parent->category));
 	font::render(whiteout.window, sn);
 	
 	std::string render_v_s = setting->gv<bool>() ? "True" : "False";

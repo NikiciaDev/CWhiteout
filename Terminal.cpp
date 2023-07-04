@@ -46,9 +46,9 @@ void Terminal::on_key_press(const Key key) {
 						sent_commands.push_back(SentCommand(input_pos, s, "Failed to identify window!"));
 					} else {
 						std::string cat = current_in.substr(sp + 1, current_in.size() - 1);
-						auto cat_e = std::find(Module::mdcn.begin(), Module::mdcn.end(), cat);
-						if (cat_e != Module::mdcn.end()) {
-							csb.current = (mdl::MODULE_CATEGORY) (cat_e - Module::mdcn.begin());
+						auto cat_e = std::find(mdcn_a.begin(), mdcn_a.end(), cat);
+						if (cat_e != mdcn_a.end()) {
+							csb.current = (mdl::MODULE_CATEGORY) (cat_e - mdcn_a.begin());
 							sent_commands.push_back(SentCommand(input_pos, s, "Successfully changed windows."));
 						} else {
 							sent_commands.push_back(SentCommand(input_pos, s, "Failed to identify window!"));
