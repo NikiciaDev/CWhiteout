@@ -42,13 +42,13 @@ void DrawableColor::draw(float& height, sf::Vector2f outline_r_w) {
 		}
 
 		if (hue_bar_x != 0) {
-			render::rect_outline(whiteout.window, sf::Vector2f(hue_bar_x - 2, _pos.y - 2), sf::Vector2f(4, rec_w + 2), Whiteout::text_color, 2.f);
+			render::rect_outline(whiteout.window, sf::Vector2f(hue_bar_x - 2, _pos.y - 2), sf::Vector2f(4, rec_w + 4), Whiteout::text_color, 2.f);
 		}
 		if (sat_bar_x != 0) {
-			render::rect_outline(whiteout.window, sf::Vector2f(sat_bar_x - 2, _pos.y + rec_w + 10 - 2), sf::Vector2f(4, rec_w + 2), Whiteout::text_color, 2.f);
+			render::rect_outline(whiteout.window, sf::Vector2f(sat_bar_x - 2, _pos.y + rec_w + 10 - 2), sf::Vector2f(4, rec_w + 4), Whiteout::text_color, 2.f);
 		}
 		if (val_bar_x != 0) {
-			render::rect_outline(whiteout.window, sf::Vector2f(val_bar_x - 2, _pos.y + rec_w + 10 + rec_w + 10 - 2), sf::Vector2f(4, rec_w + 2), Whiteout::text_color, 2.f);
+			render::rect_outline(whiteout.window, sf::Vector2f(val_bar_x - 2, _pos.y + rec_w + 10 + rec_w + 10 - 2), sf::Vector2f(4, rec_w + 4), Whiteout::text_color, 2.f);
 		}
 		height += rec_w * 5 + 3;
 	}
