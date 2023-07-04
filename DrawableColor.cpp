@@ -24,8 +24,8 @@ void DrawableColor::draw(float& height, sf::Vector2f outline_r_w) {
 
 		sf::VertexArray sat_bar(sf::PrimitiveType::Quads, 4);
 		sf::VertexArray val_bar(sf::PrimitiveType::Quads, 4);
-		add_quad_verts(sat_bar, sf::Vector2f(_pos.x, _pos.y + rec_w + 10), sf::Vector2f(outline_r_w.x - 20, rec_w), sf::Color::White);
-		add_quad_verts(val_bar, sf::Vector2f(_pos.x, _pos.y + rec_w + 10 + rec_w + 10), sf::Vector2f(outline_r_w.x - 20, rec_w), sf::Color::Black);
+		add_quad_verts(sat_bar, sf::Vector2f(_pos.x, _pos.y + rec_w + 10), sf::Vector2f(outline_r_w.x - 20, rec_w), sf::Color::White, base_rgb);
+		add_quad_verts(val_bar, sf::Vector2f(_pos.x, _pos.y + rec_w + 10 + rec_w + 10), sf::Vector2f(outline_r_w.x - 20, rec_w), sf::Color::Black, base_rgb_sat);
 		sat_bounds.setPosition(sf::Vector2f(_pos.x, _pos.y + rec_w + 10));
 		sat_bounds.setSize(sf::Vector2f(outline_r_w.x - 20, rec_w));
 		val_bounds.setPosition(sf::Vector2f(_pos.x, _pos.y + rec_w + 10 + rec_w + 10));
@@ -41,15 +41,10 @@ void DrawableColor::draw(float& height, sf::Vector2f outline_r_w) {
 			manage_drag(val_bounds.getGlobalBounds(), _pos, dragging_v, val_bar_x, _pos.y + rec_w + 10 + rec_w + 10, rec_w);
 		}
 
-		if (hue_bar_x != 0) {
-			render::rect_outline(whiteout.window, sf::Vector2f(hue_bar_x - 2, _pos.y - 2), sf::Vector2f(4, rec_w + 4), Whiteout::text_color, 2.f);
-		}
-		if (sat_bar_x != 0) {
-			render::rect_outline(whiteout.window, sf::Vector2f(sat_bar_x - 2, _pos.y + rec_w + 10 - 2), sf::Vector2f(4, rec_w + 4), Whiteout::text_color, 2.f);
-		}
-		if (val_bar_x != 0) {
-			render::rect_outline(whiteout.window, sf::Vector2f(val_bar_x - 2, _pos.y + rec_w + 10 + rec_w + 10 - 2), sf::Vector2f(4, rec_w + 4), Whiteout::text_color, 2.f);
-		}
+		render::rect_outline(whiteout.window, sf::Vector2f(hue_bar_x - 2, _pos.y - 2), sf::Vector2f(4, rec_w + 4), Whiteout::text_color, 2.f);
+		render::rect_outline(whiteout.window, sf::Vector2f(sat_bar_x - 2, _pos.y + rec_w + 10 - 2), sf::Vector2f(4, rec_w + 4), Whiteout::text_color, 2.f);
+		render::rect_outline(whiteout.window, sf::Vector2f(val_bar_x - 2, _pos.y + rec_w + 10 + rec_w + 10 - 2), sf::Vector2f(4, rec_w + 4), Whiteout::text_color, 2.f);
+	
 		height += rec_w * 5 + 3;
 	}
 
@@ -71,12 +66,16 @@ void DrawableColor::manage_drag(const sf::FloatRect& global_bounds, const sf::Ve
 		} else if (mapped_vec.x > _pos.x + outline_r_w.x - 20 - 1) {
 			mapped_vec.x = _pos.x + outline_r_w.x - 20 - 1;
 		}
+
+		sf::Color set_c;
 		if (bar_x == hue_bar_x) {
-			base_rgb = img.getPixel(mapped_vec.x, mapped_vec.y);
-			setting->sv(base_rgb);
+			set_c = base_rgb = img.getPixel(mapped_vec.x, mapped_vec.y);
+		} else if(bar_x == sat_bar_x){
+			set_c = base_rgb_sat = img.getPixel(mapped_vec.x, mapped_vec.y);
 		} else {
-			setting->sv(img.getPixel(mapped_vec.x, mapped_vec.y));
+			set_c = img.getPixel(mapped_vec.x, mapped_vec.y);
 		}
+		setting->sv(set_c);
 	} else {
 		drag_bool = false;
 	}
@@ -104,15 +103,15 @@ bool DrawableColor::on_event(const Key key, const mdl::MODULE_CATEGORY current) 
 	return false;
 }
 
-void DrawableColor::add_quad_verts(sf::VertexArray& vertices, const sf::Vector2f pos, const sf::Vector2f size, const sf::Color base_color) {
+void DrawableColor::add_quad_verts(sf::VertexArray& vertices, const sf::Vector2f pos, const sf::Vector2f size, const sf::Color base_color, const sf::Color end_color) {
 	vertices[0].position = sf::Vector2f(pos.x, pos.y + size.y);
 	vertices[1].position = sf::Vector2f(pos.x, pos.y);
 	vertices[2].position = sf::Vector2f(pos.x + size.x, pos.y);
 	vertices[3].position = sf::Vector2f(pos.x + size.x, pos.y + size.y);
 	vertices[0].color = base_color;
 	vertices[1].color = base_color;
-	vertices[2].color = base_rgb;
-	vertices[3].color = base_rgb;
+	vertices[2].color = end_color;
+	vertices[3].color = end_color;
 }
 
 void DrawableColor::create_hue_vertecies(sf::VertexArray& vertices, const sf::Vector2f pos, const float width_per, const float height) {
