@@ -10,7 +10,7 @@ void AutoClicker::on_call(std::map<const std::string, JavaClass*>& classes) {
 
 		if (delay.gv() <= 0) delay.sv(std::any_cast<int>(left_cps.gv<int>()));
 		if (clock.has_time_elapsed(std::chrono::milliseconds(1000 / delay.gv()))) {
-			jenv_ptr->CallVoidMethod(classes.find("Minecraft")->second->instance, *classes.find("Minecraft")->second->jmethods.find("click_mouse")->second);
+			jenv_ptr->CallVoidMethod(get_minecraft()->instance, *get_minecraft()->jmethods.find("click_mouse")->second);
 			clock.reset();
 			delay.sv(this->left_cps.gv<int>() + rndm.intg<int>(-(this->random_left.gv<int>()), this->random_left.gv<int>()));
 		}
@@ -23,7 +23,7 @@ void AutoClicker::on_call(std::map<const std::string, JavaClass*>& classes) {
 
 		if (delay.gv() <= 0) delay.sv(this->random_right.gv<int>());
 		if (clock.has_time_elapsed(std::chrono::milliseconds(1000 / delay.gv()))) {
-			jenv_ptr->CallVoidMethod(classes.find("Minecraft")->second->instance, *classes.find("Minecraft")->second->jmethods.find("right_click_mouse")->second);
+			jenv_ptr->CallVoidMethod(get_minecraft()->instance, *get_minecraft()->jmethods.find("right_click_mouse")->second);
 			clock.reset();
 		}
 	}

@@ -8,6 +8,7 @@
 #include "Random.h"
 #include "ConsoleUtil.h"
 #include "Clock.h"
+#include "BasicUtil.h"
 
 class AutoClicker final : public Module {
 private:

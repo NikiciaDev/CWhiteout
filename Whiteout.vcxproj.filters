@@ -122,6 +122,7 @@
     <ClCompile Include="DrawableString.cpp">
       <Filter>source\classes\whiteout\gui\impl\setting\impl</Filter>
     </ClCompile>
+    <ClCompile Include="WGUI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
@@ -395,6 +396,10 @@
     </ClInclude>
     <ClInclude Include="MathUtil.h">
       <Filter>headers\util\other</Filter>
+    </ClInclude>
+    <ClInclude Include="WGUI.h" />
+    <ClInclude Include="BasicUtil.h">
+      <Filter>headers\util\whiteout</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -2,6 +2,7 @@
 #include "Module.h"
 #include "NumberSetting.h"
 #include "BooleanSetting.h"
+#include "BasicUtil.h"
 
 class Timer final : public Module {
 public:
