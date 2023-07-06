@@ -2,7 +2,15 @@
 
 void init_variables(const std::string font_path) {
     JNI_GetCreatedJavaVMs(&jvm_ptr, 1, nullptr);
+    if (jvm_ptr == nullptr) {
+        print_err("Failed to initialize JVM pointer!");
+        throw std::exception("Failed to initialize JVM pointer!");
+    }
     jvm_ptr->AttachCurrentThread((void**) &jenv_ptr, nullptr);
+    if (jenv_ptr == nullptr) {
+        print_err("Failed to initialize JENV pointer!");
+        throw std::exception("Failed to initialize JENV pointer!");
+    }
     whiteout = new Whiteout(Whiteout::name_build, 4, 1000, 600);
     mdcn_a = { "TERMINAL", "COMBAT", "MOVEMENT", "PLAYER", "VISUAL", "EXPLOIT" };
     mdcc_a = { sf::Color(255, 255, 255), sf::Color(245, 91, 58), sf::Color(34, 184, 113), sf::Color(147, 82, 176), sf::Color(57, 18, 214), sf::Color(51, 144, 203) };
