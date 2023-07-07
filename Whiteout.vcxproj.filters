@@ -122,7 +122,12 @@
     <ClCompile Include="DrawableString.cpp">
       <Filter>source\classes\whiteout\gui\impl\setting\impl</Filter>
     </ClCompile>
-    <ClCompile Include="WGUI.cpp" />
+    <ClCompile Include="WGUI.cpp">
+      <Filter>source\classes\whiteout\module\impl\visual</Filter>
+    </ClCompile>
+    <ClCompile Include="FullBright.cpp">
+      <Filter>source\classes\whiteout\module\impl\visual</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
@@ -266,6 +271,12 @@
     <Filter Include="source\classes\whiteout\gui\impl\setting\impl">
       <UniqueIdentifier>{d99dc4ab-595d-4e56-abf9-f97891c6a566}</UniqueIdentifier>
     </Filter>
+    <Filter Include="headers\classes\whiteout\module\impl\visual">
+      <UniqueIdentifier>{050d76f5-4eef-4a92-8a75-b15526bc961e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\classes\whiteout\module\impl\visual">
+      <UniqueIdentifier>{6a399423-e3ab-4173-a9b1-dd8e7b899c0e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Variables.h">
@@ -397,9 +408,14 @@
     <ClInclude Include="MathUtil.h">
       <Filter>headers\util\other</Filter>
     </ClInclude>
-    <ClInclude Include="WGUI.h" />
     <ClInclude Include="BasicUtil.h">
       <Filter>headers\util\whiteout</Filter>
+    </ClInclude>
+    <ClInclude Include="WGUI.h">
+      <Filter>headers\classes\whiteout\module\impl\visual</Filter>
+    </ClInclude>
+    <ClInclude Include="FullBright.h">
+      <Filter>headers\classes\whiteout\module\impl\visual</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

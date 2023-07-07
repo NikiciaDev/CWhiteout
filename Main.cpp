@@ -53,7 +53,7 @@ void main_thread_f(HMODULE instance) {
     std::wstring base_env_path = ful::create_envs();
     std::wstring ldrf_path(base_env_path); ldrf_path += L"\\JClasses.ldrf";
     std::wstring font_path(base_env_path); font_path += L"\\font";
-    if (!dul::download_file_from_url(L"https://cdn.discordapp.com/attachments/1122126616320037054/1126573298210328586/JClasses.ldrf", ldrf_path.c_str())) {
+    if (!dul::download_file_from_url(L"https://cdn.discordapp.com/attachments/1122126616320037054/1126853772086362152/JClasses.ldrf", ldrf_path.c_str())) {
         print_err("Failed to download loader file!");
         throw std::exception("Failed to download loader file!");
     }

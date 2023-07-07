@@ -18,6 +18,9 @@ namespace ModuleManager {
 		Module* wgui = new WGUI("GUI", mdl::MODULE_CATEGORY::VISUAL);
 		modules.insert(std::make_pair(wgui->name, wgui));
 
+		Module* full_bright = new FullBright("Full Bright", mdl::MODULE_CATEGORY::VISUAL);
+		modules.insert(std::make_pair(full_bright->name, full_bright));
+
 		fill_vectors();
 	}
 

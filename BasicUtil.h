@@ -19,3 +19,11 @@ inline JavaClass* get_world() {
 inline JavaClass* get_timer() {
 	return classes.find("Timer")->second;
 }
+
+inline JavaClass* get_game_settings() {
+	return classes.find("GameSettings")->second;
+}
+
+inline JavaClass* get_moving_object_position() {
+	return classes.find("MovingObjectPosition")->second;
+}

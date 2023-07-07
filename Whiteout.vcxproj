@@ -154,6 +154,7 @@
     <ClCompile Include="DrawableNumber.cpp" />
     <ClCompile Include="DrawableSetting.cpp" />
     <ClCompile Include="DrawableString.cpp" />
+    <ClCompile Include="FullBright.cpp" />
     <ClCompile Include="NumberSetting.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="Setting.cpp" />
@@ -199,6 +200,7 @@
     <ClInclude Include="DrawableNumber.h" />
     <ClInclude Include="DrawableSetting.h" />
     <ClInclude Include="DrawableString.h" />
+    <ClInclude Include="FullBright.h" />
     <ClInclude Include="MathUtil.h" />
     <ClInclude Include="ShellCommand.h" />
     <ClInclude Include="ColorSetting.h" />
