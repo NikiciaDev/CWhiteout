@@ -5,6 +5,10 @@ AutoClicker::AutoClicker(const std::string name, const mdl::MODULE_CATEGORY cate
 void AutoClicker::on_call(std::map<const std::string, JavaClass*>& classes) {
 	jfieldID id = jenv_ptr->GetFieldID(get_moving_object_position()->jclass, "a", "Lauh$a;"); // Only works when the player has enterd a world once!
 	unsigned short eval = get_ev("auh$a", jenv_ptr->GetObjectField(get_moving_object_position()->instance, id));
+	//jobject hitresult_j = jenv_ptr->CallObjectMethod(get_moving_object_position()->instance, *get_moving_object_position()->jmethods.find("to_string")->second);
+	//std::string hitresult = jobj_to_string(hitresult_j);
+	//const bool hit_type_block = (hitresult.find("BLOCK") != std::string::npos);
+	//const bool hit_type_entitiy = (hitresult.find("ENTITY") != std::string::npos);
 
 	if (GetAsyncKeyState(VK_LBUTTON) < 0 && this->random_left.gv<int>() > 0) {
 		if (delay.ii()) {

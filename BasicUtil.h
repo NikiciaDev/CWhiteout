@@ -32,3 +32,11 @@ inline unsigned short get_ev(const std::string qenum, const jobject enum_instanc
 	jclass jc = jenv_ptr->FindClass(qenum.c_str());
 	return jenv_ptr->CallIntMethod(enum_instance, jenv_ptr->GetMethodID(jc, "ordinal", "()I"));
 }
+
+// This will invalidate object!
+inline std::string jobj_to_string(jobject& object) {
+	const char* nativeString = jenv_ptr->GetStringUTFChars((jstring) object, 0);
+	std::string ret(nativeString);
+	jenv_ptr->ReleaseStringUTFChars((jstring) object, nativeString);
+	return ret;
+}
