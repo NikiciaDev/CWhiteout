@@ -3,8 +3,11 @@
 AutoClicker::AutoClicker(const std::string name, const mdl::MODULE_CATEGORY category) : Module(name, category, 65536) {}
 
 void AutoClicker::on_call(std::map<const std::string, JavaClass*>& classes) {
+	const jvalue f{ jenv_ptr->GetFloatField(get_timer()->instance, *get_timer()->jfields.find("render_partial_ticks")->second) };
+	jenv_ptr->CallVoidMethodA(get_entity_renderer()->instance, *get_entity_renderer()->jmethods.find("get_mouse_over")->second, &f);
 	jfieldID id = jenv_ptr->GetFieldID(get_moving_object_position()->jclass, "a", "Lauh$a;"); // Only works when the player has enterd a world once!
 	unsigned short eval = get_ev("auh$a", jenv_ptr->GetObjectField(get_moving_object_position()->instance, id));
+	
 	//jobject hitresult_j = jenv_ptr->CallObjectMethod(get_moving_object_position()->instance, *get_moving_object_position()->jmethods.find("to_string")->second);
 	//std::string hitresult = jobj_to_string(hitresult_j);
 	//const bool hit_type_block = (hitresult.find("BLOCK") != std::string::npos);
