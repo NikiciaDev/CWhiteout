@@ -8,7 +8,7 @@ private:
 	float prev_gamma{ -1 };
 
 public:
-	NumberSetting brightness = NumberSetting("Brightness", this, 0.f, 20.f, 20.f, 0.5f, num::Type::F, [] { return true; });
+	NumberSetting brightness = NumberSetting("Brightness", this, 0.f, 10.f, 10.f, 0.5f, num::Type::F, [] { return true; });
 
 	FullBright(const std::string name, const mdl::MODULE_CATEGORY category);
 
