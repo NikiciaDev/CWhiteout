@@ -3,6 +3,11 @@
 AutoClicker::AutoClicker(const std::string name, const mdl::MODULE_CATEGORY category) : Module(name, category, 65536) {}
 
 void AutoClicker::on_call(std::map<const std::string, JavaClass*>& classes) {
+	jfieldID id = jenv_ptr->GetFieldID(get_moving_object_position()->jclass, "a", "Lauh$a;");
+	//if (get_ev("auh$a", jenv_ptr->GetObjectField(get_moving_object_position()->instance, id))) { //get_moving_object_position()->instance == NULL FIX
+
+	//}
+
 	if (GetAsyncKeyState(VK_LBUTTON) < 0 && this->random_left.gv<int>() > 0) {
 		if (delay.ii()) {
 			delay.sv(this->left_cps.gv<int>() + rndm.intg<int>(-(this->random_left.gv<int>()), this->random_left.gv<int>()));

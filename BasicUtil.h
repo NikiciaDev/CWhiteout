@@ -25,5 +25,10 @@ inline JavaClass* get_game_settings() {
 }
 
 inline JavaClass* get_moving_object_position() {
-	return classes.find("MovingObjectPosition")->second;
+	return classes.find("MovingObjPos")->second;
+}
+
+inline unsigned short get_ev(const std::string qenum, const jobject enum_instance) {
+	jclass jc = jenv_ptr->FindClass(qenum.c_str());
+	return jenv_ptr->CallIntMethod(enum_instance, jenv_ptr->GetMethodID(jc, "ordinal", "()I"));
 }

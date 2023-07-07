@@ -106,7 +106,7 @@ namespace lul {
 			id = jenv_ptr->GetFieldID(c, name.c_str(), signature.c_str());
 			java_class.instance = jenv_ptr->GetObjectField(map.find(class_to_find_in)->second->instance, id);
 		}
-		if (id == NULL) {
+		if (id == NULL || java_class.instance == NULL) {
 			print_wrn("Could not find instance field for class.\n");
 			return;
 		}
